@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FREN 1001 — Lab 4 : La Vie à l'Université</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:#f0f7ff; --parchment:#cfe2f3;
+  --navy:#0d2240; --blue:#1a4f7a; --sky:#2471a3; --sky-light:#d6eaf8;
+  --french-blue:#002395; --french-red:#ed2939;
+  --ink:#0d1b2e; --ink-soft:#1e3a5f; --muted:#6b7d93;
+  --gold:#c9a84c; --white:#ffffff;
+  --shadow:0 8px 40px rgba(13,34,64,0.13); --shadow-sm:0 2px 12px rgba(13,34,64,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 10% 15%,rgba(0,35,149,0.06) 0%,transparent 55%),radial-gradient(ellipse at 90% 85%,rgba(237,41,57,0.04) 0%,transparent 55%);pointer-events:none;z-index:0;}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:3px;}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--gold);color:var(--ink);padding:8px 16px;font-weight:700;z-index:10000;border-radius:0 0 8px 0;transition:top 0.2s;}
+.skip-link:focus{top:0;}
+header{background:var(--navy);color:var(--cream);padding:36px 48px;display:flex;align-items:center;gap:28px;position:relative;overflow:hidden;z-index:1;}
+header::after{content:'CHAPITRE QUATRE';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:90px;font-weight:900;color:rgba(255,255,255,0.03);letter-spacing:-3px;pointer-events:none;white-space:nowrap;}
+.flag{display:flex;gap:5px;align-items:center;}
+.fs{width:6px;height:50px;border-radius:3px;}
+.fs.b{background:#002395;}.fs.w{background:#fff;}.fs.r{background:#ed2939;}
+.htext h1{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;letter-spacing:-1px;line-height:1;}
+.htext h1 em{color:#5dade2;font-style:normal;}
+.htext p{margin-top:6px;font-size:13px;font-weight:300;color:rgba(240,247,255,0.5);letter-spacing:0.5px;}
+.hbadge{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.lab-num{font-family:'Playfair Display',serif;font-size:72px;font-weight:900;line-height:1;color:#5dade2;letter-spacing:-3px;}
+.mode-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;background:rgba(201,168,76,0.2);color:#e8c96e;border:1px solid rgba(201,168,76,0.35);}
+.page{max-width:960px;margin:0 auto;padding:44px 28px 80px;position:relative;z-index:1;}
+.slabel{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:28px;}
+.slabel:first-child{margin-top:0;}
+.slabel::after{content:'';flex:1;height:1px;background:var(--parchment);}
+.card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px;}
+.card-inner{padding:32px 36px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:640px){.two-col{grid-template-columns:1fr;}header{padding:24px 20px;}.card-inner{padding:24px 20px;}}
+p.bt{font-size:14px;line-height:1.75;color:var(--ink-soft);}
+.steps{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:4px;}
+.steps li{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.65;color:var(--ink-soft);}
+.sn{width:24px;height:24px;min-width:24px;border-radius:50%;background:var(--sky);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.submit-note{margin-top:14px;font-size:13px;line-height:1.6;color:var(--ink-soft);background:var(--cream);border:1.5px solid var(--parchment);border-radius:8px;padding:10px 14px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.chip{background:var(--cream);border:1.5px solid var(--parchment);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--ink-soft);}
+.req-acc{border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;margin-top:4px;}
+.req-item{border-bottom:1px solid var(--parchment);}
+.req-item:last-child{border-bottom:none;}
+.req-toggle{width:100%;background:none;border:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:10px;text-align:left;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--ink);transition:background 0.15s;}
+.req-toggle:hover{background:var(--cream);}
+.req-toggle .arr{margin-left:auto;color:var(--muted);font-size:10px;transition:transform 0.2s;}
+.req-toggle[aria-expanded="true"] .arr{transform:rotate(180deg);}
+.req-body{display:none;padding:4px 16px 14px 42px;font-size:13px;line-height:1.75;color:var(--ink-soft);}
+.req-body.open{display:block;}
+.req-body ul{padding-left:18px;}
+.req-body li{margin-bottom:4px;}
+.warn{background:#fff5f0;border:1.5px solid #f5c4b0;border-radius:10px;padding:10px 16px;font-size:12px;font-weight:700;color:#8f3f22;text-align:center;letter-spacing:0.3px;text-transform:uppercase;margin-top:20px;}
+.img-wrap{border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.img-wrap img{width:100%;display:block;transition:transform 0.35s ease;}
+.img-wrap:hover img,.img-wrap:focus img{transform:scale(1.03);}
+.img-wrap:focus{outline:3px solid var(--gold);outline-offset:2px;}
+.img-cap{background:rgba(13,34,64,0.72);color:rgba(255,255,255,0.85);font-size:10px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
+.img-credit-link{color:rgba(255,255,255,0.65);text-decoration:none;font-size:10px;}
+.img-credit-link:hover{color:#fff;text-decoration:underline;}
+.clearfix::after{content:'';display:table;clear:both;}
+.float-right{float:right;margin:0 0 16px 24px;width:230px;}
+.vocab-section{margin-bottom:28px;}
+.vocab-section-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--blue);margin-bottom:14px;padding-bottom:6px;border-bottom:2px solid var(--sky-light);}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px;}
+@media(max-width:480px){.vocab-grid{grid-template-columns:1fr 1fr;}}
+.vc-wrap{perspective:1000px;height:140px;}
+.vc{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.48s cubic-bezier(0.4,0,0.2,1);cursor:pointer;border-radius:12px;}
+.vc.flipped{transform:rotateY(180deg);}
+.vc-front,.vc-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;padding:12px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.vc-front{background:var(--sky-light);border:1.5px solid var(--sky);}
+.vc-back{background:var(--blue);color:white;transform:rotateY(180deg);}
+.vc-word{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px;}
+.vc-pron{font-size:10px;color:var(--muted);font-style:italic;margin-bottom:8px;}
+.vc-hint{font-size:9px;color:var(--sky);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:auto;}
+.vc-eng{font-size:14px;font-weight:600;color:white;line-height:1.4;margin-bottom:4px;}
+.vc-ex{font-size:10px;color:rgba(255,255,255,0.7);font-style:italic;line-height:1.4;margin-top:4px;}
+.audio-btn{background:none;border:none;cursor:pointer;font-size:16px;padding:2px 4px;border-radius:4px;line-height:1;transition:transform 0.15s;}
+.audio-btn:hover{transform:scale(1.2);}
+.audio-btn:focus{outline:2px solid var(--gold);outline-offset:2px;}
+.grammar-btn{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:white;border:none;border-radius:10px;padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;box-shadow:var(--shadow-sm);}
+.grammar-btn:hover{background:var(--blue);transform:translateY(-1px);}
+.grammar-btn .gb-icon{font-size:16px;}
+.gm{position:fixed;inset:0;background:rgba(13,34,64,0.88);z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
+.gm.open{display:flex;animation:gmIn 0.25s ease;}
+@keyframes gmIn{from{opacity:0;}to{opacity:1;}}
+.gm-panel{background:var(--white);border-radius:20px 20px 16px 16px;width:100%;max-width:700px;max-height:80vh;overflow-y:auto;padding:32px 36px;position:relative;animation:panelUp 0.3s cubic-bezier(0.16,1,0.3,1);}
+@keyframes panelUp{from{transform:translateY(60px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+@media(max-width:640px){.gm-panel{padding:24px 20px;}}
+.gm-close{position:absolute;top:16px;right:16px;background:var(--cream);border:1.5px solid var(--parchment);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all 0.15s;}
+.gm-close:hover{background:var(--sky);color:white;border-color:var(--sky);}
+.gm-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.gm-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
+.conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:480px){.conj-grid{grid-template-columns:1fr;}}
+.conj-table{border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;}
+.conj-table caption{background:var(--sky);color:white;font-weight:700;font-size:13px;padding:8px 12px;text-align:left;}
+.conj-table table{width:100%;border-collapse:collapse;}
+.conj-table td{padding:7px 12px;font-size:13px;border-bottom:1px solid var(--parchment);color:var(--ink-soft);}
+.conj-table tr:last-child td{border-bottom:none;}
+.conj-table td:first-child{color:var(--muted);font-size:12px;width:45%;}
+.conj-table td:last-child{font-weight:600;color:var(--blue);}
+.conj-table tr:hover td{background:var(--sky-light);}
+.gm-note{background:var(--sky-light);border:1.5px solid var(--parchment);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--ink-soft);margin-top:16px;line-height:1.65;}
+.gm-prep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:8px;}
+.prep-card{background:var(--sky-light);border:1px solid var(--parchment);border-radius:8px;padding:8px 10px;font-size:12px;color:var(--ink-soft);}
+.prep-card strong{display:block;color:var(--blue);font-size:13px;}
+#lb{position:fixed;inset:0;background:rgba(10,20,40,0.94);z-index:9998;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
+#lb.open{display:flex;animation:lbIn 0.2s ease;}
+@keyframes lbIn{from{opacity:0;}to{opacity:1;}}
+#lb img{max-width:min(90vw,800px);max-height:85vh;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,0.6);animation:imgIn 0.25s ease;}
+@keyframes imgIn{from{transform:scale(0.93);opacity:0;}to{transform:scale(1);opacity:1;}}
+#lb-close{position:fixed;top:18px;right:22px;color:white;font-size:30px;cursor:pointer;background:none;border:none;opacity:0.7;line-height:1;}
+#lb-close:hover,#lb-close:focus{opacity:1;}
+footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);position:relative;z-index:1;}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header role="banner">
+  <div class="flag" role="img" aria-label="French flag"><div class="fs b"></div><div class="fs w"></div><div class="fs r"></div></div>
+  <div class="htext">
+    <h1>FREN <em>1001</em></h1>
+    <p>Introductory French — Language Lab</p>
+  </div>
+  <div class="hbadge" aria-label="Lab 4, Individual Activity">
+    <div class="lab-num" aria-hidden="true">4</div>
+    <span class="mode-pill">🙋 Individual Activity</span>
+  </div>
+</header>
+<main class="page" id="main-content">
+  <div class="card">
+    <div class="card-inner clearfix">
+      <div style="margin-bottom:6px;"><span style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);">Unité 4</span></div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;font-style:italic;letter-spacing:-0.5px;color:var(--ink);">La Vie à l'Université</h2>
+      <div style="margin-top:22px;" class="clearfix">
+        <div class="float-right img-wrap" role="button" tabindex="0" aria-label="Enlarge image – click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-4-image-1.jpg')">
+          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-4-image-1.jpg" alt="University campus building" loading="lazy">
+          <div class="img-cap"><span>Click to enlarge</span></div>
+        </div>
+        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">📝</span>Summary &amp; Context</div>
+        <p class="bt">In this lab you will show the audience around the UNG campus, share your class schedule, talk about sports and hobbies, and ask questions about campus life.</p>
+        <p class="bt" style="margin-top:10px;">Create a 2-minute video showing us around the UNG campus. Share your class schedule (days, times, buildings), mention campus sports, and ask 2 questions about the audience's campus.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-inner">
+        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">🚦</span>Process</div>
+        <ol class="steps" aria-label="Recording steps">
+          <li><span class="sn" aria-hidden="true">1</span>Study the vocabulary cards and grammar below.</li>
+          <li><span class="sn" aria-hidden="true">2</span>Practice speaking out loud — many times!</li>
+          <li><span class="sn" aria-hidden="true">3</span>Record via Zoom or phone (MP4 or MOV).</li>
+          <li><span class="sn" aria-hidden="true">4</span>Upload to your D2L Assignment Folder.</li>
+        </ol>
+        <p class="submit-note">📂 Click <strong>Lab 4</strong> in your <a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&type=lti&rcode=usgx-40983205&srcou=867315" target="_self" style="color:var(--sky);font-weight:600;">D2L Assignment Folder</a> to submit.</p>
+        <div class="slabel"><span aria-hidden="true">📦</span>What You Will Need</div>
+        <ul class="chips" aria-label="Materials needed">
+          <li class="chip">🎥 Zoom or phone/computer</li>
+          <li class="chip">🎞️ MP4 or MOV format</li>
+        </ul>
+        <div style="margin-top:22px;" class="img-wrap" role="button" tabindex="0" aria-label="Enlarge image – click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-4-image-2.jpg')">
+          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-4-image-2.jpg" alt="Students studying on campus" loading="lazy">
+          <div class="img-cap"><span>Click to enlarge</span></div>
+        </div>
+        <div class="slabel"><span aria-hidden="true">📖</span>Grammar Review</div>
+        <button class="grammar-btn" onclick="openG('time')" aria-haspopup="dialog" aria-label="Open grammar: Telling time in French"><span class="gb-icon" aria-hidden="true">📖</span> Telling Time — l'Heure</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">✅</span>Requirements</div>
+        <div class="req-acc" role="list">
+          <div class="req-item" role="listitem">
+            <button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📏</span>Video basics<span class="arr" aria-hidden="true">▼</span></button>
+            <div class="req-body" role="region"><ul><li><strong>2 minutes</strong> long</li><li>Face visible</li></ul></div>
+          </div>
+          <div class="req-item" role="listitem">
+            <button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">🏫</span>Campus tour<span class="arr" aria-hidden="true">▼</span></button>
+            <div class="req-body" role="region"><ul><li>What classes does UNG offer? What sports?</li><li>Show or describe <strong>at least 3 campus locations</strong></li></ul></div>
+          </div>
+          <div class="req-item" role="listitem">
+            <button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📅</span>Class schedule<span class="arr" aria-hidden="true">▼</span></button>
+            <div class="req-body" role="region"><ul><li>Tell us your schedule: days, times, and buildings for your classes</li><li>Use days of the week and time expressions (<em>à neuf heures du matin</em>)</li></ul></div>
+          </div>
+          <div class="req-item" role="listitem">
+            <button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">❓</span>Ask 2 questions<span class="arr" aria-hidden="true">▼</span></button>
+            <div class="req-body" role="region">Ask <strong>two questions</strong> about the audience's campus or schedule.</div>
+          </div>
+          <div class="req-item" role="listitem">
+            <button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📚</span>Vocabulary<span class="arr" aria-hidden="true">▼</span></button>
+            <div class="req-body" role="region">Use classroom vocabulary, school subjects, days, and time expressions from class.</div>
+          </div>
+        </div>
+        <div class="warn" role="alert">🚫 No online translator or AI allowed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-inner">
+      <div class="slabel" style="margin-top:0;"><span aria-hidden="true">🃏</span>Vocabulary — Click a card to flip · 🔊 to hear the French</div>
+      <p class="bt" style="margin-bottom:22px;">Practice these words before recording. Click any card to see the English, and press 🔊 to hear the French pronunciation.</p>
+      
+      <div class="vocab-section">
+        <div class="vocab-section-title">People &amp; Places on Campus</div>
+        <div class="vocab-grid" role="list" aria-label="People &amp; Places on Campus vocabulary cards">
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: la salle de classe" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">la salle de classe</div><div class="vc-pron">[lah sal duh klas]</div><button class="audio-btn" onclick="speak(event,'la salle de classe')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">classroom</div><button class="audio-btn" onclick="speak(event,'la salle de classe')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le professeur" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le professeur</div><div class="vc-pron">[luh proh-fuh-sur]</div><button class="audio-btn" onclick="speak(event,'le professeur')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">professor / teacher</div><button class="audio-btn" onclick="speak(event,'le professeur')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: l'étudiant(e)" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">l'étudiant(e)</div><div class="vc-pron">[lay-too-dyahn]</div><button class="audio-btn" onclick="speak(event,"l'étudiant(e)")" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">student</div><button class="audio-btn" onclick="speak(event,"l'étudiant(e)")" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: l'université" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">l'université</div><div class="vc-pron">[loo-nee-vair-see-tay]</div><button class="audio-btn" onclick="speak(event,"l'université")" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">university</div><button class="audio-btn" onclick="speak(event,"l'université")" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: la bibliothèque" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">la bibliothèque</div><div class="vc-pron">[lah bee-blyoh-tek]</div><button class="audio-btn" onclick="speak(event,'la bibliothèque')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">library</div><button class="audio-btn" onclick="speak(event,'la bibliothèque')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vocab-section">
+        <div class="vocab-section-title">Classroom Objects</div>
+        <div class="vocab-grid" role="list" aria-label="Classroom Objects vocabulary cards">
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le livre" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le livre</div><div class="vc-pron">[luh lee-vruh]</div><button class="audio-btn" onclick="speak(event,'le livre')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">book</div><button class="audio-btn" onclick="speak(event,'le livre')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le cahier" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le cahier</div><div class="vc-pron">[luh kah-yay]</div><button class="audio-btn" onclick="speak(event,'le cahier')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">notebook</div><button class="audio-btn" onclick="speak(event,'le cahier')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le crayon" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le crayon</div><div class="vc-pron">[luh kreh-yon]</div><button class="audio-btn" onclick="speak(event,'le crayon')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">pencil</div><button class="audio-btn" onclick="speak(event,'le crayon')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le stylo" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le stylo</div><div class="vc-pron">[luh stee-loh]</div><button class="audio-btn" onclick="speak(event,'le stylo')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">pen</div><button class="audio-btn" onclick="speak(event,'le stylo')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le sac à dos" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le sac à dos</div><div class="vc-pron">[luh sak ah doh]</div><button class="audio-btn" onclick="speak(event,'le sac à dos')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">backpack</div><button class="audio-btn" onclick="speak(event,'le sac à dos')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: l'ordinateur" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">l'ordinateur</div><div class="vc-pron">[lor-dee-nah-tur]</div><button class="audio-btn" onclick="speak(event,"l'ordinateur")" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">computer</div><button class="audio-btn" onclick="speak(event,"l'ordinateur")" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le tableau" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le tableau</div><div class="vc-pron">[luh tah-bloh]</div><button class="audio-btn" onclick="speak(event,'le tableau')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">board</div><button class="audio-btn" onclick="speak(event,'le tableau')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le bureau" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le bureau</div><div class="vc-pron">[luh boo-roh]</div><button class="audio-btn" onclick="speak(event,'le bureau')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">desk</div><button class="audio-btn" onclick="speak(event,'le bureau')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vocab-section">
+        <div class="vocab-section-title">School Subjects</div>
+        <div class="vocab-grid" role="list" aria-label="School Subjects vocabulary cards">
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: les mathématiques" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">les mathématiques</div><div class="vc-pron">[lay mat-ay-ma-teek]</div><button class="audio-btn" onclick="speak(event,'les mathématiques')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">mathematics</div><button class="audio-btn" onclick="speak(event,'les mathématiques')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: la biologie" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">la biologie</div><div class="vc-pron">[lah byoh-loh-zhee]</div><button class="audio-btn" onclick="speak(event,'la biologie')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">biology</div><button class="audio-btn" onclick="speak(event,'la biologie')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: la chimie" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">la chimie</div><div class="vc-pron">[lah shee-mee]</div><button class="audio-btn" onclick="speak(event,'la chimie')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">chemistry</div><button class="audio-btn" onclick="speak(event,'la chimie')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: l'histoire" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">l'histoire</div><div class="vc-pron">[lee-stwahr]</div><button class="audio-btn" onclick="speak(event,"l'histoire")" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">history</div><button class="audio-btn" onclick="speak(event,"l'histoire")" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: la littérature" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">la littérature</div><div class="vc-pron">[lah lee-tay-rah-toor]</div><button class="audio-btn" onclick="speak(event,'la littérature')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">literature</div><button class="audio-btn" onclick="speak(event,'la littérature')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: l'informatique" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">l'informatique</div><div class="vc-pron">[lan-for-mah-teek]</div><button class="audio-btn" onclick="speak(event,"l'informatique")" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">computer science</div><button class="audio-btn" onclick="speak(event,"l'informatique")" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: la géographie" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">la géographie</div><div class="vc-pron">[lah zhay-oh-grah-fee]</div><button class="audio-btn" onclick="speak(event,'la géographie')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">geography</div><button class="audio-btn" onclick="speak(event,'la géographie')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: la musique" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">la musique</div><div class="vc-pron">[lah moo-zeek]</div><button class="audio-btn" onclick="speak(event,'la musique')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">music</div><button class="audio-btn" onclick="speak(event,'la musique')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vocab-section">
+        <div class="vocab-section-title">Days &amp; Time</div>
+        <div class="vocab-grid" role="list" aria-label="Days &amp; Time vocabulary cards">
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: lundi" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">lundi</div><div class="vc-pron">[lun-dee]</div><button class="audio-btn" onclick="speak(event,'lundi')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">Monday</div><button class="audio-btn" onclick="speak(event,'lundi')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: mardi" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">mardi</div><div class="vc-pron">[mar-dee]</div><button class="audio-btn" onclick="speak(event,'mardi')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">Tuesday</div><button class="audio-btn" onclick="speak(event,'mardi')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: mercredi" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">mercredi</div><div class="vc-pron">[mair-kruh-dee]</div><button class="audio-btn" onclick="speak(event,'mercredi')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">Wednesday</div><button class="audio-btn" onclick="speak(event,'mercredi')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: jeudi" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">jeudi</div><div class="vc-pron">[zhuh-dee]</div><button class="audio-btn" onclick="speak(event,'jeudi')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">Thursday</div><button class="audio-btn" onclick="speak(event,'jeudi')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: vendredi" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">vendredi</div><div class="vc-pron">[vahn-druh-dee]</div><button class="audio-btn" onclick="speak(event,'vendredi')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">Friday</div><button class="audio-btn" onclick="speak(event,'vendredi')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: samedi" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">samedi</div><div class="vc-pron">[sam-dee]</div><button class="audio-btn" onclick="speak(event,'samedi')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">Saturday</div><button class="audio-btn" onclick="speak(event,'samedi')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: dimanche" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">dimanche</div><div class="vc-pron">[dee-mahnsh]</div><button class="audio-btn" onclick="speak(event,'dimanche')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">Sunday</div><button class="audio-btn" onclick="speak(event,'dimanche')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le matin" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le matin</div><div class="vc-pron">[luh mah-tan]</div><button class="audio-btn" onclick="speak(event,'le matin')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">morning</div><button class="audio-btn" onclick="speak(event,'le matin')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: l'après-midi" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">l'après-midi</div><div class="vc-pron">[lah-prey-mee-dee]</div><button class="audio-btn" onclick="speak(event,"l'après-midi")" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">afternoon</div><button class="audio-btn" onclick="speak(event,"l'après-midi")" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le soir" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le soir</div><div class="vc-pron">[luh swahr]</div><button class="audio-btn" onclick="speak(event,'le soir')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">evening</div><button class="audio-btn" onclick="speak(event,'le soir')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vocab-section">
+        <div class="vocab-section-title">Sports &amp; Activities</div>
+        <div class="vocab-grid" role="list" aria-label="Sports &amp; Activities vocabulary cards">
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le football" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le football</div><div class="vc-pron">[luh foot-bol]</div><button class="audio-btn" onclick="speak(event,'le football')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">soccer</div><button class="audio-btn" onclick="speak(event,'le football')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le basketball" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le basketball</div><div class="vc-pron">[luh bas-ket-bol]</div><button class="audio-btn" onclick="speak(event,'le basketball')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">basketball</div><button class="audio-btn" onclick="speak(event,'le basketball')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le tennis" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le tennis</div><div class="vc-pron">[luh teh-nees]</div><button class="audio-btn" onclick="speak(event,'le tennis')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">tennis</div><button class="audio-btn" onclick="speak(event,'le tennis')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: la natation" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">la natation</div><div class="vc-pron">[lah nah-tah-syon]</div><button class="audio-btn" onclick="speak(event,'la natation')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">swimming</div><button class="audio-btn" onclick="speak(event,'la natation')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le jogging" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le jogging</div><div class="vc-pron">[luh zhoh-ging]</div><button class="audio-btn" onclick="speak(event,'le jogging')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">jogging</div><button class="audio-btn" onclick="speak(event,'le jogging')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: la lecture" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">la lecture</div><div class="vc-pron">[lah lek-toor]</div><button class="audio-btn" onclick="speak(event,'la lecture')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">reading</div><button class="audio-btn" onclick="speak(event,'la lecture')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+          <div class="vc-wrap" role="listitem">
+            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le cinéma" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
+              <div class="vc-front" aria-hidden="false"><div class="vc-word">le cinéma</div><div class="vc-pron">[luh see-nay-mah]</div><button class="audio-btn" onclick="speak(event,'le cinéma')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
+              <div class="vc-back" aria-hidden="true"><div class="vc-eng">movies</div><button class="audio-btn" onclick="speak(event,'le cinéma')" aria-label="Hear pronunciation">🔊</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer><a href="index.html" style="color:var(--sky);">← Back to Lab Home</a> &nbsp;·&nbsp; FREN 1001 — Lab 4: La Vie à l'Université</footer>
+
+<div id="gm-time" class="gm" role="dialog" aria-modal="true" aria-label="Grammar: Telling time in French" aria-hidden="true" onclick="closeG('time')">
+  <div class="gm-panel" onclick="event.stopPropagation()">
+    <button class="gm-close" onclick="closeG('time')" aria-label="Close">✕</button>
+    <div class="gm-title">Telling Time — l'Heure</div>
+    <div class="gm-sub">How to say what time it is in French</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+      <div class="conj-table">
+        <caption>Asking &amp; Telling Time</caption>
+        <table><tbody>
+          <tr><td>Quelle heure est-il ?</td><td style="color:var(--blue);font-weight:600;">What time is it?</td></tr>
+          <tr><td>Il est une heure.</td><td style="color:var(--blue);font-weight:600;">It is 1:00.</td></tr>
+          <tr><td>Il est deux heures.</td><td style="color:var(--blue);font-weight:600;">It is 2:00.</td></tr>
+          <tr><td>Il est midi.</td><td style="color:var(--blue);font-weight:600;">It is noon.</td></tr>
+          <tr><td>Il est minuit.</td><td style="color:var(--blue);font-weight:600;">It is midnight.</td></tr>
+        </tbody></table>
+      </div>
+      <div class="conj-table">
+        <caption>Minutes &amp; Modifiers</caption>
+        <table><tbody>
+          <tr><td>et quart</td><td style="color:var(--blue);font-weight:600;">quarter past (:15)</td></tr>
+          <tr><td>et demie</td><td style="color:var(--blue);font-weight:600;">half past (:30)</td></tr>
+          <tr><td>moins le quart</td><td style="color:var(--blue);font-weight:600;">quarter to (:45)</td></tr>
+          <tr><td>du matin</td><td style="color:var(--blue);font-weight:600;">in the morning (AM)</td></tr>
+          <tr><td>du soir</td><td style="color:var(--blue);font-weight:600;">in the evening (PM)</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <div class="gm-note">💡 <strong>Example:</strong> <em>Il est trois heures et demie du matin.</em> = It is 3:30 AM. — <em>J'ai un cours de français à neuf heures du matin.</em> = I have French class at 9 AM.</div>
+  </div>
+</div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image lightbox" onclick="closeLb()">
+  <button id="lb-close" onclick="closeLb()" aria-label="Close image">✕</button>
+  <img id="lb-img" src="" alt="">
+</div>
+<script>
+function tog(btn){{const b=btn.nextElementSibling;const o=b.classList.contains('open');btn.setAttribute('aria-expanded',!o);b.classList.toggle('open',!o);}}
+function flipCard(card){{const fl=card.classList.toggle('flipped');card.querySelector('.vc-front').setAttribute('aria-hidden',fl);card.querySelector('.vc-back').setAttribute('aria-hidden',!fl);}}
+function speak(e,text){{e.stopPropagation();if(!('speechSynthesis' in window)){{return;}}window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='fr-FR';u.rate=0.82;u.pitch=1.05;window.speechSynthesis.speak(u);}}
+function openG(id){{const m=document.getElementById('gm-'+id);m.removeAttribute('aria-hidden');m.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>m.querySelector('.gm-close').focus(),50);}}
+function closeG(id){{const m=document.getElementById('gm-'+id);m.setAttribute('aria-hidden','true');m.classList.remove('open');document.body.style.overflow='';}}
+function openLb(src){{document.getElementById('lb-img').src=src;document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';document.getElementById('lb-close').focus();}}
+function closeLb(){{document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}}
+document.addEventListener('keydown',e=>{{if(e.key==='Escape'){{document.querySelectorAll('.gm.open').forEach(m=>closeG(m.id.replace('gm-','')));closeLb();}}}}); 
+document.querySelectorAll('.img-wrap[tabindex]').forEach(el=>{{el.addEventListener('keydown',e=>{{if(e.key==='Enter'||e.key===' '){{e.preventDefault();el.click();}}}});}});
+</script>
+</body>
+</html>
