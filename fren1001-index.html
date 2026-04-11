@@ -6,112 +6,85 @@
 <title>FREN 1001 — Language Lab</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --cream: #f0f7ff; --parchment: #cfe2f3;
-  --navy: #0d2240; --blue: #1a4f7a; --sky: #2471a3; --sky-light: #d6eaf8;
-  --french-blue: #002395; --french-red: #ed2939;
-  --ink: #0d1b2e; --ink-soft: #1e3a5f; --muted: #6b7d93;
-  --gold: #c9a84c; --white: #ffffff;
-  --shadow: 0 8px 40px rgba(13,34,64,0.13); --shadow-sm: 0 2px 12px rgba(13,34,64,0.08);
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
-body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 10% 15%, rgba(0,35,149,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 85%, rgba(237,41,57,0.04) 0%, transparent 55%); pointer-events: none; z-index: 0; }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
-.skip-link { position: absolute; top: -40px; left: 0; background: var(--gold); color: var(--ink); padding: 8px 16px; font-weight: 700; z-index: 10000; border-radius: 0 0 8px 0; transition: top 0.2s; }
-.skip-link:focus { top: 0; }
 
-/* ── HEADER ── */
-header { background: var(--navy); color: var(--cream); padding: 44px 48px 40px; position: relative; overflow: hidden; z-index: 1; }
-header::before { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 260px; background: linear-gradient(90deg, transparent, rgba(0,35,149,0.12) 40%, rgba(0,35,149,0.08) 60%, rgba(237,41,57,0.1) 80%); pointer-events: none; }
-header::after { content: 'LANGUE FRANÇAISE'; position: absolute; right: -20px; bottom: -10px; font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900; color: rgba(255,255,255,0.03); letter-spacing: -4px; pointer-events: none; white-space: nowrap; }
-.header-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 28px; position: relative; z-index: 1; }
-.flag { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
-.fs { width: 7px; height: 54px; border-radius: 3px; }
-.fs.b { background: #002395; } .fs.w { background: #fff; } .fs.r { background: #ed2939; }
-.htext h1 { font-family: 'Playfair Display', serif; font-size: 46px; font-weight: 900; letter-spacing: -1.5px; line-height: 1; }
-.htext h1 em { color: #5dade2; font-style: normal; }
-.htext p { margin-top: 7px; font-size: 13px; font-weight: 300; color: rgba(240,247,255,0.5); letter-spacing: 0.5px; }
-.header-badge { margin-left: auto; text-align: right; }
-.header-badge .big { font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic; color: rgba(240,247,255,0.7); line-height: 1.3; }
-.header-badge .small { margin-top: 6px; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+:root{--cream:#f0f7ff;--parch:#cfe2f3;--navy:#0d2240;--blue:#1a4f7a;--sky:#2471a3;--skylt:#d6eaf8;--ink:#0d1b2e;--soft:#1e3a5f;--muted:#6b7d93;--gold:#c9a84c;--white:#ffffff;--shadow:0 8px 40px rgba(13,34,64,0.13);--shadow-sm:0 2px 12px rgba(13,34,64,0.08);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 10% 15%,rgba(0,35,149,0.06) 0%,transparent 55%),radial-gradient(ellipse at 90% 85%,rgba(237,41,57,0.04) 0%,transparent 55%);pointer-events:none;z-index:0;}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:3px;}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--gold);color:var(--ink);padding:8px 16px;font-weight:700;z-index:10000;border-radius:0 0 8px 0;transition:top .2s;}
+.skip-link:focus{top:0;}
+header{background:var(--navy);color:var(--cream);padding:36px 48px;display:flex;align-items:center;gap:28px;position:relative;overflow:hidden;z-index:1;}
+header::after{content:'LANGUE FRANÇAISE';position:absolute;right:-20px;bottom:-10px;font-family:'Playfair Display',serif;font-size:100px;font-weight:900;color:rgba(255,255,255,0.03);letter-spacing:-4px;pointer-events:none;white-space:nowrap;}
+.flag{display:flex;gap:5px;align-items:center;}
+.fs{width:6px;height:50px;border-radius:3px;}
+.fs.b{background:#002395;}.fs.w{background:#fff;}.fs.r{background:#ed2939;}
+.htext h1{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;letter-spacing:-1px;line-height:1;}
+.htext h1 em{color:#5dade2;font-style:normal;}
+.htext p{margin-top:6px;font-size:13px;font-weight:300;color:rgba(240,247,255,0.5);letter-spacing:.5px;}
+.page{max-width:900px;margin:0 auto;padding:44px 28px 80px;position:relative;z-index:1;}
+.slabel{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;margin-top:28px;}
+.slabel:first-child{margin-top:0;}
+.slabel::after{content:'';flex:1;height:1px;background:var(--parch);}
+.card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden;}
+.card-inner{padding:28px 32px;}
+h2.card-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);margin-bottom:16px;letter-spacing:-0.3px;}
+p.bt{font-size:14px;line-height:1.75;color:var(--soft);}
+.info-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.info-list li{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.7;color:var(--soft);}
+.info-list li .ico{font-size:16px;margin-top:1px;flex-shrink:0;}
+.warn-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.warn-item{display:flex;align-items:flex-start;gap:12px;background:#fff5f0;border:1.5px solid #f5c4b0;border-radius:10px;padding:12px 14px;font-size:13px;line-height:1.65;color:var(--soft);}
+.warn-item .wi{font-size:15px;flex-shrink:0;margin-top:1px;}
+.points-badge{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:white;border-radius:8px;padding:9px 18px;font-size:14px;font-weight:700;margin-top:6px;}
+footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);position:relative;z-index:1;border-top:1px solid var(--parch);margin-top:20px;}
+@media(max-width:600px){header{padding:24px 20px;}.card-inner{padding:20px 18px;}}
 
-/* ── PAGE ── */
-.page { max-width: 1000px; margin: 0 auto; padding: 48px 28px 80px; position: relative; z-index: 1; }
-
-/* ── SLABEL ── */
-.slabel { display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; margin-top: 32px; }
-.slabel:first-child { margin-top: 0; }
-.slabel::after { content: ''; flex: 1; height: 1px; background: var(--parchment); }
-
-/* ── CARDS ── */
-.card { background: var(--white); border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 22px; overflow: hidden; }
-.card-inner { padding: 32px 36px; }
-h2.card-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.3px; }
-p.bt { font-size: 14px; line-height: 1.75; color: var(--ink-soft); }
-
-/* ── STAT ROW ── */
-.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px; }
-@media(max-width:560px){ .stat-row { grid-template-columns: 1fr 1fr; } }
-.stat-box { background: var(--sky-light); border: 1.5px solid var(--parchment); border-radius: 12px; padding: 18px 14px; text-align: center; }
-.stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--sky); line-height: 1; }
-.stat-label { font-size: 12px; font-weight: 600; color: var(--ink-soft); margin-top: 5px; line-height: 1.4; }
-.stat-label span { font-weight: 400; color: var(--muted); }
-
-/* ── INFO LIST ── */
-.info-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.info-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
-.info-list li .ico { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
-
-/* ── LAB GRID ── */
-.lab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 4px; }
-@media(max-width:640px){ .lab-grid { grid-template-columns: 1fr 1fr; } }
-@media(max-width:400px){ .lab-grid { grid-template-columns: 1fr; } }
-.lab-btn { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; background: var(--sky-light); border: 1.5px solid var(--parchment); border-radius: 14px; padding: 18px 20px; text-decoration: none; color: var(--ink); transition: all 0.2s; cursor: pointer; }
-.lab-btn:hover { background: var(--sky); color: white; border-color: var(--sky); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-.lab-btn:hover .lb-cap { color: rgba(255,255,255,0.7); }
-.lab-btn:hover .lb-num { background: rgba(255,255,255,0.2); color: white; }
-.lb-num { width: 32px; height: 32px; border-radius: 50%; background: var(--sky); color: white; font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 900; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-.lb-title { font-size: 13px; font-weight: 700; color: inherit; line-height: 1.3; }
-.lb-sub { font-size: 11px; color: inherit; opacity: 0.7; line-height: 1.4; }
-.lb-cap { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
-
-/* ── WARN LIST ── */
-.warn-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.warn-item { display: flex; align-items: flex-start; gap: 12px; background: #fff5f0; border: 1.5px solid #f5c4b0; border-radius: 10px; padding: 12px 14px; font-size: 13px; line-height: 1.65; color: var(--ink-soft); }
-.warn-item .wi { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
-
-/* ── CONTACT ── */
-.contact-box { background: linear-gradient(135deg, var(--sky-light), #eaf4fb); border: 1.5px solid var(--parchment); border-radius: 14px; padding: 24px 28px; }
-.contact-box h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--blue); margin-bottom: 12px; }
-.contact-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
-.contact-chip { display: flex; align-items: center; gap: 8px; background: white; border: 1.5px solid var(--parchment); border-radius: 10px; padding: 10px 14px; font-size: 13px; color: var(--ink-soft); }
-.contact-chip a { color: var(--sky); font-weight: 600; text-decoration: none; }
-.contact-chip a:hover { text-decoration: underline; }
-
-/* ── POINTS BADGE ── */
-.points-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: white; border-radius: 8px; padding: 9px 18px; font-size: 14px; font-weight: 700; margin-top: 6px; }
-
-footer { text-align: center; padding: 24px; font-size: 11px; color: var(--muted); position: relative; z-index: 1; border-top: 1px solid var(--parchment); margin-top: 20px; }
+/* Tabs */
+.tabs-nav{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:0;border-bottom:2px solid var(--parch);padding-bottom:0;}
+.tab-btn{background:none;border:none;cursor:pointer;padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--muted);border-radius:10px 10px 0 0;border:1.5px solid transparent;border-bottom:none;transition:all .18s;position:relative;bottom:-2px;}
+.tab-btn:hover{color:var(--blue);background:var(--skylt);}
+.tab-btn.active{color:var(--navy);background:var(--white);border-color:var(--parch);font-weight:700;}
+.tab-pill{display:inline-block;background:var(--sky);color:white;font-size:10px;font-weight:700;border-radius:10px;padding:1px 7px;margin-left:5px;letter-spacing:.5px;}
+.tab-pill.summer{background:#e8825e;}
+.tab-panel{display:none;}.tab-panel.active{display:block;}
+/* Lab grid */
+.lab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:4px;}
+@media(max-width:640px){.lab-grid{grid-template-columns:1fr 1fr;}}
+.lab-btn{display:flex;flex-direction:column;gap:5px;background:var(--skylt);border:1.5px solid var(--parch);border-radius:14px;padding:18px 18px;text-decoration:none;color:var(--ink);transition:all .2s;}
+.lab-btn:hover{background:var(--sky);color:white;border-color:var(--sky);transform:translateY(-2px);box-shadow:var(--shadow-sm);}
+.lab-btn:hover .lb-cap,.lab-btn:hover .lb-sub{color:rgba(255,255,255,0.75);}
+.lab-btn:hover .lb-num{background:rgba(255,255,255,0.2)!important;color:white;}
+.lb-num{width:32px;height:32px;border-radius:50%;color:white;font-family:'Playfair Display',serif;font-size:16px;font-weight:900;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.lb-cap{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.lb-title{font-size:13px;font-weight:700;line-height:1.3;}
+.lb-sub{font-size:11px;color:var(--muted);line-height:1.4;}
+/* Stat row */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px;}
+@media(max-width:520px){.stat-row{grid-template-columns:1fr 1fr;}}
+.stat-box{background:var(--skylt);border:1.5px solid var(--parch);border-radius:12px;padding:16px 14px;text-align:center;}
+.stat-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--sky);line-height:1;}
+.stat-label{font-size:12px;font-weight:600;color:var(--soft);margin-top:5px;line-height:1.4;}
+.stat-label span{font-weight:400;color:var(--muted);}
+/* Contact box */
+.contact-box{background:linear-gradient(135deg,var(--skylt),#eaf4fb);border:1.5px solid var(--parch);border-radius:14px;padding:22px 26px;}
+.contact-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+.contact-chip{display:flex;align-items:center;gap:8px;background:white;border:1.5px solid var(--parch);border-radius:10px;padding:9px 13px;font-size:13px;color:var(--soft);}
+.contact-chip a{color:var(--sky);font-weight:600;text-decoration:none;}
+.contact-chip a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
-
 <header role="banner">
-  <div class="header-inner">
-    <div class="flag" role="img" aria-label="French flag">
-      <div class="fs b"></div><div class="fs w"></div><div class="fs r"></div>
-    </div>
-    <div class="htext">
-      <h1>FREN <em>1001</em></h1>
-      <p>Introductory French — Language Lab</p>
-    </div>
-    <div class="header-badge" aria-label="Course information">
-      <div class="big">Bienvenue &amp; Bon Courage !</div>
-      <div class="small">University of North Georgia</div>
-    </div>
+  <div class="flag" role="img" aria-label="French flag"><div class="fs b"></div><div class="fs w"></div><div class="fs r"></div></div>
+  <div class="htext">
+    <h1>FREN <em>1001</em></h1>
+    <p>Introductory French — Language Lab</p>
+  </div>
+  <div style="margin-left:auto;text-align:right;position:relative;z-index:1;">
+    <div style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(240,247,255,0.7);line-height:1.3;">Bienvenue &amp; Bon Courage !</div>
+    <div style="margin-top:6px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">University of North Georgia</div>
   </div>
 </header>
 
@@ -122,87 +95,162 @@ footer { text-align: center; padding: 24px; font-size: 11px; color: var(--muted)
     <div class="card-inner">
       <h2 class="card-title">Lab Requirement at a Glance</h2>
       <div class="stat-row" role="list" aria-label="Course statistics">
-        <div class="stat-box" role="listitem">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Credit hour course<br><span>3 classroom + 1 lab</span></div>
-        </div>
-        <div class="stat-box" role="listitem">
-          <div class="stat-num">6</div>
-          <div class="stat-label">Lab assignments<br><span>recorded videos</span></div>
-        </div>
-        <div class="stat-box" role="listitem">
-          <div class="stat-num">25</div>
-          <div class="stat-label">Points per lab<br><span>for completion</span></div>
-        </div>
+        <div class="stat-box" role="listitem"><div class="stat-num">4</div><div class="stat-label">Credit hour course<br><span>3 classroom + 1 lab</span></div></div>
+        <div class="stat-box" role="listitem"><div class="stat-num">25</div><div class="stat-label">Points per lab<br><span>for completion</span></div></div>
+        <div class="stat-box" role="listitem"><div class="stat-num">Wed</div><div class="stat-label">Due date<br><span>11:59 PM</span></div></div>
       </div>
-
-      <div class="slabel"><span aria-hidden="true">🎯</span>What these labs are for</div>
-      <p class="bt">These lab assignments are designed to improve your <strong>listening and speaking skills</strong> in French. Each lab gives you a structured context to practice vocabulary, grammar, and authentic communication — building toward real conversational fluency.</p>
-
-      <div class="slabel" style="margin-top:22px;"><span aria-hidden="true">📋</span>All submissions require</div>
+      <div class="slabel"><span aria-hidden="true">📋</span>All submissions require</div>
       <ul class="info-list">
-        <li><span class="ico" aria-hidden="true">📹</span><span>Your <strong>face must be visible</strong> in every video submission.</span></li>
-        <li><span class="ico" aria-hidden="true">⏱️</span><span>Each video must be at least <strong>2 minutes long</strong> (Lab 1: 1.5–2 minutes).</span></li>
-        <li><span class="ico" aria-hidden="true">🎬</span><span>Record using <strong>Zoom</strong>, your phone, or any tool that exports MP4 or MOV.</span></li>
-        <li><span class="ico" aria-hidden="true">📤</span><span>Upload to your <strong>D2L Assignment Folder</strong> by the due date.</span></li>
-        <li><span class="ico" aria-hidden="true">🔇</span><span>Record in a <strong>quiet location</strong> with clear audio.</span></li>
-        <li><span class="ico" aria-hidden="true">🚫</span><span><strong>No online translators, AI tools, or scripts.</strong> Use class notes and your textbook only.</span></li>
+        <li><span class="ico" aria-hidden="true">📹</span><span>Your <strong>face must be visible</strong> in every video.</span></li>
+        <li><span class="ico" aria-hidden="true">⏱️</span><span>Each video must be at least <strong>1.5–2 minutes</strong> long.</span></li>
+        <li><span class="ico" aria-hidden="true">🎬</span><span>Record using Zoom, your phone, or any tool that exports <strong>MP4 or MOV</strong>.</span></li>
+        <li><span class="ico" aria-hidden="true">📤</span><span>Upload to your <strong>D2L Assignment Folder</strong> before the Wednesday deadline.</span></li>
+        <li><span class="ico" aria-hidden="true">🚫</span><span><strong>No online translators, AI, or scripts.</strong> Use class notes and your textbook only.</span></li>
       </ul>
     </div>
   </div>
 
-  <!-- LAB ASSIGNMENTS -->
+  <!-- LAB ASSIGNMENTS — TABBED -->
   <div class="card">
     <div class="card-inner">
-      <h2 class="card-title">Lab Assignments</h2>
-      <p class="bt" style="margin-bottom:22px;">Each lab page includes vocabulary flip cards with audio, grammar review, and full assignment instructions. Click a lab to get started.</p>
-      <nav aria-label="Lab assignments">
-        <div class="lab-grid">
+      <h2 class="card-title" style="margin-bottom:18px;">Lab Assignments</h2>
+      <div class="tabs-nav" role="tablist" aria-label="Session selection">
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-regular" onclick="showTab('regular',this)">
+          Regular Semester <span class="tab-pill">6 labs</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-s1" onclick="showTab('s1',this)">
+          Summer Session 1 <span class="tab-pill summer">4 labs</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-s2" onclick="showTab('s2',this)">
+          Summer Session 2 <span class="tab-pill summer">4 labs</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-full" onclick="showTab('full',this)">
+          Summer Full Session <span class="tab-pill summer">5 labs</span>
+        </button>
+      </div>
 
-          <a href="fren1001-lab-1.html" class="lab-btn" aria-label="Lab 1: Tout sur moi — Self and introductions">
-            <div class="lb-cap">Lab 1</div>
-            <div class="lb-num" aria-hidden="true">1</div>
-            <div class="lb-title">Tout sur moi</div>
-            <div class="lb-sub">Greetings · Adjectives · Être &amp; Avoir</div>
-          </a>
+      <div id="tab-regular" class="tab-panel active" role="tabpanel" aria-label="Regular semester labs">
+        <nav aria-label="Regular semester lab assignments" style="padding-top:18px;">
+          <div class="lab-grid"><a href="fren1001-lab-1.html" class="lab-btn" aria-label="Lab 1: Tout sur moi">
+  <div class="lb-cap">Lab 1</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">1</div>
+  <div class="lb-title">Tout sur moi</div>
+  <div class="lb-sub">Greetings · Adjectives · Être &amp; Avoir</div>
+</a><a href="fren1001-lab-2.html" class="lab-btn" aria-label="Lab 2: Ma Famille">
+  <div class="lb-cap">Lab 2</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">2</div>
+  <div class="lb-title">Ma Famille</div>
+  <div class="lb-sub">Family · -ER verbs · Descriptions</div>
+</a><a href="fren1001-lab-3.html" class="lab-btn" aria-label="Lab 3: La Maison">
+  <div class="lb-cap">Lab 3</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">3</div>
+  <div class="lb-title">La Maison</div>
+  <div class="lb-sub">Rooms · Furniture · Prepositions</div>
+</a><a href="fren1001-lab-4.html" class="lab-btn" aria-label="Lab 4: La Vie à l'Université">
+  <div class="lb-cap">Lab 4</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">4</div>
+  <div class="lb-title">La Vie à l'Université</div>
+  <div class="lb-sub">Classroom · Schedule · Sports</div>
+</a><a href="fren1001-lab-5.html" class="lab-btn" aria-label="Lab 5: Un Voyage à Dahlonega">
+  <div class="lb-cap">Lab 5</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">5</div>
+  <div class="lb-title">Un Voyage à Dahlonega</div>
+  <div class="lb-sub">Travel · Weather · Futur proche</div>
+</a><a href="fren1001-lab-6.html" class="lab-btn" aria-label="Lab 6: Révision Complète">
+  <div class="lb-cap">Lab 6</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">6</div>
+  <div class="lb-title">Révision Complète</div>
+  <div class="lb-sub">All topics · Video review · Final assignment</div>
+</a></div>
+        </nav>
+      </div>
 
-          <a href="fren1001-lab-2.html" class="lab-btn" aria-label="Lab 2: Ma Famille — Family vocabulary">
-            <div class="lb-cap">Lab 2</div>
-            <div class="lb-num" aria-hidden="true">2</div>
-            <div class="lb-title">Ma Famille</div>
-            <div class="lb-sub">Family · -ER verbs · Descriptions</div>
-          </a>
+      <div id="tab-s1" class="tab-panel" role="tabpanel" aria-label="Summer Session 1 labs">
+        <p class="bt" style="padding-top:16px;margin-bottom:14px;font-size:13px;color:var(--muted);">Labs 1, 2, 3 &amp; Révision Complète (as Lab 4) — Maymester / Summer Session 1</p>
+        <nav aria-label="Summer Session 1 lab assignments">
+          <div class="lab-grid"><a href="fren1001-summer-lab-1.html" class="lab-btn" aria-label="Lab 1: Tout sur moi">
+  <div class="lb-cap">Lab 1</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">1</div>
+  <div class="lb-title">Tout sur moi</div>
+  <div class="lb-sub">Greetings · Adjectives · Être &amp; Avoir</div>
+</a><a href="fren1001-summer-lab-2.html" class="lab-btn" aria-label="Lab 2: Ma Famille">
+  <div class="lb-cap">Lab 2</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">2</div>
+  <div class="lb-title">Ma Famille</div>
+  <div class="lb-sub">Family · -ER verbs · Descriptions</div>
+</a><a href="fren1001-summer-lab-3.html" class="lab-btn" aria-label="Lab 3: La Maison">
+  <div class="lb-cap">Lab 3</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">3</div>
+  <div class="lb-title">La Maison</div>
+  <div class="lb-sub">Rooms · Furniture · Prepositions</div>
+</a><a href="fren1001-summer-lab-4.html" class="lab-btn" aria-label="Lab 4: Révision Complète">
+  <div class="lb-cap">Lab 4</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">4</div>
+  <div class="lb-title">Révision Complète</div>
+  <div class="lb-sub">All topics · Video review · Final assignment</div>
+</a></div>
+        </nav>
+      </div>
 
-          <a href="fren1001-lab-3.html" class="lab-btn" aria-label="Lab 3: La Maison — House and home">
-            <div class="lb-cap">Lab 3</div>
-            <div class="lb-num" aria-hidden="true">3</div>
-            <div class="lb-title">La Maison</div>
-            <div class="lb-sub">Rooms · Furniture · Prepositions</div>
-          </a>
+      <div id="tab-s2" class="tab-panel" role="tabpanel" aria-label="Summer Session 2 labs">
+        <p class="bt" style="padding-top:16px;margin-bottom:14px;font-size:13px;color:var(--muted);">Labs 1, 2, 3 &amp; Révision Complète (as Lab 4) — Summer Session 2</p>
+        <nav aria-label="Summer Session 2 lab assignments">
+          <div class="lab-grid"><a href="fren1001-summer-lab-1.html" class="lab-btn" aria-label="Lab 1: Tout sur moi">
+  <div class="lb-cap">Lab 1</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">1</div>
+  <div class="lb-title">Tout sur moi</div>
+  <div class="lb-sub">Greetings · Adjectives · Être &amp; Avoir</div>
+</a><a href="fren1001-summer-lab-2.html" class="lab-btn" aria-label="Lab 2: Ma Famille">
+  <div class="lb-cap">Lab 2</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">2</div>
+  <div class="lb-title">Ma Famille</div>
+  <div class="lb-sub">Family · -ER verbs · Descriptions</div>
+</a><a href="fren1001-summer-lab-3.html" class="lab-btn" aria-label="Lab 3: La Maison">
+  <div class="lb-cap">Lab 3</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">3</div>
+  <div class="lb-title">La Maison</div>
+  <div class="lb-sub">Rooms · Furniture · Prepositions</div>
+</a><a href="fren1001-summer-lab-4.html" class="lab-btn" aria-label="Lab 4: Révision Complète">
+  <div class="lb-cap">Lab 4</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">4</div>
+  <div class="lb-title">Révision Complète</div>
+  <div class="lb-sub">All topics · Video review · Final assignment</div>
+</a></div>
+        </nav>
+      </div>
 
-          <a href="fren1001-lab-4.html" class="lab-btn" aria-label="Lab 4: La Vie à l'Université — University life">
-            <div class="lb-cap">Lab 4</div>
-            <div class="lb-num" aria-hidden="true">4</div>
-            <div class="lb-title">La Vie à l'Université</div>
-            <div class="lb-sub">Classroom · Schedule · Sports</div>
-          </a>
+      <div id="tab-full" class="tab-panel" role="tabpanel" aria-label="Summer Full Session labs">
+        <p class="bt" style="padding-top:16px;margin-bottom:14px;font-size:13px;color:var(--muted);">Labs 1, 2, 3, 4 &amp; Révision Complète (as Lab 5) — Summer Full Session</p>
+        <nav aria-label="Summer Full Session lab assignments">
+          <div class="lab-grid"><a href="fren1001-full-lab-1.html" class="lab-btn" aria-label="Lab 1: Tout sur moi">
+  <div class="lb-cap">Lab 1</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">1</div>
+  <div class="lb-title">Tout sur moi</div>
+  <div class="lb-sub">Greetings · Adjectives · Être &amp; Avoir</div>
+</a><a href="fren1001-full-lab-2.html" class="lab-btn" aria-label="Lab 2: Ma Famille">
+  <div class="lb-cap">Lab 2</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">2</div>
+  <div class="lb-title">Ma Famille</div>
+  <div class="lb-sub">Family · -ER verbs · Descriptions</div>
+</a><a href="fren1001-full-lab-3.html" class="lab-btn" aria-label="Lab 3: La Maison">
+  <div class="lb-cap">Lab 3</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">3</div>
+  <div class="lb-title">La Maison</div>
+  <div class="lb-sub">Rooms · Furniture · Prepositions</div>
+</a><a href="fren1001-full-lab-4.html" class="lab-btn" aria-label="Lab 4: La Vie à l'Université">
+  <div class="lb-cap">Lab 4</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">4</div>
+  <div class="lb-title">La Vie à l'Université</div>
+  <div class="lb-sub">Classroom · Schedule · Sports</div>
+</a><a href="fren1001-full-lab-5.html" class="lab-btn" aria-label="Lab 5: Révision Complète">
+  <div class="lb-cap">Lab 5</div>
+  <div class="lb-num" aria-hidden="true" style="background:var(--sky);">5</div>
+  <div class="lb-title">Révision Complète</div>
+  <div class="lb-sub">All topics · Video review · Final assignment</div>
+</a></div>
+        </nav>
+      </div>
 
-          <a href="fren1001-lab-5.html" class="lab-btn" aria-label="Lab 5: Un Voyage Autour de Dahlonega — Travel and weather">
-            <div class="lb-cap">Lab 5</div>
-            <div class="lb-num" aria-hidden="true">5</div>
-            <div class="lb-title">Un Voyage à Dahlonega</div>
-            <div class="lb-sub">Travel · Weather · Futur proche</div>
-          </a>
-
-          <a href="fren1001-lab-6.html" class="lab-btn" aria-label="Lab 6: Comprehensive Review — Final lab">
-            <div class="lb-cap">Lab 6</div>
-            <div class="lb-num" aria-hidden="true">6</div>
-            <div class="lb-title">Révision Complète</div>
-            <div class="lb-sub">All topics · Video review · Final assignment</div>
-          </a>
-
-        </div>
-      </nav>
     </div>
   </div>
 
@@ -211,11 +259,11 @@ footer { text-align: center; padding: 24px; font-size: 11px; color: var(--muted)
     <div class="card-inner">
       <h2 class="card-title">Key Points to Remember</h2>
       <ul class="warn-list">
-        <li><span class="wi" aria-hidden="true">🕐</span><span><strong>No late submissions.</strong> Assignment folders close at the due date and time. Contact the lab <em>before</em> the due date if you have technology issues.</span></li>
+        <li><span class="wi" aria-hidden="true">🕐</span><span><strong>No late submissions.</strong> Folders close at <strong>11:59 PM on Wednesdays</strong>. Contact the lab <em>before</em> the deadline if you have technology issues.</span></li>
         <li><span class="wi" aria-hidden="true">📅</span><span><strong>Don't wait until the last minute.</strong> Review each lab's vocabulary and grammar early — practice out loud many times before recording.</span></li>
-        <li><span class="wi" aria-hidden="true">📖</span><span><strong>Only approved resources.</strong> You may use class notes, your textbook, and WordReference.com. Do not read from a prepared script during recording.</span></li>
-        <li><span class="wi" aria-hidden="true">🚫</span><span><strong>Academic misconduct.</strong> Using online translators, AI tools, or outside help is considered academic misconduct and may result in serious consequences.</span></li>
-        <li><span class="wi" aria-hidden="true">📬</span><span><strong>Check your email.</strong> If due dates or instructions change, you will be notified by email. It is your responsibility to check regularly.</span></li>
+        <li><span class="wi" aria-hidden="true">📖</span><span><strong>Only approved resources.</strong> Class notes, your textbook, and WordReference.com. Do not read from a prepared script during recording.</span></li>
+        <li><span class="wi" aria-hidden="true">🚫</span><span><strong>Academic misconduct.</strong> Using online translators, AI, or outside help may result in serious consequences.</span></li>
+        <li><span class="wi" aria-hidden="true">📬</span><span><strong>Check your email.</strong> If due dates or instructions change, you will be notified. Check your UNG email regularly.</span></li>
       </ul>
     </div>
   </div>
@@ -224,9 +272,8 @@ footer { text-align: center; padding: 24px; font-size: 11px; color: var(--muted)
   <div class="card">
     <div class="card-inner">
       <h2 class="card-title">Grading</h2>
-      <p class="bt" style="margin-bottom:14px;">Lab assignments are graded by Language Lab staff. If you have questions about a grade, contact the Language Lab directly — not your course instructor.</p>
-      <p class="bt" style="font-size:13px;color:var(--muted);">Occasionally due dates or instructions may change. Always check your UNG email and D2L announcements.</p>
-      <div style="margin-top:16px;"><span class="points-badge">🏅 Up to 25 points per lab for completion</span></div>
+      <p class="bt" style="margin-bottom:10px;">Lab assignments are graded by <strong>Language Lab staff</strong> — not your course instructor. Grading typically takes about one week. Questions about grades should go directly to the Language Lab.</p>
+      <div><span class="points-badge">🏅 Up to 25 points per lab for completion</span></div>
     </div>
   </div>
 
@@ -235,19 +282,27 @@ footer { text-align: center; padding: 24px; font-size: 11px; color: var(--muted)
     <div class="card-inner">
       <h2 class="card-title">Get Help</h2>
       <div class="contact-box">
-        <h3>Language Lab — We're Here for You</h3>
-        <p class="bt">Have a question about your lab assignment, a technology issue, or need extra French practice? Reach out to us.</p>
+        <p class="bt">Have a language question, technology issue, or need extra practice? Reach out to your campus Language Lab.</p>
         <div class="contact-row">
-          <div class="contact-chip">📧 <a href="mailto:languagelab@ung.edu">languagelab@ung.edu</a></div>
+          <div class="contact-chip">📍 Dahlonega — Dunlap 317</div>
+          <div class="contact-chip">📧 <a href="mailto:languagelab-dah@ung.edu">languagelab-dah@ung.edu</a></div>
+          <div class="contact-chip">📍 Gainesville — Nesbitt 4201</div>
+          <div class="contact-chip">📧 <a href="mailto:languagelab-gvl@ung.edu">languagelab-gvl@ung.edu</a></div>
           <div class="contact-chip">🕐 Mon–Fri, 8 AM–5 PM</div>
-          <div class="contact-chip">📍 Language Lab, UNG</div>
         </div>
       </div>
     </div>
   </div>
 
 </main>
-
 <footer>FREN 1001 — Introductory French Language Lab &nbsp;·&nbsp; University of North Georgia</footer>
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+}
+</script>
 </body>
 </html>
