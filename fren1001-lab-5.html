@@ -3,34 +3,26 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FREN 1001 — Lab 5 : Un Voyage Autour de Dahlonega</title>
+<title>FREN 1001 — Lab 5 : Un Voyage à Dahlonega</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --cream:#f0f7ff; --parchment:#cfe2f3;
-  --navy:#0d2240; --blue:#1a4f7a; --sky:#2471a3; --sky-light:#d6eaf8;
-  --french-blue:#002395; --french-red:#ed2939;
-  --ink:#0d1b2e; --ink-soft:#1e3a5f; --muted:#6b7d93;
-  --gold:#c9a84c; --white:#ffffff;
-  --shadow:0 8px 40px rgba(13,34,64,0.13); --shadow-sm:0 2px 12px rgba(13,34,64,0.08);
-}
+:root{--cream:#f0f7ff;--parchment:#cfe2f3;--navy:#0d2240;--blue:#1a4f7a;--sky:#2471a3;--sky-light:#d6eaf8;--ink:#0d1b2e;--ink-soft:#1e3a5f;--muted:#6b7d93;--gold:#c9a84c;--white:#ffffff;--shadow:0 8px 40px rgba(13,34,64,0.13);--shadow-sm:0 2px 12px rgba(13,34,64,0.08);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 10% 15%,rgba(0,35,149,0.06) 0%,transparent 55%),radial-gradient(ellipse at 90% 85%,rgba(237,41,57,0.04) 0%,transparent 55%);pointer-events:none;z-index:0;}
 a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:3px;}
-.skip-link{position:absolute;top:-40px;left:0;background:var(--gold);color:var(--ink);padding:8px 16px;font-weight:700;z-index:10000;border-radius:0 0 8px 0;transition:top 0.2s;}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--gold);color:var(--ink);padding:8px 16px;font-weight:700;z-index:10000;border-radius:0 0 8px 0;transition:top .2s;}
 .skip-link:focus{top:0;}
 header{background:var(--navy);color:var(--cream);padding:36px 48px;display:flex;align-items:center;gap:28px;position:relative;overflow:hidden;z-index:1;}
-header::after{content:'CHAPITRE CINQ';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:90px;font-weight:900;color:rgba(255,255,255,0.03);letter-spacing:-3px;pointer-events:none;white-space:nowrap;}
 .flag{display:flex;gap:5px;align-items:center;}
 .fs{width:6px;height:50px;border-radius:3px;}
 .fs.b{background:#002395;}.fs.w{background:#fff;}.fs.r{background:#ed2939;}
 .htext h1{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;letter-spacing:-1px;line-height:1;}
 .htext h1 em{color:#5dade2;font-style:normal;}
-.htext p{margin-top:6px;font-size:13px;font-weight:300;color:rgba(240,247,255,0.5);letter-spacing:0.5px;}
+.htext p{margin-top:6px;font-size:13px;font-weight:300;color:rgba(240,247,255,0.5);letter-spacing:.5px;}
 .hbadge{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
 .lab-num{font-family:'Playfair Display',serif;font-size:72px;font-weight:900;line-height:1;color:#5dade2;letter-spacing:-3px;}
-.mode-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;background:rgba(201,168,76,0.2);color:#e8c96e;border:1px solid rgba(201,168,76,0.35);}
+.mode-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:rgba(201,168,76,0.2);color:#e8c96e;border:1px solid rgba(201,168,76,0.35);}
 .page{max-width:960px;margin:0 auto;padding:44px 28px 80px;position:relative;z-index:1;}
 .slabel{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:28px;}
 .slabel:first-child{margin-top:0;}
@@ -49,17 +41,17 @@ p.bt{font-size:14px;line-height:1.75;color:var(--ink-soft);}
 .req-acc{border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;margin-top:4px;}
 .req-item{border-bottom:1px solid var(--parchment);}
 .req-item:last-child{border-bottom:none;}
-.req-toggle{width:100%;background:none;border:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:10px;text-align:left;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--ink);transition:background 0.15s;}
+.req-toggle{width:100%;background:none;border:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:10px;text-align:left;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--ink);transition:background .15s;}
 .req-toggle:hover{background:var(--cream);}
-.req-toggle .arr{margin-left:auto;color:var(--muted);font-size:10px;transition:transform 0.2s;}
+.req-toggle .arr{margin-left:auto;color:var(--muted);font-size:10px;transition:transform .2s;}
 .req-toggle[aria-expanded="true"] .arr{transform:rotate(180deg);}
 .req-body{display:none;padding:4px 16px 14px 42px;font-size:13px;line-height:1.75;color:var(--ink-soft);}
 .req-body.open{display:block;}
 .req-body ul{padding-left:18px;}
 .req-body li{margin-bottom:4px;}
-.warn{background:#fff5f0;border:1.5px solid #f5c4b0;border-radius:10px;padding:10px 16px;font-size:12px;font-weight:700;color:#8f3f22;text-align:center;letter-spacing:0.3px;text-transform:uppercase;margin-top:20px;}
+.warn{background:#fff5f0;border:1.5px solid #f5c4b0;border-radius:10px;padding:10px 16px;font-size:12px;font-weight:700;color:#8f3f22;text-align:center;letter-spacing:.3px;text-transform:uppercase;margin-top:20px;}
 .img-wrap{border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);}
-.img-wrap img{width:100%;display:block;transition:transform 0.35s ease;}
+.img-wrap img{width:100%;display:block;transition:transform .35s ease;}
 .img-wrap:hover img,.img-wrap:focus img{transform:scale(1.03);}
 .img-wrap:focus{outline:3px solid var(--gold);outline-offset:2px;}
 .img-cap{background:rgba(13,34,64,0.72);color:rgba(255,255,255,0.85);font-size:10px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
@@ -67,34 +59,15 @@ p.bt{font-size:14px;line-height:1.75;color:var(--ink-soft);}
 .img-credit-link:hover{color:#fff;text-decoration:underline;}
 .clearfix::after{content:'';display:table;clear:both;}
 .float-right{float:right;margin:0 0 16px 24px;width:230px;}
-.vocab-section{margin-bottom:28px;}
-.vocab-section-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--blue);margin-bottom:14px;padding-bottom:6px;border-bottom:2px solid var(--sky-light);}
-.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px;}
-@media(max-width:480px){.vocab-grid{grid-template-columns:1fr 1fr;}}
-.vc-wrap{perspective:1000px;height:140px;}
-.vc{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.48s cubic-bezier(0.4,0,0.2,1);cursor:pointer;border-radius:12px;}
-.vc.flipped{transform:rotateY(180deg);}
-.vc-front,.vc-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;padding:12px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
-.vc-front{background:var(--sky-light);border:1.5px solid var(--sky);}
-.vc-back{background:var(--blue);color:white;transform:rotateY(180deg);}
-.vc-word{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:4px;}
-.vc-pron{font-size:10px;color:var(--muted);font-style:italic;margin-bottom:8px;}
-.vc-hint{font-size:9px;color:var(--sky);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:auto;}
-.vc-eng{font-size:14px;font-weight:600;color:white;line-height:1.4;margin-bottom:4px;}
-.vc-ex{font-size:10px;color:rgba(255,255,255,0.7);font-style:italic;line-height:1.4;margin-top:4px;}
-.audio-btn{background:none;border:none;cursor:pointer;font-size:16px;padding:2px 4px;border-radius:4px;line-height:1;transition:transform 0.15s;}
-.audio-btn:hover{transform:scale(1.2);}
-.audio-btn:focus{outline:2px solid var(--gold);outline-offset:2px;}
-.grammar-btn{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:white;border:none;border-radius:10px;padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;box-shadow:var(--shadow-sm);}
+/* Grammar button & modal */
+.grammar-btn{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:white;border:none;border-radius:10px;padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm);}
 .grammar-btn:hover{background:var(--blue);transform:translateY(-1px);}
-.grammar-btn .gb-icon{font-size:16px;}
 .gm{position:fixed;inset:0;background:rgba(13,34,64,0.88);z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
-.gm.open{display:flex;animation:gmIn 0.25s ease;}
+.gm.open{display:flex;animation:gmIn .25s ease;}
 @keyframes gmIn{from{opacity:0;}to{opacity:1;}}
-.gm-panel{background:var(--white);border-radius:20px 20px 16px 16px;width:100%;max-width:700px;max-height:80vh;overflow-y:auto;padding:32px 36px;position:relative;animation:panelUp 0.3s cubic-bezier(0.16,1,0.3,1);}
+.gm-panel{background:var(--white);border-radius:20px 20px 16px 16px;width:100%;max-width:700px;max-height:80vh;overflow-y:auto;padding:32px 36px;position:relative;animation:panelUp .3s cubic-bezier(.16,1,.3,1);}
 @keyframes panelUp{from{transform:translateY(60px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-@media(max-width:640px){.gm-panel{padding:24px 20px;}}
-.gm-close{position:absolute;top:16px;right:16px;background:var(--cream);border:1.5px solid var(--parchment);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all 0.15s;}
+.gm-close{position:absolute;top:16px;right:16px;background:var(--cream);border:1.5px solid var(--parchment);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .15s;}
 .gm-close:hover{background:var(--sky);color:white;border-color:var(--sky);}
 .gm-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
 .gm-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
@@ -109,47 +82,78 @@ p.bt{font-size:14px;line-height:1.75;color:var(--ink-soft);}
 .conj-table td:last-child{font-weight:600;color:var(--blue);}
 .conj-table tr:hover td{background:var(--sky-light);}
 .gm-note{background:var(--sky-light);border:1.5px solid var(--parchment);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--ink-soft);margin-top:16px;line-height:1.65;}
-.gm-prep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:8px;}
+.gm-prep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:8px;}
 .prep-card{background:var(--sky-light);border:1px solid var(--parchment);border-radius:8px;padding:8px 10px;font-size:12px;color:var(--ink-soft);}
 .prep-card strong{display:block;color:var(--blue);font-size:13px;}
+/* Lightbox */
 #lb{position:fixed;inset:0;background:rgba(10,20,40,0.94);z-index:9998;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
-#lb.open{display:flex;animation:lbIn 0.2s ease;}
+#lb.open{display:flex;animation:lbIn .2s ease;}
 @keyframes lbIn{from{opacity:0;}to{opacity:1;}}
-#lb img{max-width:min(90vw,800px);max-height:85vh;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,0.6);animation:imgIn 0.25s ease;}
-@keyframes imgIn{from{transform:scale(0.93);opacity:0;}to{transform:scale(1);opacity:1;}}
-#lb-close{position:fixed;top:18px;right:22px;color:white;font-size:30px;cursor:pointer;background:none;border:none;opacity:0.7;line-height:1;}
+#lb img{max-width:min(90vw,800px);max-height:85vh;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,0.6);}
+#lb-close{position:fixed;top:18px;right:22px;color:white;font-size:30px;cursor:pointer;background:none;border:none;opacity:.7;line-height:1;}
 #lb-close:hover,#lb-close:focus{opacity:1;}
 footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);position:relative;z-index:1;}
+/* ── VOCAB TABLE ── */
+.vocab-section{margin-bottom:32px;}
+.vocab-section-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--blue);margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--sky-light);}
+.vocab-controls{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
+.vocab-controls p{font-size:12px;color:var(--muted);line-height:1.5;margin:0;}
+.toggle-btn{display:inline-flex;align-items:center;gap:5px;background:var(--sky-light);border:1.5px solid var(--sky);color:var(--blue);border-radius:8px;padding:6px 13px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .18s;white-space:nowrap;}
+.toggle-btn:hover{background:var(--sky);color:white;border-color:var(--sky);}
+.vocab-table{width:100%;border-collapse:collapse;border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;font-size:13.5px;}
+.vocab-table thead tr{background:var(--sky);}
+.vocab-table th{padding:9px 14px;color:white;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-align:left;}
+.vocab-table th.th-audio{text-align:center;width:48px;}
+.vocab-table th.th-en{width:40%;}
+.vocab-table tbody tr{border-bottom:1px solid var(--parchment);transition:background .12s;}
+.vocab-table tbody tr:last-child{border-bottom:none;}
+.vocab-table tbody tr:hover{background:var(--sky-light);}
+.vocab-table tbody tr:nth-child(even){background:#f5faff;}
+.vocab-table tbody tr:nth-child(even):hover{background:var(--sky-light);}
+.vocab-table td{padding:9px 14px;color:var(--ink-soft);vertical-align:middle;}
+.fr-cell{font-weight:700;color:var(--ink);font-size:14px;}
+.pron-cell{font-size:11px;color:var(--muted);font-style:italic;}
+.audio-cell{text-align:center;}
+.audio-btn{background:none;border:none;cursor:pointer;font-size:17px;padding:3px 5px;border-radius:6px;line-height:1;transition:transform .15s;}
+.audio-btn:hover{transform:scale(1.25);}
+.audio-btn:focus{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px;}
+.en-cell{cursor:pointer;user-select:none;}
+.en-cell .en-text{color:var(--ink-soft);}
+.en-cell .en-ex{font-size:11px;color:var(--muted);font-style:italic;display:block;margin-top:2px;}
+.en-cell.hidden .en-text,.en-cell.hidden .en-ex{display:none;}
+.en-cell.hidden .reveal-hint{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--sky);font-weight:600;}
+.en-cell:not(.hidden) .reveal-hint{display:none;}
+.translations-shown .en-cell.hidden .en-text,.translations-shown .en-cell.hidden .en-ex{display:block;}
+.translations-shown .en-cell.hidden .reveal-hint{display:none;}
+.vocab-note{font-size:12px;color:var(--muted);background:var(--sky-light);border-left:3px solid var(--sky);border-radius:0 6px 6px 0;padding:8px 12px;margin-bottom:12px;line-height:1.6;}
+
+header::after{content:'CHAPITRE CINQ';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:90px;font-weight:900;color:rgba(255,255,255,0.03);letter-spacing:-3px;pointer-events:none;white-space:nowrap;}
 </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
-<body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
 <header role="banner">
   <div class="flag" role="img" aria-label="French flag"><div class="fs b"></div><div class="fs w"></div><div class="fs r"></div></div>
-  <div class="htext">
-    <h1>FREN <em>1001</em></h1>
-    <p>Introductory French — Language Lab</p>
-  </div>
+  <div class="htext"><h1>FREN <em>1001</em></h1><p>Introductory French — Language Lab</p></div>
   <div class="hbadge" aria-label="Lab 5, Individual Activity">
     <div class="lab-num" aria-hidden="true">5</div>
     <span class="mode-pill">🙋 Individual Activity</span>
   </div>
 </header>
 <main class="page" id="main-content">
+
   <div class="card">
     <div class="card-inner clearfix">
       <div style="margin-bottom:6px;"><span style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);">Unité 5</span></div>
       <h2 style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;font-style:italic;letter-spacing:-0.5px;color:var(--ink);">Un Voyage à Dahlonega</h2>
       <div style="margin-top:22px;" class="clearfix">
-        <div class="float-right img-wrap" role="button" tabindex="0" aria-label="Enlarge image – click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-5-image-1.jpg')">
-          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-5-image-1.jpg" alt="Dahlonega town square" loading="lazy">
-          <div class="img-cap"><span>Click to enlarge</span></div>
+        <div class="float-right img-wrap" role="button" tabindex="0" aria-label="Enlarge image — click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-5-image-1.jpg')">
+          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-5-image-1.jpg" alt="Historic Dahlonega town square with shops and buildings" loading="lazy">
+          <div class="img-cap"><span>Click to enlarge</span><a href="https://www.flickr.com/photos/trixie-in-dixie/18159024353/" target="_blank" rel="noopener" class="img-credit-link">Photo: Patrice M Christian · Flickr (CC BY-NC-ND 2.0)</a></div>
         </div>
         <div class="slabel" style="margin-top:0;"><span aria-hidden="true">📝</span>Summary &amp; Context</div>
         <p class="bt">In this lab you will take the audience on a tour of Dahlonega, give directions in French, talk about your favorite season and the weather, and use the futur proche.</p>
-        <p class="bt" style="margin-top:10px;">Create a 2-minute video. Tour Dahlonega — choose 4–5 stops from the map and give directions in French. Share your favorite season and describe the weather. Ask 2 questions.</p>
+        <p class="bt" style="margin-top:10px;">Create a 2-minute video. Tour Dahlonega with 4–5 stops and give directions in French. Share your favorite season, describe the weather, and use the futur proche.</p>
       </div>
     </div>
   </div>
@@ -159,51 +163,28 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);position
       <div class="card-inner">
         <div class="slabel" style="margin-top:0;"><span aria-hidden="true">🚦</span>Process</div>
         <ol class="steps" aria-label="Recording steps">
-          <li><span class="sn" aria-hidden="true">1</span>Study the vocabulary cards and grammar below.</li>
+          <li><span class="sn" aria-hidden="true">1</span>Study the vocabulary table and grammar below.</li>
           <li><span class="sn" aria-hidden="true">2</span>Practice speaking out loud — many times!</li>
           <li><span class="sn" aria-hidden="true">3</span>Record via Zoom or phone (MP4 or MOV).</li>
           <li><span class="sn" aria-hidden="true">4</span>Upload to your D2L Assignment Folder.</li>
         </ol>
-        <p class="submit-note">📂 Click <strong>Lab 5</strong> in your <a href="/d2l/common/dialogs/quickLink/quickLink.d2l?ou={orgUnitId}&type=lti&rcode=usgx-40984400&srcou=867315" target="_self" style="color:var(--sky);font-weight:600;">D2L Assignment Folder</a> to submit.</p>
+        <p class="submit-note">📂 To submit, click <strong>Lab #5</strong> above these instructions, or find it in your <strong>D2L Assignment Folder</strong>.</p>
         <div class="slabel"><span aria-hidden="true">📦</span>What You Will Need</div>
         <ul class="chips" aria-label="Materials needed">
           <li class="chip">🎥 Zoom or phone/computer</li>
           <li class="chip">🎞️ MP4 or MOV format</li>
         </ul>
-        <div style="margin-top:22px;" class="img-wrap" role="button" tabindex="0" aria-label="Enlarge image – click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-5-image-2.jpg')">
-          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-5-image-2.jpg" alt="Scenic mountain landscape in Georgia" loading="lazy">
-          <div class="img-cap"><span>Click to enlarge</span></div>
+        <div style="margin-top:22px;" class="img-wrap" role="button" tabindex="0" aria-label="Enlarge image — click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-5-image-2.jpg')">
+          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-5-image-2.jpg" alt="Panoramic mountain view in the North Georgia hills near Dahlonega" loading="lazy">
+          <div class="img-cap"><span>Click to enlarge</span><a href="https://unsplash.com/photos/a-view-of-the-mountains-from-the-top-of-a-mountain-37G80mEhBTo" target="_blank" rel="noopener" class="img-credit-link">Photo: Kaleb East · Unsplash</a></div>
         </div>
-        <div class="slabel"><span aria-hidden="true">📖</span>Grammar Review</div>
-        <button class="grammar-btn" onclick="openG('futur')" aria-haspopup="dialog" aria-label="Open grammar: Le futur proche"><span class="gb-icon" aria-hidden="true">📖</span> Le Futur Proche</button>
+        <div class="slabel"><span aria-hidden="true">📖</span>Grammar Review</div><button class="grammar-btn" onclick="openG('futur')" aria-haspopup="dialog">📖 Le Futur Proche</button>
       </div>
     </div>
-
     <div class="card">
       <div class="card-inner">
         <div class="slabel" style="margin-top:0;"><span aria-hidden="true">✅</span>Requirements</div>
-        <div class="req-acc" role="list">
-          <div class="req-item" role="listitem">
-            <button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📏</span>Video basics<span class="arr" aria-hidden="true">▼</span></button>
-            <div class="req-body" role="region"><ul><li><strong>2 minutes</strong> long</li><li>Face visible</li></ul></div>
-          </div>
-          <div class="req-item" role="listitem">
-            <button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">🗺️</span>Dahlonega tour<span class="arr" aria-hidden="true">▼</span></button>
-            <div class="req-body" role="region"><ul><li>Choose <strong>4–5 stops</strong> from the Dahlonega map</li><li>Give directions in French between each stop (<em>tournez à gauche, allez tout droit…</em>)</li></ul></div>
-          </div>
-          <div class="req-item" role="listitem">
-            <button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">🌤️</span>Weather &amp; season<span class="arr" aria-hidden="true">▼</span></button>
-            <div class="req-body" role="region"><ul><li>Share your <strong>favorite season</strong> and explain why</li><li>Describe the weather during that season</li><li>Use <em>futur proche</em>: say 3 things you're going to do in that season</li></ul></div>
-          </div>
-          <div class="req-item" role="listitem">
-            <button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">❓</span>Ask 2 questions<span class="arr" aria-hidden="true">▼</span></button>
-            <div class="req-body" role="region">Ask <strong>two questions</strong> about travel or weather preferences.</div>
-          </div>
-          <div class="req-item" role="listitem">
-            <button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📚</span>Vocabulary<span class="arr" aria-hidden="true">▼</span></button>
-            <div class="req-body" role="region">Use travel, weather, directions vocabulary, and the futur proche from class.</div>
-          </div>
-        </div>
+        <div class="req-acc" role="list"><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📏</span>Video basics<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region"><ul><li><strong>2 minutes</strong> long</li><li>Face visible</li></ul></div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">🗺️</span>Dahlonega tour<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region"><ul><li>Choose <strong>4–5 stops</strong> from the Dahlonega map</li><li>Give directions in French between each stop</li></ul></div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">🌤️</span>Weather &amp; season<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region"><ul><li>Your <strong>favorite season</strong> and why</li><li>Describe the weather during that season</li><li>Use <em>futur proche</em>: 3 things you're going to do</li></ul></div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">❓</span>Ask 2 questions<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region">Ask <strong>two questions</strong> about travel or weather.</div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📚</span>Vocabulary<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region">Travel, weather, directions, and futur proche from class.</div></div></div>
         <div class="warn" role="alert">🚫 No online translator or AI allowed</div>
       </div>
     </div>
@@ -211,250 +192,94 @@ footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);position
 
   <div class="card">
     <div class="card-inner">
-      <div class="slabel" style="margin-top:0;"><span aria-hidden="true">🃏</span>Vocabulary — Click a card to flip · 🔊 to hear the French</div>
-      <p class="bt" style="margin-bottom:22px;">Practice these words before recording. Click any card to see the English, and press 🔊 to hear the French pronunciation.</p>
-      
+      <div class="slabel" style="margin-top:0;"><span aria-hidden="true">📋</span>Vocabulary — click any row to reveal · 🔊 to hear the French</div>
+      <p class="bt" style="margin-bottom:20px;">Pronunciation is always shown. <strong>Click a row</strong> to reveal its English translation — or use <em>Show all translations</em> when you want the full reference.</p>
       <div class="vocab-section">
-        <div class="vocab-section-title">Transportation &amp; Places</div>
-        <div class="vocab-grid" role="list" aria-label="Transportation &amp; Places vocabulary cards">
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le bus" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">le bus</div><div class="vc-pron">[luh booss]</div><button class="audio-btn" onclick="speak(event,'le bus')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">bus</div><button class="audio-btn" onclick="speak(event,'le bus')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: la voiture" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">la voiture</div><div class="vc-pron">[lah vwah-toor]</div><button class="audio-btn" onclick="speak(event,'la voiture')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">car</div><button class="audio-btn" onclick="speak(event,'la voiture')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le vélo" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">le vélo</div><div class="vc-pron">[luh vay-loh]</div><button class="audio-btn" onclick="speak(event,'le vélo')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">bicycle</div><button class="audio-btn" onclick="speak(event,'le vélo')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le train" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">le train</div><div class="vc-pron">[luh tran]</div><button class="audio-btn" onclick="speak(event,'le train')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">train</div><button class="audio-btn" onclick="speak(event,'le train')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: l'aéroport" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">l'aéroport</div><div class="vc-pron">[lah-ay-roh-por]</div><button class="audio-btn" onclick="speak(event,"l'aéroport")" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">airport</div><button class="audio-btn" onclick="speak(event,"l'aéroport")" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: l'hôtel" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">l'hôtel</div><div class="vc-pron">[loh-tell]</div><button class="audio-btn" onclick="speak(event,"l'hôtel")" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">hotel</div><button class="audio-btn" onclick="speak(event,"l'hôtel")" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le restaurant" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">le restaurant</div><div class="vc-pron">[luh res-toh-rahn]</div><button class="audio-btn" onclick="speak(event,'le restaurant')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">restaurant</div><button class="audio-btn" onclick="speak(event,'le restaurant')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le centre-ville" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">le centre-ville</div><div class="vc-pron">[luh sahn-truh-veel]</div><button class="audio-btn" onclick="speak(event,'le centre-ville')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">downtown</div><button class="audio-btn" onclick="speak(event,'le centre-ville')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le parc" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">le parc</div><div class="vc-pron">[luh park]</div><button class="audio-btn" onclick="speak(event,'le parc')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">park</div><button class="audio-btn" onclick="speak(event,'le parc')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le musée" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">le musée</div><div class="vc-pron">[luh moo-zay]</div><button class="audio-btn" onclick="speak(event,'le musée')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">museum</div><button class="audio-btn" onclick="speak(event,'le musée')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="vocab-section">
-        <div class="vocab-section-title">Weather — La Météo</div>
-        <div class="vocab-grid" role="list" aria-label="Weather — La Météo vocabulary cards">
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: Quel temps fait-il ?" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">Quel temps fait-il ?</div><button class="audio-btn" onclick="speak(event,'Quel temps fait-il')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">What's the weather like?</div><button class="audio-btn" onclick="speak(event,'Quel temps fait-il')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: Il fait beau." onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">Il fait beau.</div><button class="audio-btn" onclick="speak(event,'Il fait beau')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">The weather is nice.</div><button class="audio-btn" onclick="speak(event,'Il fait beau')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: Il fait chaud." onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">Il fait chaud.</div><button class="audio-btn" onclick="speak(event,'Il fait chaud')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">It's hot.</div><button class="audio-btn" onclick="speak(event,'Il fait chaud')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: Il fait froid." onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">Il fait froid.</div><button class="audio-btn" onclick="speak(event,'Il fait froid')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">It's cold.</div><button class="audio-btn" onclick="speak(event,'Il fait froid')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: Il pleut." onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">Il pleut.</div><button class="audio-btn" onclick="speak(event,'Il pleut')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">It's raining.</div><button class="audio-btn" onclick="speak(event,'Il pleut')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: Il neige." onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">Il neige.</div><button class="audio-btn" onclick="speak(event,'Il neige')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">It's snowing.</div><button class="audio-btn" onclick="speak(event,'Il neige')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: Il y a du vent." onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">Il y a du vent.</div><button class="audio-btn" onclick="speak(event,'Il y a du vent')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">It's windy.</div><button class="audio-btn" onclick="speak(event,'Il y a du vent')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: Il y a du soleil." onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">Il y a du soleil.</div><button class="audio-btn" onclick="speak(event,'Il y a du soleil')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">It's sunny.</div><button class="audio-btn" onclick="speak(event,'Il y a du soleil')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: le printemps" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">le printemps</div><div class="vc-pron">[luh pran-tahn]</div><button class="audio-btn" onclick="speak(event,'le printemps')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">spring</div><button class="audio-btn" onclick="speak(event,'le printemps')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: l'automne" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">l'automne</div><div class="vc-pron">[loh-tohn]</div><button class="audio-btn" onclick="speak(event,"l'automne")" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">fall / autumn</div><button class="audio-btn" onclick="speak(event,"l'automne")" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="vocab-section">
-        <div class="vocab-section-title">Giving Directions</div>
-        <div class="vocab-grid" role="list" aria-label="Giving Directions vocabulary cards">
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: tournez à gauche" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">tournez à gauche</div><div class="vc-pron">[toor-nay ah gohsh]</div><button class="audio-btn" onclick="speak(event,'tournez à gauche')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">turn left</div><button class="audio-btn" onclick="speak(event,'tournez à gauche')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: tournez à droite" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">tournez à droite</div><div class="vc-pron">[toor-nay ah drwaht]</div><button class="audio-btn" onclick="speak(event,'tournez à droite')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">turn right</div><button class="audio-btn" onclick="speak(event,'tournez à droite')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: allez tout droit" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">allez tout droit</div><div class="vc-pron">[ah-lay too drwah]</div><button class="audio-btn" onclick="speak(event,'allez tout droit')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">go straight</div><button class="audio-btn" onclick="speak(event,'allez tout droit')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: continuez jusqu'au…" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">continuez jusqu'au…</div><div class="vc-pron">[kon-tee-noo-ay zhuska]</div><button class="audio-btn" onclick="speak(event,"continuez jusqu'au…")" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">continue until…</div><button class="audio-btn" onclick="speak(event,"continuez jusqu'au…")" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: au coin de" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">au coin de</div><div class="vc-pron">[oh kwan duh]</div><button class="audio-btn" onclick="speak(event,'au coin de')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">at the corner of</div><button class="audio-btn" onclick="speak(event,'au coin de')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: près de" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">près de</div><div class="vc-pron">[pray duh]</div><button class="audio-btn" onclick="speak(event,'près de')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">near</div><button class="audio-btn" onclick="speak(event,'près de')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: loin de" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">loin de</div><div class="vc-pron">[lwan duh]</div><button class="audio-btn" onclick="speak(event,'loin de')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">far from</div><button class="audio-btn" onclick="speak(event,'loin de')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: à côté de" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">à côté de</div><div class="vc-pron">[ah koh-tay duh]</div><button class="audio-btn" onclick="speak(event,'à côté de')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">next to</div><button class="audio-btn" onclick="speak(event,'à côté de')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-          <div class="vc-wrap" role="listitem">
-            <div class="vc" tabindex="0" role="button" aria-label="Vocabulary card: en face de" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}">
-              <div class="vc-front" aria-hidden="false"><div class="vc-word">en face de</div><div class="vc-pron">[ahn fas duh]</div><button class="audio-btn" onclick="speak(event,'en face de')" aria-label="Hear pronunciation">🔊</button><div class="vc-hint">Flip for translation</div></div>
-              <div class="vc-back" aria-hidden="true"><div class="vc-eng">across from</div><button class="audio-btn" onclick="speak(event,'en face de')" aria-label="Hear pronunciation">🔊</button></div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="vocab-section-title">Transportation &amp; Places — Le Voyage</div>
+  <div class="vocab-controls">
+    <p>Click any row to reveal its English translation.</p>
+    <button class="toggle-btn" onclick="toggleAll(this,'vt51')" aria-pressed="false">👁 Show all translations</button>
+  </div>
+  <div style="overflow-x:auto;"><table class="vocab-table" id="vt51" role="grid" aria-label="Transportation &amp; Places — Le Voyage vocabulary">
+    <thead><tr>
+      <th scope="col">French</th>
+      <th scope="col">Pronunciation</th>
+      <th scope="col" class="th-audio">🔊</th>
+      <th scope="col" class="th-en">English</th>
+    </tr></thead>
+    <tbody><tr><td class="fr-cell">le bus</td><td class="pron-cell">[luh booss]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le bus')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">bus</span></td></tr><tr><td class="fr-cell">la voiture</td><td class="pron-cell">[lah vwah-toor]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la voiture')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">car</span></td></tr><tr><td class="fr-cell">le vélo</td><td class="pron-cell">[luh vay-loh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le vélo')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">bicycle</span></td></tr><tr><td class="fr-cell">le train</td><td class="pron-cell">[luh tran]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le train')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">train</span></td></tr><tr><td class="fr-cell">l'aéroport</td><td class="pron-cell">[lah-ay-roh-por]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'l&#39;aéroport')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">airport</span></td></tr><tr><td class="fr-cell">l'hôtel</td><td class="pron-cell">[loh-tell]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'l&#39;hôtel')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">hotel</span></td></tr><tr><td class="fr-cell">le restaurant</td><td class="pron-cell">[luh res-toh-rahn]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le restaurant')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">restaurant</span></td></tr><tr><td class="fr-cell">le centre-ville</td><td class="pron-cell">[luh sahn-truh-veel]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le centre-ville')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">downtown</span></td></tr><tr><td class="fr-cell">le parc</td><td class="pron-cell">[luh park]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le parc')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">park</span></td></tr><tr><td class="fr-cell">le musée</td><td class="pron-cell">[luh moo-zay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le musée')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">museum</span></td></tr></tbody>
+  </table></div>
+</div><div class="vocab-section">
+  <div class="vocab-section-title">Weather — La Météo</div>
+  <div class="vocab-controls">
+    <p>Click any row to reveal its English translation.</p>
+    <button class="toggle-btn" onclick="toggleAll(this,'vt52')" aria-pressed="false">👁 Show all translations</button>
+  </div>
+  <p class="vocab-note">💡 All weather expressions use "il" as an impersonal subject — not referring to a person.</p><div style="overflow-x:auto;"><table class="vocab-table" id="vt52" role="grid" aria-label="Weather — La Météo vocabulary">
+    <thead><tr>
+      <th scope="col">French</th>
+      <th scope="col">Pronunciation</th>
+      <th scope="col" class="th-audio">🔊</th>
+      <th scope="col" class="th-en">English</th>
+    </tr></thead>
+    <tbody><tr><td class="fr-cell">Quel temps fait-il ?</td><td class="pron-cell">[kel tahn fay-teel]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Quel temps fait-il')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">What's the weather like?</span></td></tr><tr><td class="fr-cell">Il fait beau.</td><td class="pron-cell"></td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Il fait beau')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">The weather is nice.</span></td></tr><tr><td class="fr-cell">Il fait chaud.</td><td class="pron-cell"></td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Il fait chaud')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">It's hot.</span></td></tr><tr><td class="fr-cell">Il fait froid.</td><td class="pron-cell"></td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Il fait froid')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">It's cold.</span></td></tr><tr><td class="fr-cell">Il pleut.</td><td class="pron-cell"></td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Il pleut')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">It's raining.</span></td></tr><tr><td class="fr-cell">Il neige.</td><td class="pron-cell"></td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Il neige')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">It's snowing.</span></td></tr><tr><td class="fr-cell">Il y a du vent.</td><td class="pron-cell"></td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Il y a du vent')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">It's windy.</span></td></tr><tr><td class="fr-cell">Il y a du soleil.</td><td class="pron-cell"></td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Il y a du soleil')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">It's sunny.</span></td></tr><tr><td class="fr-cell">le printemps</td><td class="pron-cell">[luh pran-tahn]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le printemps')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">spring</span></td></tr><tr><td class="fr-cell">l'automne</td><td class="pron-cell">[loh-tohn]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'l&#39;automne')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">fall / autumn</span></td></tr><tr><td class="fr-cell">l'été</td><td class="pron-cell">[lay-tay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'l&#39;été')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">summer</span></td></tr><tr><td class="fr-cell">l'hiver</td><td class="pron-cell">[lee-vair]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'l&#39;hiver')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">winter</span></td></tr></tbody>
+  </table></div>
+</div><div class="vocab-section">
+  <div class="vocab-section-title">Giving Directions — Les Directions</div>
+  <div class="vocab-controls">
+    <p>Click any row to reveal its English translation.</p>
+    <button class="toggle-btn" onclick="toggleAll(this,'vt53')" aria-pressed="false">👁 Show all translations</button>
+  </div>
+  <p class="vocab-note">💡 Use the imperative for directions: "Tournez…", "Allez…", "Continuez…"</p><div style="overflow-x:auto;"><table class="vocab-table" id="vt53" role="grid" aria-label="Giving Directions — Les Directions vocabulary">
+    <thead><tr>
+      <th scope="col">French</th>
+      <th scope="col">Pronunciation</th>
+      <th scope="col" class="th-audio">🔊</th>
+      <th scope="col" class="th-en">English</th>
+    </tr></thead>
+    <tbody><tr><td class="fr-cell">tournez à gauche</td><td class="pron-cell">[toor-nay ah gohsh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'tournez à gauche')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">turn left</span><span class="en-ex">Tournez à gauche au coin.</span></td></tr><tr><td class="fr-cell">tournez à droite</td><td class="pron-cell">[toor-nay ah drwaht]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'tournez à droite')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">turn right</span></td></tr><tr><td class="fr-cell">allez tout droit</td><td class="pron-cell">[ah-lay too drwah]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'allez tout droit')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">go straight</span></td></tr><tr><td class="fr-cell">continuez jusqu'au…</td><td class="pron-cell">[kon-tee-noo-ay zhoos-koh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'continuez jusqu&#39;au…')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">continue until…</span></td></tr><tr><td class="fr-cell">au coin de</td><td class="pron-cell">[oh kwan duh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'au coin de')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">at the corner of</span></td></tr><tr><td class="fr-cell">près de</td><td class="pron-cell">[pray duh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'près de')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">near</span></td></tr><tr><td class="fr-cell">loin de</td><td class="pron-cell">[lwan duh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'loin de')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">far from</span></td></tr><tr><td class="fr-cell">à côté de</td><td class="pron-cell">[ah koh-tay duh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'à côté de')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">next to</span></td></tr><tr><td class="fr-cell">en face de</td><td class="pron-cell">[ahn fas duh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'en face de')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">across from</span></td></tr><tr><td class="fr-cell">Où est… ?</td><td class="pron-cell">[oo ay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Où est')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">Where is…?</span></td></tr></tbody>
+  </table></div>
+</div>
     </div>
   </div>
 
 </main>
-
 <footer><a href="index.html" style="color:var(--sky);">← Back to Lab Home</a> &nbsp;·&nbsp; FREN 1001 — Lab 5: Un Voyage à Dahlonega</footer>
-
-<div id="gm-futur" class="gm" role="dialog" aria-modal="true" aria-label="Grammar: Le Futur Proche" aria-hidden="true" onclick="closeG('futur')">
+<div id="gm-futur" class="gm" role="dialog" aria-modal="true" aria-hidden="true" onclick="closeG('futur')">
   <div class="gm-panel" onclick="event.stopPropagation()">
     <button class="gm-close" onclick="closeG('futur')" aria-label="Close">✕</button>
     <div class="gm-title">Le Futur Proche</div>
-    <div class="gm-sub">Talking about near-future plans: <em>aller</em> + infinitive</div>
+    <div class="gm-sub">Near-future plans: conjugated <em>aller</em> + infinitive</div>
     <div class="conj-grid">
-      <div class="conj-table">
-        <caption>Aller — to go (present)</caption>
-        <table><tbody>
-          <tr><td>Je</td><td>vais <button class="audio-btn" onclick="speak(event,'je vais')" style="font-size:12px;">🔊</button></td></tr>
-          <tr><td>Tu</td><td>vas</td></tr>
-          <tr><td>Il / Elle / On</td><td>va</td></tr>
-          <tr><td>Nous</td><td>allons</td></tr>
-          <tr><td>Vous</td><td>allez</td></tr>
-          <tr><td>Ils / Elles</td><td>vont</td></tr>
-        </tbody></table>
-      </div>
-      <div class="conj-table">
-        <caption>Examples — Futur Proche</caption>
-        <table><tbody>
-          <tr><td>Je vais + infinitif</td><td style="color:var(--blue);font-weight:600;">I am going to…</td></tr>
-          <tr><td>Je vais manger</td><td style="color:var(--blue);font-weight:600;">I'm going to eat</td></tr>
-          <tr><td>Nous allons voyager</td><td style="color:var(--blue);font-weight:600;">We're going to travel</td></tr>
-          <tr><td>Je ne vais pas…</td><td style="color:var(--blue);font-weight:600;">I'm not going to…</td></tr>
-          <tr><td>Il va visiter…</td><td style="color:var(--blue);font-weight:600;">He's going to visit…</td></tr>
-        </tbody></table>
-      </div>
+      <div class="conj-table"><caption>Aller — to go</caption><table><tbody>
+        <tr><td>Je</td><td>vais</td></tr><tr><td>Tu</td><td>vas</td></tr>
+        <tr><td>Il/Elle/On</td><td>va</td></tr><tr><td>Nous</td><td>allons</td></tr>
+        <tr><td>Vous</td><td>allez</td></tr><tr><td>Ils/Elles</td><td>vont</td></tr>
+      </tbody></table></div>
+      <div class="conj-table"><caption>Examples</caption><table><tbody>
+        <tr><td>Je vais manger</td><td>I'm going to eat</td></tr>
+        <tr><td>Nous allons voyager</td><td>We're going to travel</td></tr>
+        <tr><td>Je ne vais pas…</td><td>I'm not going to…</td></tr>
+        <tr><td>Il va visiter…</td><td>He's going to visit…</td></tr>
+      </tbody></table></div>
     </div>
-    <div class="gm-note">💡 <strong>Formula:</strong> Subject + <em>aller</em> (conjugated) + infinitive = near future. <br>Examples: <em>Je vais jouer au foot samedi.</em> — <em>Nous allons passer du temps avec ma famille.</em> — <em>Dimanche, je ne vais pas travailler.</em></div>
-  </div>
-</div>
+    <div class="gm-note">💡 <em>Je vais jouer au foot samedi.</em> — <em>Dimanche, je ne vais pas travailler.</em> — <em>Nous allons passer du temps en famille.</em></div>
+  </div></div>
 <div id="lb" role="dialog" aria-modal="true" aria-label="Image lightbox" onclick="closeLb()">
   <button id="lb-close" onclick="closeLb()" aria-label="Close image">✕</button>
   <img id="lb-img" src="" alt="">
 </div>
 <script>
-function tog(btn){{const b=btn.nextElementSibling;const o=b.classList.contains('open');btn.setAttribute('aria-expanded',!o);b.classList.toggle('open',!o);}}
-function flipCard(card){{const fl=card.classList.toggle('flipped');card.querySelector('.vc-front').setAttribute('aria-hidden',fl);card.querySelector('.vc-back').setAttribute('aria-hidden',!fl);}}
-function speak(e,text){{e.stopPropagation();if(!('speechSynthesis' in window)){{return;}}window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='fr-FR';u.rate=0.82;u.pitch=1.05;window.speechSynthesis.speak(u);}}
-function openG(id){{const m=document.getElementById('gm-'+id);m.removeAttribute('aria-hidden');m.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>m.querySelector('.gm-close').focus(),50);}}
-function closeG(id){{const m=document.getElementById('gm-'+id);m.setAttribute('aria-hidden','true');m.classList.remove('open');document.body.style.overflow='';}}
-function openLb(src){{document.getElementById('lb-img').src=src;document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';document.getElementById('lb-close').focus();}}
-function closeLb(){{document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}}
-document.addEventListener('keydown',e=>{{if(e.key==='Escape'){{document.querySelectorAll('.gm.open').forEach(m=>closeG(m.id.replace('gm-','')));closeLb();}}}}); 
-document.querySelectorAll('.img-wrap[tabindex]').forEach(el=>{{el.addEventListener('keydown',e=>{{if(e.key==='Enter'||e.key===' '){{e.preventDefault();el.click();}}}});}});
+function tog(btn){const b=btn.nextElementSibling;const o=b.classList.contains('open');btn.setAttribute('aria-expanded',!o);b.classList.toggle('open',!o);}
+function speak(e,t){e.stopPropagation();if(!('speechSynthesis' in window))return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=0.82;u.pitch=1.05;window.speechSynthesis.speak(u);}
+function revealRow(cell){if(!cell.classList.contains('hidden'))return;cell.classList.remove('hidden');}
+function toggleAll(btn,tid){const tbl=document.getElementById(tid);const show=tbl.classList.toggle('translations-shown');btn.textContent=show?'🙈 Hide translations':'👁 Show all translations';btn.setAttribute('aria-pressed',show);if(show){tbl.querySelectorAll('.en-cell').forEach(c=>c.classList.remove('hidden'));}else{tbl.querySelectorAll('.en-cell').forEach(c=>c.classList.add('hidden'));}}
+function openG(id){const m=document.getElementById('gm-'+id);m.removeAttribute('aria-hidden');m.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>m.querySelector('.gm-close').focus(),50);}
+function closeG(id){const m=document.getElementById('gm-'+id);m.setAttribute('aria-hidden','true');m.classList.remove('open');document.body.style.overflow='';}
+function openLb(src){document.getElementById('lb-img').src=src;document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';document.getElementById('lb-close').focus();}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.gm.open').forEach(m=>closeG(m.id.replace('gm-','')));closeLb();}});
+document.querySelectorAll('.img-wrap[tabindex]').forEach(el=>{el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});});
 </script>
 </body>
 </html>
