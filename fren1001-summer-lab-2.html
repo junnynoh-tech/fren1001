@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FREN 1001 — Lab 2 : Ma Famille</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f0f7ff;--parchment:#cfe2f3;--navy:#0d2240;--blue:#1a4f7a;--sky:#2471a3;--sky-light:#d6eaf8;--ink:#0d1b2e;--ink-soft:#1e3a5f;--muted:#6b7d93;--gold:#c9a84c;--white:#ffffff;--shadow:0 8px 40px rgba(13,34,64,0.13);--shadow-sm:0 2px 12px rgba(13,34,64,0.08);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 10% 15%,rgba(0,35,149,0.06) 0%,transparent 55%),radial-gradient(ellipse at 90% 85%,rgba(237,41,57,0.04) 0%,transparent 55%);pointer-events:none;z-index:0;}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:3px;}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--gold);color:var(--ink);padding:8px 16px;font-weight:700;z-index:10000;border-radius:0 0 8px 0;transition:top .2s;}
+.skip-link:focus{top:0;}
+header{background:var(--navy);color:var(--cream);padding:36px 48px;display:flex;align-items:center;gap:28px;position:relative;overflow:hidden;z-index:1;}
+.flag{display:flex;gap:5px;align-items:center;}
+.fs{width:6px;height:50px;border-radius:3px;}
+.fs.b{background:#002395;}.fs.w{background:#fff;}.fs.r{background:#ed2939;}
+.htext h1{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;letter-spacing:-1px;line-height:1;}
+.htext h1 em{color:#5dade2;font-style:normal;}
+.htext p{margin-top:6px;font-size:13px;font-weight:300;color:rgba(240,247,255,0.5);letter-spacing:.5px;}
+.hbadge{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.lab-num{font-family:'Playfair Display',serif;font-size:72px;font-weight:900;line-height:1;color:#5dade2;letter-spacing:-3px;}
+.mode-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:rgba(201,168,76,0.2);color:#e8c96e;border:1px solid rgba(201,168,76,0.35);}
+.page{max-width:960px;margin:0 auto;padding:44px 28px 80px;position:relative;z-index:1;}
+.slabel{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:28px;}
+.slabel:first-child{margin-top:0;}
+.slabel::after{content:'';flex:1;height:1px;background:var(--parchment);}
+.card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px;}
+.card-inner{padding:32px 36px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:640px){.two-col{grid-template-columns:1fr;}header{padding:24px 20px;}.card-inner{padding:24px 20px;}}
+p.bt{font-size:14px;line-height:1.75;color:var(--ink-soft);}
+.steps{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:4px;}
+.steps li{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.65;color:var(--ink-soft);}
+.sn{width:24px;height:24px;min-width:24px;border-radius:50%;background:var(--sky);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.submit-note{margin-top:14px;font-size:13px;line-height:1.6;color:var(--ink-soft);background:var(--cream);border:1.5px solid var(--parchment);border-radius:8px;padding:10px 14px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.chip{background:var(--cream);border:1.5px solid var(--parchment);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--ink-soft);}
+.req-acc{border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;margin-top:4px;}
+.req-item{border-bottom:1px solid var(--parchment);}
+.req-item:last-child{border-bottom:none;}
+.req-toggle{width:100%;background:none;border:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:10px;text-align:left;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--ink);transition:background .15s;}
+.req-toggle:hover{background:var(--cream);}
+.req-toggle .arr{margin-left:auto;color:var(--muted);font-size:10px;transition:transform .2s;}
+.req-toggle[aria-expanded="true"] .arr{transform:rotate(180deg);}
+.req-body{display:none;padding:4px 16px 14px 42px;font-size:13px;line-height:1.75;color:var(--ink-soft);}
+.req-body.open{display:block;}
+.req-body ul{padding-left:18px;}
+.req-body li{margin-bottom:4px;}
+.warn{background:#fff5f0;border:1.5px solid #f5c4b0;border-radius:10px;padding:10px 16px;font-size:12px;font-weight:700;color:#8f3f22;text-align:center;letter-spacing:.3px;text-transform:uppercase;margin-top:20px;}
+.img-wrap{border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.img-wrap img{width:100%;display:block;transition:transform .35s ease;}
+.img-wrap:hover img,.img-wrap:focus img{transform:scale(1.03);}
+.img-wrap:focus{outline:3px solid var(--gold);outline-offset:2px;}
+.img-cap{background:rgba(13,34,64,0.72);color:rgba(255,255,255,0.85);font-size:10px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
+.img-credit-link{color:rgba(255,255,255,0.65);text-decoration:none;font-size:10px;}
+.img-credit-link:hover{color:#fff;text-decoration:underline;}
+.clearfix::after{content:'';display:table;clear:both;}
+.float-right{float:right;margin:0 0 16px 24px;width:230px;}
+/* Grammar button & modal */
+.grammar-btn{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:white;border:none;border-radius:10px;padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm);}
+.grammar-btn:hover{background:var(--blue);transform:translateY(-1px);}
+.gm{position:fixed;inset:0;background:rgba(13,34,64,0.88);z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
+.gm.open{display:flex;animation:gmIn .25s ease;}
+@keyframes gmIn{from{opacity:0;}to{opacity:1;}}
+.gm-panel{background:var(--white);border-radius:20px 20px 16px 16px;width:100%;max-width:700px;max-height:80vh;overflow-y:auto;padding:32px 36px;position:relative;animation:panelUp .3s cubic-bezier(.16,1,.3,1);}
+@keyframes panelUp{from{transform:translateY(60px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.gm-close{position:absolute;top:16px;right:16px;background:var(--cream);border:1.5px solid var(--parchment);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .15s;}
+.gm-close:hover{background:var(--sky);color:white;border-color:var(--sky);}
+.gm-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.gm-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
+.conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:480px){.conj-grid{grid-template-columns:1fr;}}
+.conj-table{border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;}
+.conj-table caption{background:var(--sky);color:white;font-weight:700;font-size:13px;padding:8px 12px;text-align:left;}
+.conj-table table{width:100%;border-collapse:collapse;}
+.conj-table td{padding:7px 12px;font-size:13px;border-bottom:1px solid var(--parchment);color:var(--ink-soft);}
+.conj-table tr:last-child td{border-bottom:none;}
+.conj-table td:first-child{color:var(--muted);font-size:12px;width:45%;}
+.conj-table td:last-child{font-weight:600;color:var(--blue);}
+.conj-table tr:hover td{background:var(--sky-light);}
+.gm-note{background:var(--sky-light);border:1.5px solid var(--parchment);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--ink-soft);margin-top:16px;line-height:1.65;}
+.gm-prep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:8px;}
+.prep-card{background:var(--sky-light);border:1px solid var(--parchment);border-radius:8px;padding:8px 10px;font-size:12px;color:var(--ink-soft);}
+.prep-card strong{display:block;color:var(--blue);font-size:13px;}
+/* Lightbox */
+#lb{position:fixed;inset:0;background:rgba(10,20,40,0.94);z-index:9998;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
+#lb.open{display:flex;animation:lbIn .2s ease;}
+@keyframes lbIn{from{opacity:0;}to{opacity:1;}}
+#lb img{max-width:min(90vw,800px);max-height:85vh;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,0.6);}
+#lb-close{position:fixed;top:18px;right:22px;color:white;font-size:30px;cursor:pointer;background:none;border:none;opacity:.7;line-height:1;}
+#lb-close:hover,#lb-close:focus{opacity:1;}
+footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);position:relative;z-index:1;}
+/* ── VOCAB TABLE ── */
+.vocab-section{margin-bottom:32px;}
+.vocab-section-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--blue);margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--sky-light);}
+.vocab-controls{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
+.vocab-controls p{font-size:12px;color:var(--muted);line-height:1.5;margin:0;}
+.toggle-btn{display:inline-flex;align-items:center;gap:5px;background:var(--sky-light);border:1.5px solid var(--sky);color:var(--blue);border-radius:8px;padding:6px 13px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .18s;white-space:nowrap;}
+.toggle-btn:hover{background:var(--sky);color:white;border-color:var(--sky);}
+.vocab-table{width:100%;border-collapse:collapse;border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;font-size:13.5px;}
+.vocab-table thead tr{background:var(--sky);}
+.vocab-table th{padding:9px 14px;color:white;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-align:left;}
+.vocab-table th.th-audio{text-align:center;width:48px;}
+.vocab-table th.th-en{width:40%;}
+.vocab-table tbody tr{border-bottom:1px solid var(--parchment);transition:background .12s;}
+.vocab-table tbody tr:last-child{border-bottom:none;}
+.vocab-table tbody tr:hover{background:var(--sky-light);}
+.vocab-table tbody tr:nth-child(even){background:#f5faff;}
+.vocab-table tbody tr:nth-child(even):hover{background:var(--sky-light);}
+.vocab-table td{padding:9px 14px;color:var(--ink-soft);vertical-align:middle;}
+.fr-cell{font-weight:700;color:var(--ink);font-size:14px;}
+.pron-cell{font-size:11px;color:var(--muted);font-style:italic;}
+.audio-cell{text-align:center;}
+.audio-btn{background:none;border:none;cursor:pointer;font-size:17px;padding:3px 5px;border-radius:6px;line-height:1;transition:transform .15s;}
+.audio-btn:hover{transform:scale(1.25);}
+.audio-btn:focus{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px;}
+.en-cell{cursor:pointer;user-select:none;}
+.en-cell .en-text{color:var(--ink-soft);}
+.en-cell .en-ex{font-size:11px;color:var(--muted);font-style:italic;display:block;margin-top:2px;}
+.en-cell.hidden .en-text,.en-cell.hidden .en-ex{display:none;}
+.en-cell.hidden .reveal-hint{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--sky);font-weight:600;}
+.en-cell:not(.hidden) .reveal-hint{display:none;}
+.translations-shown .en-cell.hidden .en-text,.translations-shown .en-cell.hidden .en-ex{display:block;}
+.translations-shown .en-cell.hidden .reveal-hint{display:none;}
+.vocab-note{font-size:12px;color:var(--muted);background:var(--sky-light);border-left:3px solid var(--sky);border-radius:0 6px 6px 0;padding:8px 12px;margin-bottom:12px;line-height:1.6;}
+
+header::after{content:'CHAPITRE DEUX';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:90px;font-weight:900;color:rgba(255,255,255,0.03);letter-spacing:-3px;pointer-events:none;white-space:nowrap;}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header role="banner">
+  <div class="flag" role="img" aria-label="French flag"><div class="fs b"></div><div class="fs w"></div><div class="fs r"></div></div>
+  <div class="htext"><h1>FREN <em>1001</em></h1><p>Introductory French — Language Lab</p></div>
+  <div class="hbadge" aria-label="Lab 2, Individual Activity">
+    <div class="lab-num" aria-hidden="true">2</div>
+    <span class="mode-pill">🙋 Individual Activity</span>
+  </div>
+</header>
+<main class="page" id="main-content">
+
+  <div class="card">
+    <div class="card-inner clearfix">
+      <div style="margin-bottom:6px;"><span style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);">Unité 2</span></div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;font-style:italic;letter-spacing:-0.5px;color:var(--ink);">Ma Famille</h2>
+      <div style="margin-top:22px;" class="clearfix">
+        <div class="float-right img-wrap" role="button" tabindex="0" aria-label="Enlarge image — click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-2-image-1.jpg')">
+          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-2-image-1.jpg" alt="Family members sitting together around a table" loading="lazy">
+          <div class="img-cap"><span>Click to enlarge</span><a href="https://unsplash.com/photos/people-sitting-on-chairs-in-front-of-table-Qngdf0kgGB4" target="_blank" rel="noopener" class="img-credit-link">Photo: Jimmy Dean · Unsplash</a></div>
+        </div>
+        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">📝</span>Summary &amp; Context</div>
+        <p class="bt">In this lab you will talk about your family, review family vocabulary and -ER verbs, and describe family members using adjectives and ages.</p>
+        <p class="bt" style="margin-top:10px;">Record a 2-minute video introducing your family. Show a family photo or draw a family tree. Describe at least 3 family members and yourself.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-inner">
+        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">🚦</span>Process</div>
+        <ol class="steps" aria-label="Recording steps">
+          <li><span class="sn" aria-hidden="true">1</span>Study the vocabulary table and grammar below.</li>
+          <li><span class="sn" aria-hidden="true">2</span>Practice speaking out loud — many times!</li>
+          <li><span class="sn" aria-hidden="true">3</span>Record via Zoom or phone (MP4 or MOV).</li>
+          <li><span class="sn" aria-hidden="true">4</span>Upload to your D2L Assignment Folder.</li>
+        </ol>
+        <p class="submit-note">📂 To submit, click <strong>Lab #2</strong> above these instructions, or find it in your <strong>D2L Assignment Folder</strong>.</p>
+        <div class="slabel"><span aria-hidden="true">📦</span>What You Will Need</div>
+        <ul class="chips" aria-label="Materials needed">
+          <li class="chip">🎥 Zoom or phone/computer</li>
+          <li class="chip">🎞️ MP4 or MOV format</li>
+        </ul>
+        <div style="margin-top:22px;" class="img-wrap" role="button" tabindex="0" aria-label="Enlarge image — click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-2-image-2.jpg')">
+          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-2-image-2.jpg" alt="Mother in a black sweater carrying her young daughter wrapped in a brown scarf" loading="lazy">
+          <div class="img-cap"><span>Click to enlarge</span><a href="https://unsplash.com/photos/woman-in-black-long-sleeve-shirt-carrying-girl-in-brown-scarf-PPEptzBa44Q" target="_blank" rel="noopener" class="img-credit-link">Photo: lo lindo · Unsplash</a></div>
+        </div>
+        <div class="slabel"><span aria-hidden="true">📖</span>Grammar Review</div><button class="grammar-btn" onclick="openG('er')" aria-haspopup="dialog">📖 -ER Verb Conjugations</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">✅</span>Requirements</div>
+        <div class="req-acc" role="list"><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📏</span>Video basics<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region"><ul><li><strong>2 minutes</strong> long</li><li>Face visible; include a photo or family tree drawing</li></ul></div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">👨‍👩‍👧</span>Introduce your family<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region"><ul><li>Brief self-introduction (greeting, name, age)</li><li>Describe at least <strong>3 family members</strong>: hair, eyes, <strong>3 adjectives</strong></li><li>Include ages: <em>Mon père a 50 ans.</em></li></ul></div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">❓</span>Ask 2 questions<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region">Ask <strong>two questions</strong> to your audience about their family.</div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📚</span>Vocabulary<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region">Family vocabulary, adjectives, and -ER verbs from class.</div></div></div>
+        <div class="warn" role="alert">🚫 No online translator or AI allowed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-inner">
+      <div class="slabel" style="margin-top:0;"><span aria-hidden="true">📋</span>Vocabulary — click any row to reveal · 🔊 to hear the French</div>
+      <p class="bt" style="margin-bottom:20px;">Pronunciation is always shown. <strong>Click a row</strong> to reveal its English translation — or use <em>Show all translations</em> when you want the full reference.</p>
+      <div class="vocab-section">
+  <div class="vocab-section-title">Family Members — La Famille</div>
+  <div class="vocab-controls">
+    <p>Click any row to reveal its English translation.</p>
+    <button class="toggle-btn" onclick="toggleAll(this,'vt21')" aria-pressed="false">👁 Show all translations</button>
+  </div>
+  <p class="vocab-note">💡 Use avoir for ages: "Mon frère a 18 ans." Use être for descriptions: "Ma mère est généreuse."</p><div style="overflow-x:auto;"><table class="vocab-table" id="vt21" role="grid" aria-label="Family Members — La Famille vocabulary">
+    <thead><tr>
+      <th scope="col">French</th>
+      <th scope="col">Pronunciation</th>
+      <th scope="col" class="th-audio">🔊</th>
+      <th scope="col" class="th-en">English</th>
+    </tr></thead>
+    <tbody><tr><td class="fr-cell">le père</td><td class="pron-cell">[luh pair]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le père')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">father</span><span class="en-ex">Mon père a 50 ans.</span></td></tr><tr><td class="fr-cell">la mère</td><td class="pron-cell">[lah mair]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la mère')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">mother</span><span class="en-ex">Ma mère est professeure.</span></td></tr><tr><td class="fr-cell">le frère</td><td class="pron-cell">[luh frair]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le frère')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">brother</span></td></tr><tr><td class="fr-cell">la sœur</td><td class="pron-cell">[lah sur]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la sœur')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">sister</span></td></tr><tr><td class="fr-cell">les grands-parents</td><td class="pron-cell">[lay grahn pah-rahn]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'les grands-parents')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">grandparents</span></td></tr><tr><td class="fr-cell">le grand-père</td><td class="pron-cell">[luh grahn pair]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le grand-père')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">grandfather</span></td></tr><tr><td class="fr-cell">la grand-mère</td><td class="pron-cell">[lah grahn mair]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la grand-mère')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">grandmother</span></td></tr><tr><td class="fr-cell">le fils</td><td class="pron-cell">[luh feess]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le fils')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">son</span></td></tr><tr><td class="fr-cell">la fille</td><td class="pron-cell">[lah fee]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la fille')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">daughter</span></td></tr><tr><td class="fr-cell">l'oncle</td><td class="pron-cell">[lon-kluh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'l&#39;oncle')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">uncle</span></td></tr><tr><td class="fr-cell">la tante</td><td class="pron-cell">[lah tahnt]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la tante')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">aunt</span></td></tr><tr><td class="fr-cell">un animal de compagnie</td><td class="pron-cell">[ah-nee-mahl duh kohm-pah-nyee]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'un animal de compagnie')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">a pet</span><span class="en-ex">Nous avons un chien.</span></td></tr></tbody>
+  </table></div>
+</div><div class="vocab-section">
+  <div class="vocab-section-title">-ER Verbs — La Vie Quotidienne</div>
+  <div class="vocab-controls">
+    <p>Click any row to reveal its English translation.</p>
+    <button class="toggle-btn" onclick="toggleAll(this,'vt22')" aria-pressed="false">👁 Show all translations</button>
+  </div>
+  <p class="vocab-note">💡 Conjugation: drop -ER, add -e/-es/-e/-ons/-ez/-ent. The -e/-es/-e/-ent endings are all silent!</p><div style="overflow-x:auto;"><table class="vocab-table" id="vt22" role="grid" aria-label="-ER Verbs — La Vie Quotidienne vocabulary">
+    <thead><tr>
+      <th scope="col">French</th>
+      <th scope="col">Pronunciation</th>
+      <th scope="col" class="th-audio">🔊</th>
+      <th scope="col" class="th-en">English</th>
+    </tr></thead>
+    <tbody><tr><td class="fr-cell">aimer</td><td class="pron-cell">[ay-may]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'aimer')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to like / to love</span><span class="en-ex">J'aime le français.</span></td></tr><tr><td class="fr-cell">parler</td><td class="pron-cell">[par-lay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'parler')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to speak</span><span class="en-ex">Elle parle anglais et français.</span></td></tr><tr><td class="fr-cell">jouer</td><td class="pron-cell">[zhoo-ay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'jouer')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to play</span><span class="en-ex">Il joue au football.</span></td></tr><tr><td class="fr-cell">regarder</td><td class="pron-cell">[ruh-gar-day]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'regarder')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to watch</span><span class="en-ex">Nous regardons la télé.</span></td></tr><tr><td class="fr-cell">travailler</td><td class="pron-cell">[trah-vah-yay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'travailler')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to work</span><span class="en-ex">Mon père travaille à Atlanta.</span></td></tr><tr><td class="fr-cell">voyager</td><td class="pron-cell">[vwah-yah-zhay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'voyager')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to travel</span></td></tr><tr><td class="fr-cell">cuisiner</td><td class="pron-cell">[kwee-zee-nay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'cuisiner')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to cook</span><span class="en-ex">Ma mère cuisine très bien.</span></td></tr><tr><td class="fr-cell">aider</td><td class="pron-cell">[ay-day]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'aider')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to help</span></td></tr><tr><td class="fr-cell">utiliser</td><td class="pron-cell">[oo-tee-lee-zay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'utiliser')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to use</span></td></tr><tr><td class="fr-cell">pratiquer</td><td class="pron-cell">[pra-tee-kay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'pratiquer')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to practice</span><span class="en-ex">Je pratique le français chaque jour.</span></td></tr></tbody>
+  </table></div>
+</div>
+    </div>
+  </div>
+
+</main>
+<footer><a href="fren1001-summer-index.html" style="color:var(--sky);">← Back to Lab Home</a> &nbsp;·&nbsp; FREN 1001 — Lab 2: Ma Famille</footer>
+<div id="gm-er" class="gm" role="dialog" aria-modal="true" aria-hidden="true" onclick="closeG('er')">
+  <div class="gm-panel" onclick="event.stopPropagation()">
+    <button class="gm-close" onclick="closeG('er')" aria-label="Close">✕</button>
+    <div class="gm-title">Conjugating -ER Verbs</div>
+    <div class="gm-sub">Drop -ER, then add: -e · -es · -e · -ons · -ez · -ent</div>
+    <div class="conj-grid">
+      <div class="conj-table"><caption>parler — to speak</caption><table><tbody>
+        <tr><td>Je</td><td>parl<strong>e</strong></td></tr><tr><td>Tu</td><td>parl<strong>es</strong></td></tr>
+        <tr><td>Il/Elle/On</td><td>parl<strong>e</strong></td></tr><tr><td>Nous</td><td>parl<strong>ons</strong></td></tr>
+        <tr><td>Vous</td><td>parl<strong>ez</strong></td></tr><tr><td>Ils/Elles</td><td>parl<strong>ent</strong></td></tr>
+      </tbody></table></div>
+      <div class="conj-table"><caption>aimer — to like/love</caption><table><tbody>
+        <tr><td>J'</td><td>aim<strong>e</strong></td></tr><tr><td>Tu</td><td>aim<strong>es</strong></td></tr>
+        <tr><td>Il/Elle/On</td><td>aim<strong>e</strong></td></tr><tr><td>Nous</td><td>aim<strong>ons</strong></td></tr>
+        <tr><td>Vous</td><td>aim<strong>ez</strong></td></tr><tr><td>Ils/Elles</td><td>aim<strong>ent</strong></td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="gm-note">💡 The -e, -es, -e, -ent endings are all <strong>silent</strong> — only -ons and -ez are pronounced distinctly. This is why speaking practice matters so much!</div>
+  </div></div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image lightbox" onclick="closeLb()">
+  <button id="lb-close" onclick="closeLb()" aria-label="Close image">✕</button>
+  <img id="lb-img" src="" alt="">
+</div>
+<script>
+function tog(btn){const b=btn.nextElementSibling;const o=b.classList.contains('open');btn.setAttribute('aria-expanded',!o);b.classList.toggle('open',!o);}
+function speak(e,t){e.stopPropagation();if(!('speechSynthesis' in window))return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=0.82;u.pitch=1.05;window.speechSynthesis.speak(u);}
+function revealRow(cell){if(!cell.classList.contains('hidden'))return;cell.classList.remove('hidden');}
+function toggleAll(btn,tid){const tbl=document.getElementById(tid);const show=tbl.classList.toggle('translations-shown');btn.textContent=show?'🙈 Hide translations':'👁 Show all translations';btn.setAttribute('aria-pressed',show);if(show){tbl.querySelectorAll('.en-cell').forEach(c=>c.classList.remove('hidden'));}else{tbl.querySelectorAll('.en-cell').forEach(c=>c.classList.add('hidden'));}}
+function openG(id){const m=document.getElementById('gm-'+id);m.removeAttribute('aria-hidden');m.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>m.querySelector('.gm-close').focus(),50);}
+function closeG(id){const m=document.getElementById('gm-'+id);m.setAttribute('aria-hidden','true');m.classList.remove('open');document.body.style.overflow='';}
+function openLb(src){document.getElementById('lb-img').src=src;document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';document.getElementById('lb-close').focus();}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.gm.open').forEach(m=>closeG(m.id.replace('gm-','')));closeLb();}});
+document.querySelectorAll('.img-wrap[tabindex]').forEach(el=>{el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});});
+</script>
+</body>
+</html>
