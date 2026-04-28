@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FREN 1001 — Lab 3 : La Maison</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--cream:#f0f7ff;--parchment:#cfe2f3;--navy:#0d2240;--blue:#1a4f7a;--sky:#2471a3;--sky-light:#d6eaf8;--ink:#0d1b2e;--ink-soft:#1e3a5f;--muted:#6b7d93;--gold:#c9a84c;--white:#ffffff;--shadow:0 8px 40px rgba(13,34,64,0.13);--shadow-sm:0 2px 12px rgba(13,34,64,0.08);}
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>FREN 1001 — Lab 3 : La Maison</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+:root{--cream:#f0f7ff;--parch:#cfe2f3;--navy:#0d2240;--blue:#1a4f7a;--sky:#2471a3;
+--skylt:#d6eaf8;--ink:#0d1b2e;--soft:#1e3a5f;--muted:#4a5f75;--gold:#c9a84c;--white:#ffffff;
+--shadow:0 8px 40px rgba(13,34,64,0.13);--shadow-sm:0 2px 12px rgba(13,34,64,0.08);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 10% 15%,rgba(0,35,149,0.06) 0%,transparent 55%),radial-gradient(ellipse at 90% 85%,rgba(237,41,57,0.04) 0%,transparent 55%);pointer-events:none;z-index:0;}
+body::before{content:'';position:fixed;inset:0;
+background:radial-gradient(ellipse at 10% 15%,rgba(0,35,149,0.06) 0%,transparent 55%),
+radial-gradient(ellipse at 90% 85%,rgba(237,41,57,0.04) 0%,transparent 55%);
+pointer-events:none;z-index:0;}
 a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:3px;}
-.skip-link{position:absolute;top:-40px;left:0;background:var(--gold);color:var(--ink);padding:8px 16px;font-weight:700;z-index:10000;border-radius:0 0 8px 0;transition:top .2s;}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--gold);color:var(--ink);
+padding:8px 16px;font-weight:700;z-index:10000;border-radius:0 0 8px 0;transition:top .2s;}
 .skip-link:focus{top:0;}
-header{background:var(--navy);color:var(--cream);padding:36px 48px;display:flex;align-items:center;gap:28px;position:relative;overflow:hidden;z-index:1;}
+header{background:var(--navy);color:var(--cream);padding:36px 48px;display:flex;
+align-items:center;gap:28px;position:relative;overflow:hidden;z-index:1;}
 .flag{display:flex;gap:5px;align-items:center;}
 .fs{width:6px;height:50px;border-radius:3px;}
 .fs.b{background:#002395;}.fs.w{background:#fff;}.fs.r{background:#ed2939;}
@@ -22,263 +22,194 @@ header{background:var(--navy);color:var(--cream);padding:36px 48px;display:flex;
 .htext p{margin-top:6px;font-size:13px;font-weight:300;color:rgba(240,247,255,0.5);letter-spacing:.5px;}
 .hbadge{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
 .lab-num{font-family:'Playfair Display',serif;font-size:72px;font-weight:900;line-height:1;color:#5dade2;letter-spacing:-3px;}
-.mode-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:rgba(201,168,76,0.2);color:#e8c96e;border:1px solid rgba(201,168,76,0.35);}
-.page{max-width:960px;margin:0 auto;padding:44px 28px 80px;position:relative;z-index:1;}
-.slabel{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:28px;}
+.mode-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:20px;
+font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
+background:rgba(201,168,76,0.2);color:#e8c96e;border:1px solid rgba(201,168,76,0.35);}
+.page{max-width:960px;margin:0 auto;padding:44px 28px 60px;position:relative;z-index:1;}
+.slabel{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;
+letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:28px;}
 .slabel:first-child{margin-top:0;}
-.slabel::after{content:'';flex:1;height:1px;background:var(--parchment);}
+.slabel::after{content:'';flex:1;height:1px;background:var(--parch);}
 .card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px;}
 .card-inner{padding:32px 36px;}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-@media(max-width:640px){.two-col{grid-template-columns:1fr;}header{padding:24px 20px;}.card-inner{padding:24px 20px;}}
-p.bt{font-size:14px;line-height:1.75;color:var(--ink-soft);}
+@media(max-width:640px){header{padding:24px 20px;}.card-inner{padding:20px 18px;}}
+@media(max-width:560px){.two-col{grid-template-columns:1fr;}}
+p.bt{font-size:14px;line-height:1.75;color:var(--soft);}
 .steps{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:4px;}
-.steps li{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.65;color:var(--ink-soft);}
-.sn{width:24px;height:24px;min-width:24px;border-radius:50%;background:var(--sky);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
-.submit-note{margin-top:14px;font-size:13px;line-height:1.6;color:var(--ink-soft);background:var(--cream);border:1.5px solid var(--parchment);border-radius:8px;padding:10px 14px;}
+.steps li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;line-height:1.7;color:var(--soft);}
+.sn{width:26px;height:26px;min-width:26px;border-radius:50%;background:var(--sky);color:white;
+font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.submit-note{margin-top:14px;font-size:13px;line-height:1.6;color:var(--soft);
+background:var(--cream);border:1.5px solid var(--parch);border-radius:8px;padding:10px 14px;}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
-.chip{background:var(--cream);border:1.5px solid var(--parchment);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--ink-soft);}
-.req-acc{border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;margin-top:4px;}
-.req-item{border-bottom:1px solid var(--parchment);}
+.chip{background:var(--cream);border:1.5px solid var(--parch);border-radius:20px;
+padding:5px 14px;font-size:12px;font-weight:500;color:var(--soft);}
+.req-acc{border:1.5px solid var(--parch);border-radius:12px;overflow:hidden;margin-top:4px;}
+.req-item{border-bottom:1px solid var(--parch);}
 .req-item:last-child{border-bottom:none;}
-.req-toggle{width:100%;background:none;border:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:10px;text-align:left;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--ink);transition:background .15s;}
+.req-toggle{width:100%;background:none;border:none;cursor:pointer;padding:12px 16px;
+display:flex;align-items:center;gap:10px;text-align:left;
+font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--ink);transition:background .15s;}
 .req-toggle:hover{background:var(--cream);}
 .req-toggle .arr{margin-left:auto;color:var(--muted);font-size:10px;transition:transform .2s;}
-.req-toggle[aria-expanded="true"] .arr{transform:rotate(180deg);}
-.req-body{display:none;padding:4px 16px 14px 42px;font-size:13px;line-height:1.75;color:var(--ink-soft);}
+.req-toggle[aria-expanded='true'] .arr{transform:rotate(180deg);}
+.req-body{display:none;padding:4px 16px 14px 42px;font-size:13px;line-height:1.75;color:var(--soft);}
 .req-body.open{display:block;}
-.req-body ul{padding-left:18px;}
-.req-body li{margin-bottom:4px;}
-.warn{background:#fff5f0;border:1.5px solid #f5c4b0;border-radius:10px;padding:10px 16px;font-size:12px;font-weight:700;color:#8f3f22;text-align:center;letter-spacing:.3px;text-transform:uppercase;margin-top:20px;}
-.img-wrap{border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.req-body ul{padding-left:18px;}.req-body li{margin-bottom:4px;}
+.warn{background:#fff5f0;border:1.5px solid #f5c4b0;border-radius:10px;
+padding:10px 16px;font-size:12px;font-weight:700;color:#8f3f22;
+text-align:center;letter-spacing:.3px;text-transform:uppercase;margin-top:20px;}
+.clearfix::after{content:'';display:table;clear:both;}
+.float-right{float:right;margin:0 0 16px 24px;width:230px;}
+.img-wrap{border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);cursor:pointer;}
 .img-wrap img{width:100%;display:block;transition:transform .35s ease;}
 .img-wrap:hover img,.img-wrap:focus img{transform:scale(1.03);}
 .img-wrap:focus{outline:3px solid var(--gold);outline-offset:2px;}
-.img-cap{background:rgba(13,34,64,0.72);color:rgba(255,255,255,0.85);font-size:10px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
-.img-credit-link{color:rgba(255,255,255,0.65);text-decoration:none;font-size:10px;}
-.img-credit-link:hover{color:#fff;text-decoration:underline;}
-.clearfix::after{content:'';display:table;clear:both;}
-.float-right{float:right;margin:0 0 16px 24px;width:230px;}
-/* Grammar button & modal */
-.grammar-btn{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:white;border:none;border-radius:10px;padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm);}
-.grammar-btn:hover{background:var(--blue);transform:translateY(-1px);}
-.gm{position:fixed;inset:0;background:rgba(13,34,64,0.88);z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
-.gm.open{display:flex;animation:gmIn .25s ease;}
-@keyframes gmIn{from{opacity:0;}to{opacity:1;}}
-.gm-panel{background:var(--white);border-radius:20px 20px 16px 16px;width:100%;max-width:700px;max-height:80vh;overflow-y:auto;padding:32px 36px;position:relative;animation:panelUp .3s cubic-bezier(.16,1,.3,1);}
-@keyframes panelUp{from{transform:translateY(60px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-.gm-close{position:absolute;top:16px;right:16px;background:var(--cream);border:1.5px solid var(--parchment);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .15s;}
-.gm-close:hover{background:var(--sky);color:white;border-color:var(--sky);}
-.gm-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
-.gm-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
-.conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-@media(max-width:480px){.conj-grid{grid-template-columns:1fr;}}
-.conj-table{border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;}
-.conj-table caption{background:var(--sky);color:white;font-weight:700;font-size:13px;padding:8px 12px;text-align:left;}
-.conj-table table{width:100%;border-collapse:collapse;}
-.conj-table td{padding:7px 12px;font-size:13px;border-bottom:1px solid var(--parchment);color:var(--ink-soft);}
-.conj-table tr:last-child td{border-bottom:none;}
-.conj-table td:first-child{color:var(--muted);font-size:12px;width:45%;}
-.conj-table td:last-child{font-weight:600;color:var(--blue);}
-.conj-table tr:hover td{background:var(--sky-light);}
-.gm-note{background:var(--sky-light);border:1.5px solid var(--parchment);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--ink-soft);margin-top:16px;line-height:1.65;}
-.gm-prep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:8px;}
-.prep-card{background:var(--sky-light);border:1px solid var(--parchment);border-radius:8px;padding:8px 10px;font-size:12px;color:var(--ink-soft);}
-.prep-card strong{display:block;color:var(--blue);font-size:13px;}
-/* Lightbox */
-#lb{position:fixed;inset:0;background:rgba(10,20,40,0.94);z-index:9998;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
-#lb.open{display:flex;animation:lbIn .2s ease;}
-@keyframes lbIn{from{opacity:0;}to{opacity:1;}}
-#lb img{max-width:min(90vw,800px);max-height:85vh;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,0.6);}
-#lb-close{position:fixed;top:18px;right:22px;color:white;font-size:30px;cursor:pointer;background:none;border:none;opacity:.7;line-height:1;}
-#lb-close:hover,#lb-close:focus{opacity:1;}
-footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);position:relative;z-index:1;}
-/* ── VOCAB TABLE ── */
-.vocab-section{margin-bottom:32px;}
-.vocab-section-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--blue);margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--sky-light);}
-.vocab-controls{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
-.vocab-controls p{font-size:12px;color:var(--muted);line-height:1.5;margin:0;}
-.toggle-btn{display:inline-flex;align-items:center;gap:5px;background:var(--sky-light);border:1.5px solid var(--sky);color:var(--blue);border-radius:8px;padding:6px 13px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .18s;white-space:nowrap;}
+.img-cap{background:rgba(13,34,64,0.72);color:rgba(255,255,255,0.85);font-size:10px;
+padding:6px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
+.img-cap a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:9px;}
+.img-cap a:hover{color:#fff;text-decoration:underline;}
+.resource-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
+.resource-btn{display:inline-flex;align-items:center;gap:8px;color:white;border:none;
+border-radius:10px;padding:11px 18px;font-family:'DM Sans',sans-serif;
+font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm);
+background:var(--sky);}
+.resource-btn:hover{filter:brightness(.88);transform:translateY(-1px);}
+.resource-btn.bongo-btn{background:#0f766e;}
+.rb-icon{font-size:16px;}
+.modal{position:fixed;inset:0;background:rgba(13,34,64,0.85);z-index:9999;
+display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
+.modal.open{display:flex;animation:mIn .22s ease;}
+@keyframes mIn{from{opacity:0;}to{opacity:1;}}
+.modal-panel{background:var(--white);border-radius:16px;width:100%;max-width:720px;
+max-height:88vh;overflow-y:auto;padding:28px 32px;position:relative;
+animation:mUp .25s cubic-bezier(.16,1,.3,1);}
+@keyframes mUp{from{transform:translateY(30px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+@media(max-width:640px){.modal-panel{padding:20px 18px;}}
+.modal-close{position:absolute;top:14px;right:14px;background:var(--cream);
+border:1.5px solid var(--parch);border-radius:50%;width:30px;height:30px;cursor:pointer;
+font-size:15px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .15s;}
+.modal-close:hover{background:var(--sky);color:white;border-color:var(--sky);}
+.modal-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.modal-sub{font-size:12px;color:var(--muted);margin-bottom:18px;}
+.vocab-section{margin-bottom:24px;}.vocab-section:last-child{margin-bottom:0;}
+.vsec-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;
+color:var(--blue);margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid var(--skylt);}
+.vocab-controls{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.vocab-controls p{font-size:12px;color:var(--muted);margin:0;}
+.toggle-btn{display:inline-flex;align-items:center;gap:4px;background:var(--skylt);
+border:1.5px solid var(--sky);color:var(--blue);border-radius:7px;padding:5px 11px;
+font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;white-space:nowrap;}
 .toggle-btn:hover{background:var(--sky);color:white;border-color:var(--sky);}
-.vocab-table{width:100%;border-collapse:collapse;border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;font-size:13.5px;}
-.vocab-table thead tr{background:var(--sky);}
-.vocab-table th{padding:9px 14px;color:white;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-align:left;}
-.vocab-table th.th-audio{text-align:center;width:48px;}
-.vocab-table th.th-en{width:40%;}
-.vocab-table tbody tr{border-bottom:1px solid var(--parchment);transition:background .12s;}
-.vocab-table tbody tr:last-child{border-bottom:none;}
-.vocab-table tbody tr:hover{background:var(--sky-light);}
-.vocab-table tbody tr:nth-child(even){background:#f5faff;}
-.vocab-table tbody tr:nth-child(even):hover{background:var(--sky-light);}
-.vocab-table td{padding:9px 14px;color:var(--ink-soft);vertical-align:middle;}
+.vocab-note{font-size:11px;color:var(--muted);background:var(--skylt);
+border-left:3px solid var(--sky);padding:6px 10px;margin-bottom:10px;
+border-radius:0 5px 5px 0;line-height:1.5;}
+.vtable{width:100%;border-collapse:collapse;border:1.5px solid var(--parch);
+border-radius:10px;overflow:hidden;font-size:13px;}
+.vtable thead tr{background:var(--sky);}
+.vtable thead th{padding:8px 12px;color:white;font-size:9px;font-weight:700;
+letter-spacing:1.5px;text-transform:uppercase;text-align:left;border:none;}
+.vtable th.th-audio{text-align:center;width:40px;}
+.vtable th.th-pron{width:28%;}.vtable th.th-en{width:36%;}
+.vtable tbody tr{border-bottom:1px solid var(--parch);transition:background .1s;}
+.vtable tbody tr:last-child{border-bottom:none;}
+.vtable tbody tr:hover{background:var(--skylt);}
+.vtable tbody tr:nth-child(even){background:#f5faff;}
+.vtable tbody tr:nth-child(even):hover{background:var(--skylt);}
+.vtable td{padding:8px 12px;color:var(--soft);vertical-align:middle;}
 .fr-cell{font-weight:700;color:var(--ink);font-size:14px;}
 .pron-cell{font-size:11px;color:var(--muted);font-style:italic;}
 .audio-cell{text-align:center;}
-.audio-btn{background:none;border:none;cursor:pointer;font-size:17px;padding:3px 5px;border-radius:6px;line-height:1;transition:transform .15s;}
+.audio-btn{background:none;border:none;cursor:pointer;font-size:16px;
+padding:2px 4px;border-radius:5px;line-height:1;transition:transform .15s;}
 .audio-btn:hover{transform:scale(1.25);}
 .audio-btn:focus{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px;}
 .en-cell{cursor:pointer;user-select:none;}
-.en-cell .en-text{color:var(--ink-soft);}
-.en-cell .en-ex{font-size:11px;color:var(--muted);font-style:italic;display:block;margin-top:2px;}
+.en-cell .en-text{color:var(--soft);}
+.en-cell .en-ex{font-size:11px;color:var(--muted);font-style:italic;display:block;margin-top:1px;}
 .en-cell.hidden .en-text,.en-cell.hidden .en-ex{display:none;}
-.en-cell.hidden .reveal-hint{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--sky);font-weight:600;}
+.en-cell.hidden .reveal-hint{display:inline-flex;align-items:center;gap:3px;font-size:10px;color:var(--sky);font-weight:600;}
 .en-cell:not(.hidden) .reveal-hint{display:none;}
 .translations-shown .en-cell.hidden .en-text,.translations-shown .en-cell.hidden .en-ex{display:block;}
 .translations-shown .en-cell.hidden .reveal-hint{display:none;}
-.vocab-note{font-size:12px;color:var(--muted);background:var(--sky-light);border-left:3px solid var(--sky);border-radius:0 6px 6px 0;padding:8px 12px;margin-bottom:12px;line-height:1.6;}
+.conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+@media(max-width:480px){.conj-grid{grid-template-columns:1fr;}}
+.conj-table{border:1.5px solid var(--parch);border-radius:10px;overflow:hidden;}
+.conj-table table{width:100%;border-collapse:collapse;}
+.conj-table thead th{background:var(--sky);color:white;font-weight:700;font-size:12px;
+padding:9px 12px;text-align:left;border:none;}
+.conj-table td{padding:7px 11px;font-size:13px;border-bottom:1px solid var(--parch);color:var(--soft);}
+.conj-table tr:last-child td{border-bottom:none;}
+.conj-table td:first-child{color:var(--muted);font-size:12px;width:45%;}
+.conj-table td:last-child{font-weight:600;color:var(--blue);}
+.conj-table tr:hover td{background:var(--skylt);}
+.gm-note{background:var(--skylt);border:1.5px solid var(--parch);border-radius:8px;
+padding:10px 14px;font-size:13px;color:var(--soft);margin-top:4px;line-height:1.6;}
+.gm-prep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:7px;margin:10px 0;}
+.prep-card{background:var(--skylt);border:1px solid var(--parch);border-radius:7px;padding:7px 9px;font-size:12px;color:var(--soft);}
+.prep-card strong{display:block;color:var(--blue);font-size:13px;}
+.bongo-tip{display:flex;align-items:flex-start;gap:12px;background:#f0faf9;
+border:1.5px solid #99d6cc;border-radius:10px;padding:11px 14px;margin-bottom:8px;
+font-size:13px;line-height:1.65;color:#0d2240;}
+.bt-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.bongo-section-title{font-size:10px;font-weight:700;letter-spacing:2px;
+text-transform:uppercase;color:#0f766e;margin:14px 0 8px;}
+#lb{position:fixed;inset:0;background:rgba(10,20,40,0.94);z-index:9998;
+display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
+#lb.open{display:flex;animation:lbIn .2s ease;}
+@keyframes lbIn{from{opacity:0;}to{opacity:1;}}
+#lb img{max-width:min(90vw,800px);max-height:85vh;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,0.6);}
+#lb-close{position:fixed;top:18px;right:22px;color:white;font-size:30px;
+cursor:pointer;background:none;border:none;opacity:.75;line-height:1;}
+#lb-close:hover{opacity:1;}
+footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);position:relative;z-index:1;}
+footer a{color:var(--blue);font-weight:600;text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+header::after{content:"CHAPITRE TROIS";position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:"Playfair Display",serif;font-size:90px;font-weight:900;color:rgba(255,255,255,0.03);letter-spacing:-3px;pointer-events:none;white-space:nowrap;}.conj-table td:nth-child(2){font-weight:600;color:var(--blue);}.conj-table td:nth-child(3){font-size:11px;color:var(--muted);font-style:italic;font-weight:400;padding-left:6px;}.conj-table td:last-child{font-weight:normal;color:var(--muted);}.prep-pron{display:block;font-size:10px;color:var(--muted);font-style:italic;margin-top:2px;}.prep-card{background:var(--skylt);border:1px solid var(--parch);border-radius:7px;padding:7px 9px;font-size:12px;color:var(--soft);position:relative;}.prep-card strong{display:block;color:var(--blue);font-size:13px;}.prep-pron{display:block;font-size:10px;color:var(--muted);font-style:italic;margin-top:2px;}.prep-card .audio-btn{position:absolute;top:5px;right:5px;font-size:12px;padding:0;}</style></head><body><a href="#main-content" class="skip-link">Skip to main content</a><header role="banner"><div class="flag" role="img" aria-label="French flag"><div class="fs b"></div><div class="fs w"></div><div class="fs r"></div></div><div class="htext"><h1>FREN <em>1001</em></h1><p>Introductory French — Language Lab</p></div><div class="hbadge" aria-label="Lab 3, Individual Activity"><div class="lab-num" aria-hidden="true">3</div><span class="mode-pill">&#x1F64B; Individual Activity</span></div></header><main class="page" id="main-content"><div class="card"><div class="card-inner clearfix"><div style="margin-bottom:6px;"><span style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);">Chapitre 3</span></div><h2 style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;font-style:italic;letter-spacing:-0.5px;color:var(--ink);">La Maison</h2><div style="margin-top:22px;" class="clearfix"><div class="float-right img-wrap" role="button" tabindex="0" aria-label="Enlarge image" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-3-image-1.jpg','Cozy bedroom with a wooden bed frame and white bedding')"><img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-3-image-1.jpg" alt="Cozy bedroom with a wooden bed frame and white bedding" loading="lazy"><div class="img-cap"><span>Click to enlarge</span><a href="https://unsplash.com/photos/brown-wooden-bed-frame-with-white-cover-beside-brown-wooden-nightstand-FqqiAvJejto" target="_blank" rel="noopener">Frames For Your Heart · Unsplash</a></div></div><div class="slabel" style="margin-top:0;"><span aria-hidden="true">&#x1F4DD;</span>Summary &amp; Context</div><p class="bt">In this lab you will give a video tour of your room or house, describe furniture using adjectives and colors, and talk about household chores.</p><p class="bt" style="margin-top:10px;">Record a 2-minute video showing us around your dorm or bedroom. Describe furniture, mention 3–4 chores, and ask 2 questions.</p></div></div></div><div class="two-col"><div class="card"><div class="card-inner"><div class="slabel" style="margin-top:0;"><span aria-hidden="true">&#x1F6A6;</span>Process</div><ol class="steps" aria-label="Recording steps"><li><span class="sn" aria-hidden="true">1</span><span>Click <strong>Vocabulary</strong> below to study words and hear pronunciations.</span></li><li><span class="sn" aria-hidden="true">2</span><span>Open <strong>Grammar</strong> if you need a conjugation reference.</span></li><li><span class="sn" aria-hidden="true">3</span><span>Practice speaking out loud — many times!</span></li><li><span class="sn" aria-hidden="true">4</span><span>Click <strong>Lab 3: Video Assignment</strong> above — Bongo opens to record &amp; submit.</span></li></ol><p class="submit-note">&#x1F517; Click <strong>Lab 3: Video Assignment</strong> at the top of this page to open Bongo — record and submit your video directly there.</p><div class="slabel"><span aria-hidden="true">&#x1F4E6;</span>Materials</div><ul class="chips"><li class="chip">&#x1F517; Submitted via Bongo</li><li class="chip">&#x1F4F9; Face must be visible</li></ul><div style="margin-top:20px;" class="img-wrap" role="button" tabindex="0" aria-label="Enlarge image" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-3-image-2.jpg','Bright and airy living room with natural light')"><img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-3-image-2.jpg" alt="Bright and airy living room with natural light" loading="lazy"><div class="img-cap"><span>Click to enlarge</span><a href="https://unsplash.com/photos/living-room-L7EwHkq1B2s" target="_blank" rel="noopener">Kara Eads · Unsplash</a></div></div><div class="resource-row"><button class="resource-btn" onclick="openModal('modal-vocab')" aria-haspopup="dialog"><span class="rb-icon" aria-hidden="true">&#x1F4CB;</span> Vocabulary &amp; Pronunciation</button><button class="resource-btn" onclick="openModal('modal-grammar')" aria-haspopup="dialog"><span class="rb-icon" aria-hidden="true">&#x1F4D6;</span> Grammar</button><button class="resource-btn bongo-btn" onclick="openModal('modal-bongo')" aria-haspopup="dialog"><span class="rb-icon" aria-hidden="true">&#x1F527;</span> Bongo Help</button></div></div></div><div class="card"><div class="card-inner"><div class="slabel" style="margin-top:0;"><span aria-hidden="true">&#x2705;</span>Requirements</div><div class="req-acc" role="list"><div class="req-item"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">&#x1F4CF;</span>Video basics<span class="arr" aria-hidden="true">&#x25BC;</span></button><div class="req-body"><ul><li><strong>2 minutes</strong> long · face visible · show us your room</li></ul></div></div><div class="req-item"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">&#x1F3E0;</span>Room tour<span class="arr" aria-hidden="true">&#x25BC;</span></button><div class="req-body"><ul><li>Furniture + adjectives, colors, numbers</li><li>Do <strong>NOT</strong> start every sentence with <em>Il y a…</em></li><li>Use prepositions of place</li></ul></div></div><div class="req-item"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">&#x1F9F9;</span>Chores<span class="arr" aria-hidden="true">&#x25BC;</span></button><div class="req-body"><ul><li>Talk about <strong>3–4 chores</strong> — favorite and least favorite</li></ul></div></div><div class="req-item"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">&#x2753;</span>Ask 2 questions<span class="arr" aria-hidden="true">&#x25BC;</span></button><div class="req-body">Ask two questions about the audience’s home.</div></div><div class="req-item"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">&#x1F4DA;</span>Vocabulary<span class="arr" aria-hidden="true">&#x25BC;</span></button><div class="req-body">Room, furniture, and chore vocabulary from class.</div></div></div><div class="warn" role="alert">&#x1F6AB; No online translator or AI allowed</div></div></div></div></main><footer>FREN 1001 — Lab 3: La Maison</footer><div id="modal-vocab" class="modal" role="dialog" aria-modal="true" aria-label="Vocabulary and Pronunciation" aria-hidden="true"><div class="modal-panel"><button class="modal-close" onclick="closeModal('modal-vocab')" aria-label="Close vocabulary">&#x2715;</button><div class="modal-title">Vocabulary &amp; Pronunciation</div><div class="modal-sub">Click &#x1F50A; to hear · click any row to reveal English · Show all for full reference</div><div style="background:#fef3c7;border-left:3px solid #f59e0b;border-radius:0 8px 8px 0;padding:9px 13px;margin-bottom:16px;font-size:12px;line-height:1.6;color:#78350f;">&#x1F4DA; <strong>Note:</strong> This is a selection of key vocabulary for this lab — not a complete list. Always refer to the <strong>vocabulary list in your Chapitre textbook</strong> as your primary reference. For additional words, use <a href="https://www.wordreference.com" target="_blank" rel="noopener" style="color:#b45309;font-weight:700;">WordReference.com</a>.</div><div class="vocab-section"><div class="vsec-title">Rooms — Les Pièces</div><div class="vocab-controls"><p>Click any row to reveal English</p><button class="toggle-btn" onclick="toggleAll(this,'vt61')" aria-pressed="false">&#x1F441; Show all</button></div><p class="vocab-note">&#x1F4A1; Say « il y a » for « there is/are »: Il y a un salon et deux chambres.</p><div style="overflow-x:auto;"><table class="vtable" id="vt61" role="grid" aria-label="Rooms — Les Pièces"><thead><tr><th scope="col">French</th><th scope="col" class="th-pron">Pronunciation</th><th scope="col" class="th-audio">&#x1F50A;</th><th scope="col" class="th-en">English</th></tr></thead><tbody><tr><td class="fr-cell">la chambre</td><td class="pron-cell">[lah shahm-bruh]</td><td class="audio-cell"><button class="audio-btn" data-speak="la chambre" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">bedroom</span></td></tr><tr><td class="fr-cell">le salon</td><td class="pron-cell">[luh sah-lon]</td><td class="audio-cell"><button class="audio-btn" data-speak="le salon" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">living room</span></td></tr><tr><td class="fr-cell">la cuisine</td><td class="pron-cell">[lah kwee-zeen]</td><td class="audio-cell"><button class="audio-btn" data-speak="la cuisine" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">kitchen</span></td></tr><tr><td class="fr-cell">la salle de bains</td><td class="pron-cell">[lah sal duh ban]</td><td class="audio-cell"><button class="audio-btn" data-speak="la salle de bains" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">bathroom</span></td></tr><tr><td class="fr-cell">le jardin</td><td class="pron-cell">[luh zhar-dan]</td><td class="audio-cell"><button class="audio-btn" data-speak="le jardin" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">garden / yard</span></td></tr><tr><td class="fr-cell">l’appartement</td><td class="pron-cell">[lah-par-tuh-mahn]</td><td class="audio-cell"><button class="audio-btn" data-speak="l’appartement" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">apartment</span></td></tr><tr><td class="fr-cell">le grenier</td><td class="pron-cell">[luh gruh-nyay]</td><td class="audio-cell"><button class="audio-btn" data-speak="le grenier" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">attic</span></td></tr></tbody></table></div></div><div class="vocab-section"><div class="vsec-title">Furniture — Les Meubles</div><div class="vocab-controls"><p>Click any row to reveal English</p><button class="toggle-btn" onclick="toggleAll(this,'vt62')" aria-pressed="false">&#x1F441; Show all</button></div><p class="vocab-note">&#x1F4A1; Vary your sentences — avoid starting every one with « Il y a… »</p><div style="overflow-x:auto;"><table class="vtable" id="vt62" role="grid" aria-label="Furniture — Les Meubles"><thead><tr><th scope="col">French</th><th scope="col" class="th-pron">Pronunciation</th><th scope="col" class="th-audio">&#x1F50A;</th><th scope="col" class="th-en">English</th></tr></thead><tbody><tr><td class="fr-cell">le lit</td><td class="pron-cell">[luh lee]</td><td class="audio-cell"><button class="audio-btn" data-speak="le lit" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">bed</span><span class="en-ex">Le lit est près de la fenêtre.</span></td></tr><tr><td class="fr-cell">la chaise</td><td class="pron-cell">[lah shehz]</td><td class="audio-cell"><button class="audio-btn" data-speak="la chaise" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">chair</span></td></tr><tr><td class="fr-cell">la table</td><td class="pron-cell">[lah tah-bluh]</td><td class="audio-cell"><button class="audio-btn" data-speak="la table" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">table</span></td></tr><tr><td class="fr-cell">le canapé</td><td class="pron-cell">[luh kah-nah-pay]</td><td class="audio-cell"><button class="audio-btn" data-speak="le canapé" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">sofa / couch</span></td></tr><tr><td class="fr-cell">le bureau</td><td class="pron-cell">[luh boo-roh]</td><td class="audio-cell"><button class="audio-btn" data-speak="le bureau" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">desk</span></td></tr><tr><td class="fr-cell">l’étagère</td><td class="pron-cell">[lay-tah-zhair]</td><td class="audio-cell"><button class="audio-btn" data-speak="l’étagère" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">shelf</span></td></tr><tr><td class="fr-cell">le miroir</td><td class="pron-cell">[luh mee-rwahr]</td><td class="audio-cell"><button class="audio-btn" data-speak="le miroir" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">mirror</span></td></tr><tr><td class="fr-cell">le tapis</td><td class="pron-cell">[luh tah-pee]</td><td class="audio-cell"><button class="audio-btn" data-speak="le tapis" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">rug / carpet</span></td></tr></tbody></table></div></div><div class="vocab-section"><div class="vsec-title">Chores — Les tâches ménagères</div><div class="vocab-controls"><p>Click any row to reveal English</p><button class="toggle-btn" onclick="toggleAll(this,'vt63')" aria-pressed="false">&#x1F441; Show all</button></div><div style="overflow-x:auto;"><table class="vtable" id="vt63" role="grid" aria-label="Chores — Les tâches ménagères"><thead><tr><th scope="col">French</th><th scope="col" class="th-pron">Pronunciation</th><th scope="col" class="th-audio">&#x1F50A;</th><th scope="col" class="th-en">English</th></tr></thead><tbody><tr><td class="fr-cell">faire le ménage</td><td class="pron-cell">[fair luh may-nahzh]</td><td class="audio-cell"><button class="audio-btn" data-speak="faire le ménage" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">to do the housework</span></td></tr><tr><td class="fr-cell">faire la vaisselle</td><td class="pron-cell">[fair lah veh-sell]</td><td class="audio-cell"><button class="audio-btn" data-speak="faire la vaisselle" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">to do the dishes</span></td></tr><tr><td class="fr-cell">faire la lessive</td><td class="pron-cell">[fair lah leh-seev]</td><td class="audio-cell"><button class="audio-btn" data-speak="faire la lessive" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">to do the laundry</span></td></tr><tr><td class="fr-cell">passer l'aspirateur</td><td class="pron-cell">[pah-say las-pee-rah-tur]</td><td class="audio-cell"><button class="audio-btn" data-speak="passer l'aspirateur" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">to vacuum</span></td></tr><tr><td class="fr-cell">nettoyer</td><td class="pron-cell">[neh-twah-yay]</td><td class="audio-cell"><button class="audio-btn" data-speak="nettoyer" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">to clean</span></td></tr><tr><td class="fr-cell">ranger</td><td class="pron-cell">[rahn-zhay]</td><td class="audio-cell"><button class="audio-btn" data-speak="ranger" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">to tidy up</span></td></tr><tr><td class="fr-cell">essuyer</td><td class="pron-cell">[eh-swee-yay]</td><td class="audio-cell"><button class="audio-btn" data-speak="essuyer" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">to wipe / dry (dishes)</span></td></tr><tr><td class="fr-cell">épousseter</td><td class="pron-cell">[ay-poos-tay]</td><td class="audio-cell"><button class="audio-btn" data-speak="épousseter" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">to dust</span></td></tr><tr><td class="fr-cell">payer les factures</td><td class="pron-cell">[pay-yay lay fak-toor]</td><td class="audio-cell"><button class="audio-btn" data-speak="payer les factures" onclick="speak(event,this)" aria-label="Hear pronunciation">&#x1F50A;</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">&#x1F446; Reveal</span><span class="en-text">to pay the bills</span></td></tr></tbody></table></div></div></div></div><div id="modal-grammar" class="modal" role="dialog" aria-modal="true" aria-label="Grammar: Prepositions of Place &amp; Faire" aria-hidden="true"><div class="modal-panel"><button class="modal-close" onclick="closeModal('modal-grammar')" aria-label="Close grammar">&#x2715;</button><div class="modal-title">Prepositions of Place &amp; Faire</div><div class="modal-sub">Where things are in your home — and how to talk about chores</div><div class="gm-prep-grid"><div class="prep-card"><strong>sur</strong><span style="display:block;font-size:12px;color:var(--soft);margin-top:1px;">on top of</span><span class="prep-pron">[soor]</span><button class="audio-btn" data-speak="sur" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></div><div class="prep-card"><strong>sous</strong><span style="display:block;font-size:12px;color:var(--soft);margin-top:1px;">under</span><span class="prep-pron">[soo]</span><button class="audio-btn" data-speak="sous" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></div><div class="prep-card"><strong>dans</strong><span style="display:block;font-size:12px;color:var(--soft);margin-top:1px;">inside</span><span class="prep-pron">[dahn]</span><button class="audio-btn" data-speak="dans" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></div><div class="prep-card"><strong>devant</strong><span style="display:block;font-size:12px;color:var(--soft);margin-top:1px;">in front of</span><span class="prep-pron">[duh-vahn]</span><button class="audio-btn" data-speak="devant" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></div><div class="prep-card"><strong>derrière</strong><span style="display:block;font-size:12px;color:var(--soft);margin-top:1px;">behind</span><span class="prep-pron">[dair-yair]</span><button class="audio-btn" data-speak="derrière" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></div><div class="prep-card"><strong>à côté de</strong><span style="display:block;font-size:12px;color:var(--soft);margin-top:1px;">next to</span><span class="prep-pron">[ah koh-tay duh]</span><button class="audio-btn" data-speak="à côté de" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></div><div class="prep-card"><strong>entre</strong><span style="display:block;font-size:12px;color:var(--soft);margin-top:1px;">between</span><span class="prep-pron">[ahn-truh]</span><button class="audio-btn" data-speak="entre" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></div><div class="prep-card"><strong>en face de</strong><span style="display:block;font-size:12px;color:var(--soft);margin-top:1px;">across from</span><span class="prep-pron">[ahn fas duh]</span><button class="audio-btn" data-speak="en face de" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></div><div class="prep-card"><strong>près de</strong><span style="display:block;font-size:12px;color:var(--soft);margin-top:1px;">near</span><span class="prep-pron">[pray duh]</span><button class="audio-btn" data-speak="près de" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></div><div class="prep-card"><strong>loin de</strong><span style="display:block;font-size:12px;color:var(--soft);margin-top:1px;">far from</span><span class="prep-pron">[lwan duh]</span><button class="audio-btn" data-speak="loin de" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></div></div><div style="margin-top:18px;"><div class="conj-grid"><div class="conj-table"><table><thead><tr><th colspan="3">faire — to do / make</th></tr></thead><tbody><tr><td>Je</td><td>fais<button class="audio-btn" data-speak="je fais" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></td><td>[zhuh fay]</td></tr><tr><td>Tu</td><td>fais<button class="audio-btn" data-speak="tu fais" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></td><td>[too fay]</td></tr><tr><td>Il/Elle/On</td><td>fait<button class="audio-btn" data-speak="il fait" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></td><td>[eel fay]</td></tr><tr><td>Nous</td><td>faisons<button class="audio-btn" data-speak="nous faisons" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></td><td>[noo fuh-zon]</td></tr><tr><td>Vous</td><td>faites<button class="audio-btn" data-speak="vous faites" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></td><td>[voo fet]</td></tr><tr><td>Ils/Elles</td><td>font<button class="audio-btn" data-speak="ils font" onclick="speak(event,this)" aria-label="Hear pronunciation" style="font-size:13px;padding:1px 3px;vertical-align:middle;margin-left:4px;">&#x1F50A;</button></td><td>[eel fon]</td></tr></tbody></table></div></div></div><div class="gm-note">&#x1F4A1; <em>Le lit est près de la fenêtre.</em> — <em>Le bureau est devant le miroir.</em> — Use <strong>faire</strong> for chores: <em>Je fais la vaisselle.</em></div></div></div><div id="modal-bongo" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+<div class="modal-panel">
+<button class="modal-close" onclick="closeModal('modal-bongo')" aria-label="Close">&#x2715;</button>
+<div class="modal-title">&#x1F527; Bongo Troubleshooting</div>
+<div class="modal-sub">Try these steps before contacting the Language Lab</div>
+<div class="bongo-tip"><span class="bt-icon">&#x1F4BB;</span><div><strong>Use Google Chrome on a laptop or desktop.</strong> iPads are not fully supported for Bongo recording.</div></div>
+<div class="bongo-tip"><span class="bt-icon">&#x1F513;</span><div>Make sure your browser has <strong>camera and microphone permissions</strong> allowed.</div></div>
+<div class="bongo-tip"><span class="bt-icon">&#x1F5D1;&#xFE0F;</span><div>Clear your browser <strong>cache and cookies</strong>, then refresh.</div></div>
+<div class="bongo-tip"><span class="bt-icon">&#x1F576;&#xFE0F;</span><div>Try a <strong>Chrome Incognito window</strong>.</div></div>
+<div class="bongo-section-title">Still not working?</div>
+<div class="bongo-tip"><span class="bt-icon">&#x2753;</span><div>Visit the <a href="https://bongolearn.zendesk.com/hc/en-us/articles/360009373374" target="_blank" rel="noopener" style="color:#0f766e;font-weight:700;">Bongo Help Center</a></div></div>
+<div class="bongo-tip" style="background:#fff5f0;border-color:#f5c4b0;"><span class="bt-icon">&#x1F4EC;</span><div>Contact the Language Lab <strong>before the deadline</strong> if you cannot resolve it.</div></div>
+</div></div><div id="lb" role="dialog" aria-modal="true" aria-label="Photo lightbox" onclick="closeLb()"><button id="lb-close" onclick="closeLb()" aria-label="Close photo">&#x2715;</button><img id="lb-img" src="" alt=""></div><script>
+function tog(btn){var b=btn.nextElementSibling;var o=b.classList.contains('open');btn.setAttribute('aria-expanded',!o);b.classList.toggle('open',!o);}
 
-header::after{content:'CHAPITRE TROIS';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:90px;font-weight:900;color:rgba(255,255,255,0.03);letter-spacing:-3px;pointer-events:none;white-space:nowrap;}
-</style>
-</head>
-<body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<header role="banner">
-  <div class="flag" role="img" aria-label="French flag"><div class="fs b"></div><div class="fs w"></div><div class="fs r"></div></div>
-  <div class="htext"><h1>FREN <em>1001</em></h1><p>Introductory French — Language Lab</p></div>
-  <div class="hbadge" aria-label="Lab 3, Individual Activity">
-    <div class="lab-num" aria-hidden="true">3</div>
-    <span class="mode-pill">🙋 Individual Activity</span>
-  </div>
-</header>
-<main class="page" id="main-content">
+/* KEY FIX: read audio text from data-speak attribute — no JS string parsing of apostrophes */
+function speak(e,btn){
+  e.stopPropagation();
+  if(!('speechSynthesis' in window))return;
+  var t=btn.dataset.speak;
+  if(!t)return;
+  window.speechSynthesis.cancel();
+  var u=new SpeechSynthesisUtterance(t);
+  u.lang='fr-FR';u.rate=0.82;u.pitch=1.05;
+  var voices=window.speechSynthesis.getVoices();
+  var fr=voices.find(function(v){return v.lang&&v.lang.startsWith('fr');});
+  if(fr)u.voice=fr;
+  window.speechSynthesis.speak(u);
+}
+if(window.speechSynthesis){window.speechSynthesis.onvoiceschanged=function(){window.speechSynthesis.getVoices();};}
 
-  <div class="card">
-    <div class="card-inner clearfix">
-      <div style="margin-bottom:6px;"><span style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);">Unité 3</span></div>
-      <h2 style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;font-style:italic;letter-spacing:-0.5px;color:var(--ink);">La Maison</h2>
-      <div style="margin-top:22px;" class="clearfix">
-        <div class="float-right img-wrap" role="button" tabindex="0" aria-label="Enlarge image — click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-3-image-1.jpg')">
-          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-3-image-1.jpg" alt="Cozy bedroom with a wooden bed frame, white bedding, and a nightstand" loading="lazy">
-          <div class="img-cap"><span>Click to enlarge</span><a href="https://unsplash.com/photos/brown-wooden-bed-frame-with-white-cover-beside-brown-wooden-nightstand-FqqiAvJejto" target="_blank" rel="noopener" class="img-credit-link">Photo: Frames For Your Heart · Unsplash</a></div>
-        </div>
-        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">📝</span>Summary &amp; Context</div>
-        <p class="bt">In this lab you will give a video tour of your room or house, describe furniture using adjectives and colors, and talk about household chores.</p>
-        <p class="bt" style="margin-top:10px;">Record a 2-minute video showing us around your dorm or bedroom. Describe furniture, mention 3–4 chores, and ask 2 questions about your audience's home.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="card-inner">
-        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">🚦</span>Process</div>
-        <ol class="steps" aria-label="Recording steps">
-          <li><span class="sn" aria-hidden="true">1</span>Study the vocabulary table and grammar below.</li>
-          <li><span class="sn" aria-hidden="true">2</span>Practice speaking out loud — many times!</li>
-          <li><span class="sn" aria-hidden="true">3</span>Record via Zoom or phone (MP4 or MOV).</li>
-          <li><span class="sn" aria-hidden="true">4</span>Upload to your D2L Assignment Folder.</li>
-        </ol>
-        <p class="submit-note">📂 To submit, click <strong>Lab #3</strong> above these instructions, or find it in your <strong>D2L Assignment Folder</strong>.</p>
-        <div class="slabel"><span aria-hidden="true">📦</span>What You Will Need</div>
-        <ul class="chips" aria-label="Materials needed">
-          <li class="chip">🎥 Zoom or phone/computer</li>
-          <li class="chip">🎞️ MP4 or MOV format</li>
-        </ul>
-        <div style="margin-top:22px;" class="img-wrap" role="button" tabindex="0" aria-label="Enlarge image — click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-3-image-2.jpg')">
-          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-3-image-2.jpg" alt="Bright and airy living room with natural light" loading="lazy">
-          <div class="img-cap"><span>Click to enlarge</span><a href="https://unsplash.com/photos/living-room-L7EwHkq1B2s" target="_blank" rel="noopener" class="img-credit-link">Photo: Kara Eads · Unsplash</a></div>
-        </div>
-        <div class="slabel"><span aria-hidden="true">📖</span>Grammar Review</div><button class="grammar-btn" onclick="openG('prep')" aria-haspopup="dialog">📖 Prepositions of Place</button>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">✅</span>Requirements</div>
-        <div class="req-acc" role="list"><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📏</span>Video basics<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region"><ul><li><strong>2 minutes</strong> long</li><li>Face visible; show us your room</li></ul></div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">🏠</span>Room tour<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region"><ul><li>Describe furniture using adjectives, colors, and numbers</li><li>Do <strong>NOT</strong> start every sentence with <em>Il y a…</em></li><li>Use prepositions of place (<em>sur, sous, à côté de…</em>)</li></ul></div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">🧹</span>Chores<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region"><ul><li>Talk about <strong>3–4 chores</strong> you do at home</li><li>Which is your favorite? Which do you hate?</li></ul></div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">❓</span>Ask 2 questions<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region">Ask <strong>two questions</strong> about the audience's home.</div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📚</span>Vocabulary<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region">Room/furniture vocabulary and chore verbs from class.</div></div></div>
-        <div class="warn" role="alert">🚫 No online translator or AI allowed</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-inner">
-      <div class="slabel" style="margin-top:0;"><span aria-hidden="true">📋</span>Vocabulary — click any row to reveal · 🔊 to hear the French</div>
-      <p class="bt" style="margin-bottom:20px;">Pronunciation is always shown. <strong>Click a row</strong> to reveal its English translation — or use <em>Show all translations</em> when you want the full reference.</p>
-      <div class="vocab-section">
-  <div class="vocab-section-title">Rooms in the House — Les Pièces</div>
-  <div class="vocab-controls">
-    <p>Click any row to reveal its English translation.</p>
-    <button class="toggle-btn" onclick="toggleAll(this,'vt31')" aria-pressed="false">👁 Show all translations</button>
-  </div>
-  <p class="vocab-note">💡 Say "il y a" to mean "there is/there are": Il y a un salon et deux chambres.</p><div style="overflow-x:auto;"><table class="vocab-table" id="vt31" role="grid" aria-label="Rooms in the House — Les Pièces vocabulary">
-    <thead><tr>
-      <th scope="col">French</th>
-      <th scope="col">Pronunciation</th>
-      <th scope="col" class="th-audio">🔊</th>
-      <th scope="col" class="th-en">English</th>
-    </tr></thead>
-    <tbody><tr><td class="fr-cell">la maison</td><td class="pron-cell">[lah may-zon]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la maison')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">house</span><span class="en-ex">C'est une grande maison.</span></td></tr><tr><td class="fr-cell">l'appartement</td><td class="pron-cell">[lah-par-tuh-mahn]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'l&#39;appartement')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">apartment</span></td></tr><tr><td class="fr-cell">la chambre</td><td class="pron-cell">[lah shahm-bruh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la chambre')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">bedroom</span><span class="en-ex">Ma chambre est petite.</span></td></tr><tr><td class="fr-cell">le salon</td><td class="pron-cell">[luh sah-lon]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le salon')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">living room</span></td></tr><tr><td class="fr-cell">la cuisine</td><td class="pron-cell">[lah kwee-zeen]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la cuisine')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">kitchen</span></td></tr><tr><td class="fr-cell">la salle de bains</td><td class="pron-cell">[lah sal duh ban]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la salle de bains')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">bathroom</span></td></tr><tr><td class="fr-cell">le jardin</td><td class="pron-cell">[luh zhar-dan]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le jardin')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">garden / yard</span></td></tr><tr><td class="fr-cell">le garage</td><td class="pron-cell">[luh gah-rahzh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le garage')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">garage</span></td></tr><tr><td class="fr-cell">l'escalier</td><td class="pron-cell">[les-kah-lyay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'l&#39;escalier')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">stairs</span></td></tr><tr><td class="fr-cell">le grenier</td><td class="pron-cell">[luh gruh-nyay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le grenier')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">attic</span></td></tr></tbody>
-  </table></div>
-</div><div class="vocab-section">
-  <div class="vocab-section-title">Furniture &amp; Objects — Les Meubles</div>
-  <div class="vocab-controls">
-    <p>Click any row to reveal its English translation.</p>
-    <button class="toggle-btn" onclick="toggleAll(this,'vt32')" aria-pressed="false">👁 Show all translations</button>
-  </div>
-  <p class="vocab-note">💡 Tip: Vary your expressions — avoid starting every sentence with "Il y a…"</p><div style="overflow-x:auto;"><table class="vocab-table" id="vt32" role="grid" aria-label="Furniture &amp; Objects — Les Meubles vocabulary">
-    <thead><tr>
-      <th scope="col">French</th>
-      <th scope="col">Pronunciation</th>
-      <th scope="col" class="th-audio">🔊</th>
-      <th scope="col" class="th-en">English</th>
-    </tr></thead>
-    <tbody><tr><td class="fr-cell">le lit</td><td class="pron-cell">[luh lee]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le lit')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">bed</span><span class="en-ex">Le lit est près de la fenêtre.</span></td></tr><tr><td class="fr-cell">la chaise</td><td class="pron-cell">[lah shehz]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la chaise')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">chair</span></td></tr><tr><td class="fr-cell">la table</td><td class="pron-cell">[lah tah-bluh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la table')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">table</span></td></tr><tr><td class="fr-cell">le canapé</td><td class="pron-cell">[luh kah-nah-pay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le canapé')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">sofa / couch</span></td></tr><tr><td class="fr-cell">l'armoire</td><td class="pron-cell">[lar-mwahr]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'l&#39;armoire')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">wardrobe</span></td></tr><tr><td class="fr-cell">le bureau</td><td class="pron-cell">[luh boo-roh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le bureau')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">desk</span><span class="en-ex">Le bureau est devant le miroir.</span></td></tr><tr><td class="fr-cell">l'étagère</td><td class="pron-cell">[lay-tah-zhair]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'l&#39;étagère')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">shelf</span></td></tr><tr><td class="fr-cell">le miroir</td><td class="pron-cell">[luh mee-rwahr]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le miroir')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">mirror</span></td></tr><tr><td class="fr-cell">la commode</td><td class="pron-cell">[lah koh-mod]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'la commode')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">dresser</span></td></tr><tr><td class="fr-cell">le tapis</td><td class="pron-cell">[luh tah-pee]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'le tapis')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">rug / carpet</span></td></tr></tbody>
-  </table></div>
-</div><div class="vocab-section">
-  <div class="vocab-section-title">Chores &amp; House Verbs — Les Corvées</div>
-  <div class="vocab-controls">
-    <p>Click any row to reveal its English translation.</p>
-    <button class="toggle-btn" onclick="toggleAll(this,'vt33')" aria-pressed="false">👁 Show all translations</button>
-  </div>
-  <div style="overflow-x:auto;"><table class="vocab-table" id="vt33" role="grid" aria-label="Chores &amp; House Verbs — Les Corvées vocabulary">
-    <thead><tr>
-      <th scope="col">French</th>
-      <th scope="col">Pronunciation</th>
-      <th scope="col" class="th-audio">🔊</th>
-      <th scope="col" class="th-en">English</th>
-    </tr></thead>
-    <tbody><tr><td class="fr-cell">nettoyer</td><td class="pron-cell">[neh-twah-yay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'nettoyer')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to clean</span><span class="en-ex">Je nettoie ma chambre.</span></td></tr><tr><td class="fr-cell">balayer</td><td class="pron-cell">[bah-lay-yay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'balayer')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to sweep</span></td></tr><tr><td class="fr-cell">cuisiner</td><td class="pron-cell">[kwee-zee-nay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'cuisiner')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to cook</span></td></tr><tr><td class="fr-cell">organiser</td><td class="pron-cell">[or-gah-nee-zay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'organiser')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to organize</span></td></tr><tr><td class="fr-cell">faire le ménage</td><td class="pron-cell">[fair luh may-nahzh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'faire le ménage')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to do the housework</span><span class="en-ex">Je fais le ménage le samedi.</span></td></tr><tr><td class="fr-cell">faire la vaisselle</td><td class="pron-cell">[fair lah veh-sell]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'faire la vaisselle')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to do the dishes</span></td></tr><tr><td class="fr-cell">passer l'aspirateur</td><td class="pron-cell">[pah-say las-pee-rah-tur]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'passer l&#39;aspirateur')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to vacuum</span></td></tr><tr><td class="fr-cell">ranger</td><td class="pron-cell">[rahn-zhay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'ranger')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to tidy up</span></td></tr><tr><td class="fr-cell">mettre la table</td><td class="pron-cell">[met-ruh lah tah-bluh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'mettre la table')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to set the table</span></td></tr></tbody>
-  </table></div>
-</div>
-    </div>
-  </div>
-
-</main>
-<footer><a href="fren1001-summer-index.html" style="color:var(--sky);">← Back to Lab Home</a> &nbsp;·&nbsp; FREN 1001 — Lab 3: La Maison</footer>
-<div id="gm-prep" class="gm" role="dialog" aria-modal="true" aria-hidden="true" onclick="closeG('prep')">
-  <div class="gm-panel" onclick="event.stopPropagation()">
-    <button class="gm-close" onclick="closeG('prep')" aria-label="Close">✕</button>
-    <div class="gm-title">Prepositions of Place</div>
-    <div class="gm-sub">Describe where objects are in your room</div>
-    <div class="gm-prep-grid">
-      <div class="prep-card"><strong>sur</strong>on (top of)</div>
-      <div class="prep-card"><strong>sous</strong>under</div>
-      <div class="prep-card"><strong>dans</strong>in / inside</div>
-      <div class="prep-card"><strong>devant</strong>in front of</div>
-      <div class="prep-card"><strong>derrière</strong>behind</div>
-      <div class="prep-card"><strong>à côté de</strong>next to</div>
-      <div class="prep-card"><strong>entre</strong>between</div>
-      <div class="prep-card"><strong>en face de</strong>across from</div>
-      <div class="prep-card"><strong>près de</strong>near</div>
-      <div class="prep-card"><strong>loin de</strong>far from</div>
-    </div>
-    <div class="gm-note">💡 <em>Le lit est près de la fenêtre.</em> — <em>Le bureau est devant le miroir.</em> — <em>Le canapé est entre les deux chaises.</em></div>
-  </div></div>
-<div id="lb" role="dialog" aria-modal="true" aria-label="Image lightbox" onclick="closeLb()">
-  <button id="lb-close" onclick="closeLb()" aria-label="Close image">✕</button>
-  <img id="lb-img" src="" alt="">
-</div>
-<script>
-function tog(btn){const b=btn.nextElementSibling;const o=b.classList.contains('open');btn.setAttribute('aria-expanded',!o);b.classList.toggle('open',!o);}
-function speak(e,t){e.stopPropagation();if(!('speechSynthesis' in window))return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=0.82;u.pitch=1.05;window.speechSynthesis.speak(u);}
 function revealRow(cell){if(!cell.classList.contains('hidden'))return;cell.classList.remove('hidden');}
-function toggleAll(btn,tid){const tbl=document.getElementById(tid);const show=tbl.classList.toggle('translations-shown');btn.textContent=show?'🙈 Hide translations':'👁 Show all translations';btn.setAttribute('aria-pressed',show);if(show){tbl.querySelectorAll('.en-cell').forEach(c=>c.classList.remove('hidden'));}else{tbl.querySelectorAll('.en-cell').forEach(c=>c.classList.add('hidden'));}}
-function openG(id){const m=document.getElementById('gm-'+id);m.removeAttribute('aria-hidden');m.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>m.querySelector('.gm-close').focus(),50);}
-function closeG(id){const m=document.getElementById('gm-'+id);m.setAttribute('aria-hidden','true');m.classList.remove('open');document.body.style.overflow='';}
-function openLb(src){document.getElementById('lb-img').src=src;document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';document.getElementById('lb-close').focus();}
-function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.gm.open').forEach(m=>closeG(m.id.replace('gm-','')));closeLb();}});
-document.querySelectorAll('.img-wrap[tabindex]').forEach(el=>{el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});});
-</script>
-</body>
-</html>
+function toggleAll(btn,tid){
+  var tbl=document.getElementById(tid);
+  var show=tbl.classList.toggle('translations-shown');
+  btn.textContent=show?'\uD83D\uDE48 Hide':'\uD83D\uDC41 Show all';
+  btn.setAttribute('aria-pressed',show);
+  if(show){tbl.querySelectorAll('.en-cell').forEach(function(c){c.classList.remove('hidden');});}
+  else{tbl.querySelectorAll('.en-cell').forEach(function(c){c.classList.add('hidden');});}
+}
+function openModal(id){var m=document.getElementById(id);if(!m)return;m.classList.add('open');m.removeAttribute('aria-hidden');document.body.style.overflow='hidden';setTimeout(function(){var cl=m.querySelector('.modal-close');if(cl)cl.focus();},60);}
+function closeModal(id){var m=document.getElementById(id);if(!m)return;m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+function openLb(src,alt){document.getElementById('lb-img').src=src;document.getElementById('lb-img').alt=alt||'';document.getElementById('lb').classList.add('open');document.getElementById('lb-close').focus();}
+function closeLb(){document.getElementById('lb').classList.remove('open');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.modal.open').forEach(function(m){closeModal(m.id);});closeLb();}});
+document.querySelectorAll('.img-wrap[tabindex]').forEach(function(el){el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});});
+</script></body></html>
