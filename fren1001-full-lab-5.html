@@ -1,236 +1,518 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FREN 1001 — Lab 5 : Révision Complète</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--cream:#f0f7ff;--parchment:#cfe2f3;--navy:#0d2240;--blue:#1a4f7a;--sky:#2471a3;--sky-light:#d6eaf8;--ink:#0d1b2e;--ink-soft:#1e3a5f;--muted:#6b7d93;--gold:#c9a84c;--white:#ffffff;--shadow:0 8px 40px rgba(13,34,64,0.13);--shadow-sm:0 2px 12px rgba(13,34,64,0.08);}
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>FREN 1001 &mdash; Lab 5 : R&eacute;vision Compl&egrave;te</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><style>
+:root{--cream:#f0f7ff;--parch:#cfe2f3;--navy:#0d2240;--blue:#1a4f7a;--sky:#2471a3;
+  --skylt:#d6eaf8;--ink:#0d1b2e;--soft:#1e3a5f;--muted:#4a5f75;--gold:#c9a84c;--white:#fff;
+  --sidebar:300px;--shadow:0 4px 20px rgba(13,34,64,0.12);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 10% 15%,rgba(0,35,149,0.06) 0%,transparent 55%),radial-gradient(ellipse at 90% 85%,rgba(237,41,57,0.04) 0%,transparent 55%);pointer-events:none;z-index:0;}
-a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:3px;}
-.skip-link{position:absolute;top:-40px;left:0;background:var(--gold);color:var(--ink);padding:8px 16px;font-weight:700;z-index:10000;border-radius:0 0 8px 0;transition:top .2s;}
-.skip-link:focus{top:0;}
-header{background:var(--navy);color:var(--cream);padding:36px 48px;display:flex;align-items:center;gap:28px;position:relative;overflow:hidden;z-index:1;}
-.flag{display:flex;gap:5px;align-items:center;}
-.fs{width:6px;height:50px;border-radius:3px;}
+html,body{height:100%;overflow:hidden;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);display:flex;flex-direction:column;}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:3px;}
+header{background:var(--navy);padding:12px 20px;display:flex;align-items:center;gap:16px;
+  flex-shrink:0;z-index:10;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
+.flag{display:flex;gap:4px;align-items:center;flex-shrink:0;}
+.fs{width:4px;height:32px;border-radius:2px;}
 .fs.b{background:#002395;}.fs.w{background:#fff;}.fs.r{background:#ed2939;}
-.htext h1{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;letter-spacing:-1px;line-height:1;}
-.htext h1 em{color:#5dade2;font-style:normal;}
-.htext p{margin-top:6px;font-size:13px;font-weight:300;color:rgba(240,247,255,0.5);letter-spacing:.5px;}
-.hbadge{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
-.lab-num{font-family:'Playfair Display',serif;font-size:72px;font-weight:900;line-height:1;color:#5dade2;letter-spacing:-3px;}
-.mode-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:rgba(201,168,76,0.2);color:#e8c96e;border:1px solid rgba(201,168,76,0.35);}
-.page{max-width:960px;margin:0 auto;padding:44px 28px 80px;position:relative;z-index:1;}
-.slabel{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:28px;}
-.slabel:first-child{margin-top:0;}
-.slabel::after{content:'';flex:1;height:1px;background:var(--parchment);}
-.card{background:var(--white);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px;}
-.card-inner{padding:32px 36px;}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-@media(max-width:640px){.two-col{grid-template-columns:1fr;}header{padding:24px 20px;}.card-inner{padding:24px 20px;}}
-p.bt{font-size:14px;line-height:1.75;color:var(--ink-soft);}
-.steps{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:4px;}
-.steps li{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.65;color:var(--ink-soft);}
-.sn{width:24px;height:24px;min-width:24px;border-radius:50%;background:var(--sky);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;}
-.submit-note{margin-top:14px;font-size:13px;line-height:1.6;color:var(--ink-soft);background:var(--cream);border:1.5px solid var(--parchment);border-radius:8px;padding:10px 14px;}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
-.chip{background:var(--cream);border:1.5px solid var(--parchment);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--ink-soft);}
-.req-acc{border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;margin-top:4px;}
-.req-item{border-bottom:1px solid var(--parchment);}
-.req-item:last-child{border-bottom:none;}
-.req-toggle{width:100%;background:none;border:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:10px;text-align:left;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--ink);transition:background .15s;}
-.req-toggle:hover{background:var(--cream);}
-.req-toggle .arr{margin-left:auto;color:var(--muted);font-size:10px;transition:transform .2s;}
-.req-toggle[aria-expanded="true"] .arr{transform:rotate(180deg);}
-.req-body{display:none;padding:4px 16px 14px 42px;font-size:13px;line-height:1.75;color:var(--ink-soft);}
-.req-body.open{display:block;}
-.req-body ul{padding-left:18px;}
-.req-body li{margin-bottom:4px;}
-.warn{background:#fff5f0;border:1.5px solid #f5c4b0;border-radius:10px;padding:10px 16px;font-size:12px;font-weight:700;color:#8f3f22;text-align:center;letter-spacing:.3px;text-transform:uppercase;margin-top:20px;}
-.img-wrap{border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);}
-.img-wrap img{width:100%;display:block;transition:transform .35s ease;}
-.img-wrap:hover img,.img-wrap:focus img{transform:scale(1.03);}
-.img-wrap:focus{outline:3px solid var(--gold);outline-offset:2px;}
-.img-cap{background:rgba(13,34,64,0.72);color:rgba(255,255,255,0.85);font-size:10px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
-.img-credit-link{color:rgba(255,255,255,0.65);text-decoration:none;font-size:10px;}
-.img-credit-link:hover{color:#fff;text-decoration:underline;}
-.clearfix::after{content:'';display:table;clear:both;}
-.float-right{float:right;margin:0 0 16px 24px;width:230px;}
-/* Grammar button & modal */
-.grammar-btn{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:white;border:none;border-radius:10px;padding:10px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm);}
-.grammar-btn:hover{background:var(--blue);transform:translateY(-1px);}
-.gm{position:fixed;inset:0;background:rgba(13,34,64,0.88);z-index:9999;display:none;align-items:flex-end;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
-.gm.open{display:flex;animation:gmIn .25s ease;}
-@keyframes gmIn{from{opacity:0;}to{opacity:1;}}
-.gm-panel{background:var(--white);border-radius:20px 20px 16px 16px;width:100%;max-width:700px;max-height:80vh;overflow-y:auto;padding:32px 36px;position:relative;animation:panelUp .3s cubic-bezier(.16,1,.3,1);}
-@keyframes panelUp{from{transform:translateY(60px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-.gm-close{position:absolute;top:16px;right:16px;background:var(--cream);border:1.5px solid var(--parchment);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .15s;}
-.gm-close:hover{background:var(--sky);color:white;border-color:var(--sky);}
-.gm-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
-.gm-sub{font-size:13px;color:var(--muted);margin-bottom:22px;}
-.conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-@media(max-width:480px){.conj-grid{grid-template-columns:1fr;}}
-.conj-table{border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;}
-.conj-table caption{background:var(--sky);color:white;font-weight:700;font-size:13px;padding:8px 12px;text-align:left;}
-.conj-table table{width:100%;border-collapse:collapse;}
-.conj-table td{padding:7px 12px;font-size:13px;border-bottom:1px solid var(--parchment);color:var(--ink-soft);}
-.conj-table tr:last-child td{border-bottom:none;}
-.conj-table td:first-child{color:var(--muted);font-size:12px;width:45%;}
-.conj-table td:last-child{font-weight:600;color:var(--blue);}
-.conj-table tr:hover td{background:var(--sky-light);}
-.gm-note{background:var(--sky-light);border:1.5px solid var(--parchment);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--ink-soft);margin-top:16px;line-height:1.65;}
-.gm-prep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:8px;}
-.prep-card{background:var(--sky-light);border:1px solid var(--parchment);border-radius:8px;padding:8px 10px;font-size:12px;color:var(--ink-soft);}
-.prep-card strong{display:block;color:var(--blue);font-size:13px;}
-/* Lightbox */
-#lb{position:fixed;inset:0;background:rgba(10,20,40,0.94);z-index:9998;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
-#lb.open{display:flex;animation:lbIn .2s ease;}
-@keyframes lbIn{from{opacity:0;}to{opacity:1;}}
-#lb img{max-width:min(90vw,800px);max-height:85vh;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,0.6);}
-#lb-close{position:fixed;top:18px;right:22px;color:white;font-size:30px;cursor:pointer;background:none;border:none;opacity:.7;line-height:1;}
-#lb-close:hover,#lb-close:focus{opacity:1;}
-footer{text-align:center;padding:20px;font-size:11px;color:var(--muted);position:relative;z-index:1;}
-/* ── VOCAB TABLE ── */
-.vocab-section{margin-bottom:32px;}
-.vocab-section-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--blue);margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--sky-light);}
-.vocab-controls{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;}
-.vocab-controls p{font-size:12px;color:var(--muted);line-height:1.5;margin:0;}
-.toggle-btn{display:inline-flex;align-items:center;gap:5px;background:var(--sky-light);border:1.5px solid var(--sky);color:var(--blue);border-radius:8px;padding:6px 13px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .18s;white-space:nowrap;}
-.toggle-btn:hover{background:var(--sky);color:white;border-color:var(--sky);}
-.vocab-table{width:100%;border-collapse:collapse;border:1.5px solid var(--parchment);border-radius:12px;overflow:hidden;font-size:13.5px;}
-.vocab-table thead tr{background:var(--sky);}
-.vocab-table th{padding:9px 14px;color:white;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-align:left;}
-.vocab-table th.th-audio{text-align:center;width:48px;}
-.vocab-table th.th-en{width:40%;}
-.vocab-table tbody tr{border-bottom:1px solid var(--parchment);transition:background .12s;}
-.vocab-table tbody tr:last-child{border-bottom:none;}
-.vocab-table tbody tr:hover{background:var(--sky-light);}
-.vocab-table tbody tr:nth-child(even){background:#f5faff;}
-.vocab-table tbody tr:nth-child(even):hover{background:var(--sky-light);}
-.vocab-table td{padding:9px 14px;color:var(--ink-soft);vertical-align:middle;}
-.fr-cell{font-weight:700;color:var(--ink);font-size:14px;}
-.pron-cell{font-size:11px;color:var(--muted);font-style:italic;}
-.audio-cell{text-align:center;}
-.audio-btn{background:none;border:none;cursor:pointer;font-size:17px;padding:3px 5px;border-radius:6px;line-height:1;transition:transform .15s;}
-.audio-btn:hover{transform:scale(1.25);}
-.audio-btn:focus{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px;}
-.en-cell{cursor:pointer;user-select:none;}
-.en-cell .en-text{color:var(--ink-soft);}
-.en-cell .en-ex{font-size:11px;color:var(--muted);font-style:italic;display:block;margin-top:2px;}
-.en-cell.hidden .en-text,.en-cell.hidden .en-ex{display:none;}
-.en-cell.hidden .reveal-hint{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--sky);font-weight:600;}
-.en-cell:not(.hidden) .reveal-hint{display:none;}
-.translations-shown .en-cell.hidden .en-text,.translations-shown .en-cell.hidden .en-ex{display:block;}
-.translations-shown .en-cell.hidden .reveal-hint{display:none;}
-.vocab-note{font-size:12px;color:var(--muted);background:var(--sky-light);border-left:3px solid var(--sky);border-radius:0 6px 6px 0;padding:8px 12px;margin-bottom:12px;line-height:1.6;}
+.htitle{font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:#f5f0e8;}
+.htitle em{color:#5dade2;font-style:normal;}
+.hsub{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:.5px;margin-top:1px;}
+.hbadge{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.q-progress{font-size:11px;font-weight:700;color:rgba(255,255,255,0.55);
+  background:rgba(255,255,255,0.09);padding:4px 10px;border-radius:12px;}
+.mode-pill{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;background:rgba(201,168,76,0.2);
+  color:#e8c96e;border:1px solid rgba(201,168,76,0.35);}
+.layout{display:flex;flex:1;overflow:hidden;min-height:0;}
+/* Sidebar */
+.sidebar{width:var(--sidebar);background:var(--white);border-right:1.5px solid var(--parch);
+  display:flex;flex-direction:column;flex-shrink:0;overflow:hidden;}
+.sb-header{padding:10px 14px;border-bottom:1px solid var(--parch);background:var(--cream);flex-shrink:0;}
+.sb-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.sb-hint{font-size:10px;color:var(--muted);margin-top:2px;font-style:italic;}
+.sb-scroll{flex:1;overflow-y:auto;overscroll-behavior:contain;}
+.topic-group{border-bottom:1px solid var(--parch);}
+.topic-header{width:100%;background:none;border:none;cursor:pointer;
+  padding:9px 14px;display:flex;align-items:center;gap:8px;text-align:left;
+  font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;color:var(--ink);transition:background .15s;}
+.topic-header:hover{background:var(--cream);}
+.th-icon{font-size:13px;flex-shrink:0;}
+.th-label{flex:1;line-height:1.25;}
+.th-code{font-size:10px;font-weight:500;color:var(--muted);display:block;}
+.th-fr{display:none;font-size:12px;font-weight:700;font-style:italic;}
+.th-label.revealed .th-fr{display:block;}
+.th-label.revealed .th-code{display:none;}
+.th-arr{font-size:9px;color:var(--muted);transition:transform .2s;flex-shrink:0;margin-left:4px;}
+.topic-header.open .th-arr{transform:rotate(180deg);}
+.topic-qs{display:none;}
+.topic-qs.open{display:block;}
+.q-item{width:100%;background:none;border:none;cursor:pointer;
+  padding:6px 14px 6px 34px;display:flex;align-items:center;gap:8px;
+  text-align:left;font-family:'DM Sans',sans-serif;font-size:11.5px;color:var(--soft);
+  transition:background .12s;border-left:3px solid transparent;}
+.q-item:hover{background:var(--cream);}
+.q-item.active{border-left-color:var(--sky);background:var(--skylt);font-weight:600;color:var(--navy);}
+.q-num{font-size:10px;font-weight:700;background:var(--cream);border:1px solid var(--parch);
+  border-radius:20px;padding:1px 6px;flex-shrink:0;color:var(--muted);white-space:nowrap;}
+.q-item.active .q-num{background:var(--sky);border-color:var(--sky);color:white;}
+.q-check{width:14px;height:14px;border:1.5px solid var(--parch);border-radius:3px;
+  margin-left:auto;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:9px;transition:all .15s;}
+.q-item.checked .q-num{background:#166534;border-color:#166534;color:white;}
+.q-item.checked .q-check{background:#166534;border-color:#166534;color:white;}
+/* Main */
+.main{flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden;}
+.video-area{background:#08111e;flex-shrink:0;display:flex;align-items:center;
+  justify-content:center;position:relative;}
+.video-area video{max-width:100%;width:100%;display:block;object-fit:contain;}
+.map-panel{display:none;position:absolute;inset:0;background:#08111e;
+  flex-direction:column;align-items:center;justify-content:center;padding:10px;gap:6px;}
+.map-panel.visible{display:flex;}
+.map-panel img{max-width:100%;max-height:calc(100% - 32px);border-radius:6px;object-fit:contain;}
+.map-caption{font-size:10px;color:rgba(255,255,255,0.45);font-style:italic;}
+.map-toggle-btn{position:absolute;bottom:8px;right:8px;background:rgba(124,58,237,0.9);
+  color:white;border:none;border-radius:7px;padding:5px 11px;font-size:11px;
+  font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;z-index:5;
+  display:none;align-items:center;gap:5px;}
+.content-area{flex:1;overflow-y:auto;padding:14px 18px;background:var(--cream);min-height:0;}
+/* Question display */
+.q-display{background:var(--white);border-radius:12px;padding:14px 18px;
+  margin-bottom:10px;box-shadow:var(--shadow);}
+.qd-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.qd-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:12px;font-weight:700;color:white;flex-shrink:0;}
+.qd-topic-label{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+.qd-placeholder{font-size:13px;color:var(--muted);font-style:italic;line-height:1.6;padding:4px 0;}
+.qd-fr-box{display:none;font-size:15px;font-style:italic;color:var(--blue);line-height:1.65;
+  padding:12px 15px;background:var(--skylt);border-radius:8px;border-left:3px solid var(--sky);margin-top:8px;}
+.qd-fr-box.visible{display:block;}
+.map-note{background:#ede9fe;border:1.5px solid #c4b5fd;border-radius:8px;
+  padding:9px 13px;font-size:12px;color:#3b0764;line-height:1.6;margin-top:8px;}
+.reveal-row{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.reveal-btn{display:inline-flex;align-items:center;gap:5px;background:none;
+  border:1.5px solid var(--parch);border-radius:7px;padding:6px 13px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:700;color:var(--muted);transition:all .15s;}
+.reveal-btn:hover{border-color:var(--sky);color:var(--blue);}
+.reveal-btn.revealed{background:var(--skylt);border-color:var(--sky);color:var(--blue);}
+.select-btn{display:inline-flex;align-items:center;gap:5px;background:none;
+  border:1.5px solid #b6d9c8;border-radius:7px;padding:6px 13px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:700;color:#166534;transition:all .15s;}
+.select-btn:hover,.select-btn.selected{background:#dcfce7;border-color:#166534;}
+.hint-text{font-size:10.5px;color:var(--muted);font-style:italic;}
+/* Nav */
+.nav-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.nav-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border:none;
+  border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;transition:all .18s;}
+.nav-btn.prev{background:var(--cream);border:1.5px solid var(--parch);color:var(--muted);}
+.nav-btn.prev:hover:not(:disabled){background:var(--skylt);border-color:var(--sky);color:var(--blue);}
+.nav-btn.next{background:var(--sky);color:white;}
+.nav-btn.next:hover:not(:disabled){background:var(--blue);}
+.nav-btn:disabled{opacity:.4;cursor:not-allowed;}
+/* Submission */
+.sub-card{background:var(--white);border-radius:12px;padding:14px 18px;
+  box-shadow:var(--shadow);border-left:4px solid #0f766e;}
+.sub-card h3{font-size:13px;font-weight:700;color:#0f5450;margin-bottom:6px;
+  display:flex;align-items:center;gap:6px;}
+.sub-counter{font-size:11px;font-weight:500;color:var(--muted);margin-left:auto;}
+.selected-list{font-size:12px;color:var(--soft);line-height:1.7;margin:4px 0 8px;}
+.gen-btn{display:inline-flex;align-items:center;gap:5px;background:#0f766e;color:white;
+  border:none;border-radius:7px;padding:7px 14px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;transition:all .15s;}
+.gen-btn:hover:not(:disabled){background:#0d5e58;}
+.gen-btn:disabled{opacity:.45;cursor:not-allowed;}
+.sub-script{background:#f0faf9;border:1.5px solid #99d6cc;border-radius:8px;
+  padding:12px 15px;font-size:13px;color:#0d2240;margin-top:10px;line-height:1.65;display:none;}
+.sub-script.visible{display:block;}
+.bongo-note{font-size:11px;color:var(--muted);margin-top:10px;line-height:1.55;}
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(13,34,64,0.88);z-index:9999;
+  display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px);}
+.modal.open{display:flex;animation:mIn .22s ease;}
+@keyframes mIn{from{opacity:0;}to{opacity:1;}}
+.modal-panel{background:#fff;border-radius:16px;width:100%;max-width:540px;
+  max-height:90vh;overflow-y:auto;padding:24px 28px;position:relative;
+  animation:mUp .25s cubic-bezier(.16,1,.3,1);}
+@keyframes mUp{from{transform:translateY(30px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.modal-close{position:absolute;top:12px;right:12px;background:var(--cream);
+  border:1.5px solid var(--parch);border-radius:50%;width:28px;height:28px;cursor:pointer;
+  font-size:14px;display:flex;align-items:center;justify-content:center;color:var(--muted);}
+.modal-close:hover{background:var(--sky);color:white;}
+.modal-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.modal-sub{font-size:12px;color:var(--muted);margin-bottom:14px;}
+.bongo-tip{display:flex;gap:10px;background:#f0faf9;border:1.5px solid #99d6cc;
+  border-radius:8px;padding:9px 12px;margin-bottom:7px;font-size:12px;line-height:1.6;color:#0d2240;}
+.bt-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
+.bongo-s-title{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0f766e;margin:10px 0 6px;}
+footer{padding:6px;text-align:center;font-size:10px;color:var(--muted);
+  background:var(--white);border-top:1px solid var(--parch);flex-shrink:0;}
+footer a{color:var(--blue);font-weight:600;text-decoration:none;}
+.conj-table td:nth-child(2){font-weight:600;color:var(--blue);}.conj-table td:nth-child(3){font-size:11px;color:var(--muted);font-style:italic;font-weight:400;padding-left:6px;}.conj-table td:last-child{font-weight:normal;color:var(--muted);}.prep-pron{display:block;font-size:10px;color:var(--muted);font-style:italic;margin-top:2px;}</style></head><body><header role="banner"><div class="flag" role="img" aria-label="French flag"><div class="fs b"></div><div class="fs w"></div><div class="fs r"></div></div><div><div class="htitle">FREN <em>1001</em></div><div class="hsub">R&eacute;vision &mdash; Labs 1–4</div></div><div class="hbadge"><span id="q-progress" class="q-progress">Q1 / 47</span><span class="mode-pill">&#x1F64B; Individual Activity</span></div></header><div class="layout"><nav class="sidebar" aria-label="Question navigator"><div class="sb-header"><div class="sb-title">Questions</div><div class="sb-hint">Reveal a question to see the topic title in French</div></div><div class="sb-scroll"><div class="topic-group" data-tid="1"><button class="topic-header" data-tid="1" onclick="toggleTopic(1)" aria-expanded="false"><span class="th-icon">👋</span><div class="th-label"><span class="th-code">Topic 1 &nbsp;&middot;&nbsp; Q1-2</span><span class="th-fr">Bonjour ! Ça va ?</span></div><span class="th-arr">&#x25BC;</span></button><div class="topic-qs" id="tqs-1"><button class="q-item" data-qn="1" onclick="selectQ(1)" aria-label="Question 1"><span class="q-num">1</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="2" onclick="selectQ(2)" aria-label="Question 2"><span class="q-num">2</span><span class="q-check" aria-hidden="true"></span></button></div></div><div class="topic-group" data-tid="2"><button class="topic-header" data-tid="2" onclick="toggleTopic(2)" aria-expanded="false"><span class="th-icon">👨‍👩‍👧</span><div class="th-label"><span class="th-code">Topic 2 &nbsp;&middot;&nbsp; Q3-7</span><span class="th-fr">Ma famille</span></div><span class="th-arr">&#x25BC;</span></button><div class="topic-qs" id="tqs-2"><button class="q-item" data-qn="3" onclick="selectQ(3)" aria-label="Question 3"><span class="q-num">3</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="4" onclick="selectQ(4)" aria-label="Question 4"><span class="q-num">4</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="5" onclick="selectQ(5)" aria-label="Question 5"><span class="q-num">5</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="6" onclick="selectQ(6)" aria-label="Question 6"><span class="q-num">6</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="7" onclick="selectQ(7)" aria-label="Question 7"><span class="q-num">7</span><span class="q-check" aria-hidden="true"></span></button></div></div><div class="topic-group" data-tid="3"><button class="topic-header" data-tid="3" onclick="toggleTopic(3)" aria-expanded="false"><span class="th-icon">🏠</span><div class="th-label"><span class="th-code">Topic 3 &nbsp;&middot;&nbsp; Q8-10</span><span class="th-fr">Ma maison</span></div><span class="th-arr">&#x25BC;</span></button><div class="topic-qs" id="tqs-3"><button class="q-item" data-qn="8" onclick="selectQ(8)" aria-label="Question 8"><span class="q-num">8</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="9" onclick="selectQ(9)" aria-label="Question 9"><span class="q-num">9</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="10" onclick="selectQ(10)" aria-label="Question 10"><span class="q-num">10</span><span class="q-check" aria-hidden="true"></span></button></div></div><div class="topic-group" data-tid="4"><button class="topic-header" data-tid="4" onclick="toggleTopic(4)" aria-expanded="false"><span class="th-icon">🧹</span><div class="th-label"><span class="th-code">Topic 4 &nbsp;&middot;&nbsp; Q11-14</span><span class="th-fr">Le ménage</span></div><span class="th-arr">&#x25BC;</span></button><div class="topic-qs" id="tqs-4"><button class="q-item" data-qn="11" onclick="selectQ(11)" aria-label="Question 11"><span class="q-num">11</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="12" onclick="selectQ(12)" aria-label="Question 12"><span class="q-num">12</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="13" onclick="selectQ(13)" aria-label="Question 13"><span class="q-num">13</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="14" onclick="selectQ(14)" aria-label="Question 14"><span class="q-num">14</span><span class="q-check" aria-hidden="true"></span></button></div></div><div class="topic-group" data-tid="5"><button class="topic-header" data-tid="5" onclick="toggleTopic(5)" aria-expanded="false"><span class="th-icon">🎓</span><div class="th-label"><span class="th-code">Topic 5 &nbsp;&middot;&nbsp; Q15-26</span><span class="th-fr">Mes cours</span></div><span class="th-arr">&#x25BC;</span></button><div class="topic-qs" id="tqs-5"><button class="q-item" data-qn="15" onclick="selectQ(15)" aria-label="Question 15"><span class="q-num">15</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="16" onclick="selectQ(16)" aria-label="Question 16"><span class="q-num">16</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="17" onclick="selectQ(17)" aria-label="Question 17"><span class="q-num">17</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="18" onclick="selectQ(18)" aria-label="Question 18"><span class="q-num">18</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="19" onclick="selectQ(19)" aria-label="Question 19"><span class="q-num">19</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="20" onclick="selectQ(20)" aria-label="Question 20"><span class="q-num">20</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="21" onclick="selectQ(21)" aria-label="Question 21"><span class="q-num">21</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="22" onclick="selectQ(22)" aria-label="Question 22"><span class="q-num">22</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="23" onclick="selectQ(23)" aria-label="Question 23"><span class="q-num">23</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="24" onclick="selectQ(24)" aria-label="Question 24"><span class="q-num">24</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="25" onclick="selectQ(25)" aria-label="Question 25"><span class="q-num">25</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="26" onclick="selectQ(26)" aria-label="Question 26"><span class="q-num">26</span><span class="q-check" aria-hidden="true"></span></button></div></div><div class="topic-group" data-tid="6"><button class="topic-header" data-tid="6" onclick="toggleTopic(6)" aria-expanded="false"><span class="th-icon">⚽</span><div class="th-label"><span class="th-code">Topic 6 &nbsp;&middot;&nbsp; Q27-33</span><span class="th-fr">Les loisirs et le travail</span></div><span class="th-arr">&#x25BC;</span></button><div class="topic-qs" id="tqs-6"><button class="q-item" data-qn="27" onclick="selectQ(27)" aria-label="Question 27"><span class="q-num">27</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="28" onclick="selectQ(28)" aria-label="Question 28"><span class="q-num">28</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="29" onclick="selectQ(29)" aria-label="Question 29"><span class="q-num">29</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="30" onclick="selectQ(30)" aria-label="Question 30"><span class="q-num">30</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="31" onclick="selectQ(31)" aria-label="Question 31"><span class="q-num">31</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="32" onclick="selectQ(32)" aria-label="Question 32"><span class="q-num">32</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="33" onclick="selectQ(33)" aria-label="Question 33"><span class="q-num">33</span><span class="q-check" aria-hidden="true"></span></button></div></div><div class="topic-group" data-tid="7"><button class="topic-header" data-tid="7" onclick="toggleTopic(7)" aria-expanded="false"><span class="th-icon">🗺️</span><div class="th-label"><span class="th-code">Topic 7 &nbsp;&middot;&nbsp; Q34</span><span class="th-fr">Les directions</span></div><span class="th-arr">&#x25BC;</span></button><div class="topic-qs" id="tqs-7"><button class="q-item" data-qn="34" onclick="selectQ(34)" aria-label="Question 34"><span class="q-num">34</span><span class="q-check" aria-hidden="true"></span></button></div></div><div class="topic-group" data-tid="8"><button class="topic-header" data-tid="8" onclick="toggleTopic(8)" aria-expanded="false"><span class="th-icon">🌤️</span><div class="th-label"><span class="th-code">Topic 8 &nbsp;&middot;&nbsp; Q35-40</span><span class="th-fr">Le temps</span></div><span class="th-arr">&#x25BC;</span></button><div class="topic-qs" id="tqs-8"><button class="q-item" data-qn="35" onclick="selectQ(35)" aria-label="Question 35"><span class="q-num">35</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="36" onclick="selectQ(36)" aria-label="Question 36"><span class="q-num">36</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="37" onclick="selectQ(37)" aria-label="Question 37"><span class="q-num">37</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="38" onclick="selectQ(38)" aria-label="Question 38"><span class="q-num">38</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="39" onclick="selectQ(39)" aria-label="Question 39"><span class="q-num">39</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="40" onclick="selectQ(40)" aria-label="Question 40"><span class="q-num">40</span><span class="q-check" aria-hidden="true"></span></button></div></div><div class="topic-group" data-tid="9"><button class="topic-header" data-tid="9" onclick="toggleTopic(9)" aria-expanded="false"><span class="th-icon">🍽️</span><div class="th-label"><span class="th-code">Topic 9 &nbsp;&middot;&nbsp; Q41-47</span><span class="th-fr">À table !</span></div><span class="th-arr">&#x25BC;</span></button><div class="topic-qs" id="tqs-9"><button class="q-item" data-qn="41" onclick="selectQ(41)" aria-label="Question 41"><span class="q-num">41</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="42" onclick="selectQ(42)" aria-label="Question 42"><span class="q-num">42</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="43" onclick="selectQ(43)" aria-label="Question 43"><span class="q-num">43</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="44" onclick="selectQ(44)" aria-label="Question 44"><span class="q-num">44</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="45" onclick="selectQ(45)" aria-label="Question 45"><span class="q-num">45</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="46" onclick="selectQ(46)" aria-label="Question 46"><span class="q-num">46</span><span class="q-check" aria-hidden="true"></span></button><button class="q-item" data-qn="47" onclick="selectQ(47)" aria-label="Question 47"><span class="q-num">47</span><span class="q-check" aria-hidden="true"></span></button></div></div></div></nav><div class="main"><div class="video-area" style="height:40vh;"><video id="main-video" controls preload="metadata" style="height:100%;" aria-label="Question video">Your browser does not support video.</video><div id="map-panel" class="map-panel" role="region" aria-label="Map of Paris"><img src="/content/enforced1/3443910-FRN1001Template-Online/lab-6-videos/paris-map.jpg" alt="Map of Paris showing arrondissements and major landmarks for directions practice" style="max-height:calc(40vh - 40px);"><div class="map-caption">Paris map &mdash; give directions between two locations in French</div></div><button id="map-toggle" class="map-toggle-btn" onclick="toggleMap()">&#x1F5FA; Show Paris Map</button></div><div class="content-area"><div class="q-display"><div class="qd-top"><div class="qd-num" id="qd-num" style="background:var(--sky);">1</div><div class="qd-topic-label" id="qd-topic-label" style="color:var(--sky);">&#x1F44B; Topic 1</div></div><p class="qd-placeholder" id="qd-placeholder">Listen to the question, try to answer it out loud, then click <strong>Reveal Question</strong> to check.</p><div class="qd-fr-box" id="qd-fr-box"></div><div class="map-note" id="qd-map-note" style="display:none;">&#x1F5FA; <strong>Directions activity:</strong> After answering the language question above, click <em>Show Paris Map</em>. Choose two places and give directions in French: <em>Pour aller de [A] &agrave; [B], tu prends..., tu tournes &agrave; gauche sur..., tu continues jusqu&rsquo;&agrave;...</em></div><div class="reveal-row"><button class="reveal-btn" id="reveal-btn" onclick="toggleReveal()">&#x1F441; Reveal Question</button><button class="select-btn" id="select-btn" onclick="toggleSelect()">+ Add to My List</button><span class="hint-text">Use &#x2190; &#x2192; arrow keys to navigate</span></div></div><div class="nav-row"><button class="nav-btn prev" id="btn-prev" onclick="if(currentQ>1)selectQ(currentQ-1)" disabled>&#x2190; Previous</button><button class="nav-btn next" id="btn-next" onclick="if(currentQ<47)selectQ(currentQ+1)">Next &#x2192;</button><button class="nav-btn" style="background:#0f766e;color:white;margin-left:auto;" onclick="openModal('modal-bongo')">&#x1F527; Bongo Help</button></div><div class="sub-card"><h3>&#x1F4CB; My Question List <span class="sub-counter" id="sub-counter">0 selected (5 minimum)</span></h3><p class="selected-list" id="selected-list">No questions selected yet. Click &ldquo;+ Add to My List&rdquo; as you practice each question.</p><button class="gen-btn" id="gen-btn" onclick="generateScript()" disabled>&#x1F3AC; Generate My Bongo Introduction</button><div class="sub-script" id="sub-script"></div><p class="bongo-note">&#x1F4A1; <strong>How to submit:</strong> Practice here as many times as you want. When you are ready, click <strong>Lab 5: Video Assignment</strong> at the top of this D2L page to open Bongo. Start your video by reading the introduction above &mdash; this tells the grader exactly which questions you answered. Then respond to each one in order.</p></div></div></div></div><footer>FREN 1001 &mdash; Lab 5 : R&eacute;vision Compl&egrave;te</footer><div id="modal-bongo" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+<div class="modal-panel">
+<button class="modal-close" onclick="closeModal('modal-bongo')" aria-label="Close">&#x2715;</button>
+<div class="modal-title">&#x1F527; Bongo Troubleshooting</div>
+<div class="modal-sub">Try these steps before contacting the Language Lab</div>
+<div class="bongo-tip"><span class="bt-icon">&#x1F4BB;</span><div><strong>Use Google Chrome on a laptop or desktop.</strong> iPads and tablets are not fully supported for recording in Bongo.</div></div>
+<div class="bongo-tip"><span class="bt-icon">&#x1F513;</span><div>Make sure your browser has <strong>camera and microphone permissions</strong> allowed for this site.</div></div>
+<div class="bongo-tip"><span class="bt-icon">&#x1F5D1;&#xFE0F;</span><div>Clear your browser <strong>cache and cookies</strong>, then refresh the page.</div></div>
+<div class="bongo-tip"><span class="bt-icon">&#x1F576;&#xFE0F;</span><div>Try opening Bongo in a <strong>Chrome Incognito window</strong>.</div></div>
+<div class="bongo-s-title">Still not working?</div>
+<div class="bongo-tip"><span class="bt-icon">&#x2753;</span><div>Visit the <a href="https://bongolearn.zendesk.com/hc/en-us/articles/360009373374" target="_blank" rel="noopener" style="color:#0f766e;font-weight:700;">Bongo Help Center</a> for detailed steps.</div></div>
+<div class="bongo-tip" style="background:#fff5f0;border-color:#f5c4b0;"><span class="bt-icon">&#x1F4EC;</span><div>Contact the Language Lab <strong>before the deadline</strong> if you cannot resolve the issue.</div></div>
+</div></div><script>const VBASE = '/content/enforced1/3443910-FRN1001Template-Online/lab-6-videos';
 
-header::after{content:'RÉVISION FINALE';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:90px;font-weight:900;color:rgba(255,255,255,0.03);letter-spacing:-3px;pointer-events:none;white-space:nowrap;}
-</style>
-</head>
-<body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<header role="banner">
-  <div class="flag" role="img" aria-label="French flag"><div class="fs b"></div><div class="fs w"></div><div class="fs r"></div></div>
-  <div class="htext"><h1>FREN <em>1001</em></h1><p>Introductory French — Language Lab</p></div>
-  <div class="hbadge" aria-label="Lab 5, Individual Activity">
-    <div class="lab-num" aria-hidden="true">5</div>
-    <span class="mode-pill">🙋 Individual Activity</span>
-  </div>
-</header>
-<main class="page" id="main-content">
+// Question data (French text, file extension, topic id)
+const QDB = {
+  1:{n:1,fr:"Comment t\u2019appelles-tu\u00a0? Comment \u00e7a va aujourd\u2019hui\u00a0?",ext:"webm",tid:1},
+  2:{n:2,fr:"En quelle ann\u00e9e est-ce que tu es n\u00e9(e)\u00a0?",ext:"webm",tid:1},
+  3:{n:3,fr:"Comment est ta famille\u00a0?",ext:"webm",tid:2},
+  4:{n:4,fr:"Fais une description de ton p\u00e8re / ta m\u00e8re / ton fr\u00e8re / ta s\u0153ur.",ext:"mp4",tid:2},
+  5:{n:5,fr:"Quel \u00e2ge a ton p\u00e8re / ta m\u00e8re / etc.\u00a0? Quel \u00e2ge est-ce que tu as\u00a0?",ext:"mp4",tid:2},
+  6:{n:6,fr:"Est-ce que tu as des cousins et des cousines\u00a0? Combien\u00a0?",ext:"webm",tid:2},
+  7:{n:7,fr:"Quelles sont les origines de ta famille\u00a0?",ext:"webm",tid:2},
+  8:{n:8,fr:"Est-ce que tu habites dans une maison ou un appartement\u00a0?",ext:"webm",tid:3},
+  9:{n:9,fr:"Comment est ta maison / appartement\u00a0? Parle-moi d\u2019o\u00f9 tu habites\u00a0: quelles sont les pi\u00e8ces, les meubles, adjectifs (grand/petit, confortable, couleurs, etc.)\u00a0? Donne le maximum de d\u00e9tails\u00a0!",ext:"mp4",tid:3},
+  10:{n:10,fr:"Qu\u2019est-ce qu\u2019il y a dans ta chambre\u00a0?",ext:"webm",tid:3},
+  11:{n:11,fr:"Est-ce que tu aimes faire la vaisselle\u00a0?",ext:"webm",tid:4},
+  12:{n:12,fr:"Quelle(s) t\u00e2che(s) m\u00e9nag\u00e8re(s) est-ce que tu aimes faire\u00a0?",ext:"webm",tid:4},
+  13:{n:13,fr:"Qui fait le m\u00e9nage / la vaisselle / la cuisine / etc. chez toi\u00a0?",ext:"mp4",tid:4},
+  14:{n:14,fr:"Quelles t\u00e2ches m\u00e9nag\u00e8res fais-tu r\u00e9guli\u00e8rement chez toi\u00a0?",ext:"webm",tid:4},
+  15:{n:15,fr:"Quel type d\u2019\u00e9tudiant(e) es-tu\u00a0? Comment est ta personnalit\u00e9\u00a0? Et la personnalit\u00e9 de ton/ta meilleur(e) ami(e)\u00a0?",ext:"mp4",tid:5},
+  16:{n:16,fr:"Qu\u2019est-ce que tu \u00e9tudies ce semestre\u00a0?",ext:"webm",tid:5},
+  17:{n:17,fr:"Quel(s) jour(s) est le cours de fran\u00e7ais\u00a0?",ext:"webm",tid:5},
+  18:{n:18,fr:"Quels jours est-ce que tu n\u2019as pas cours\u00a0?",ext:"webm",tid:5},
+  19:{n:19,fr:"\u00c0 quelle heure commencent tes cours ce semestre\u00a0?",ext:"webm",tid:5},
+  20:{n:20,fr:"\u00c0 quelle heure est-ce que tu es parti(e) de chez toi pour aller sur le campus\u00a0?",ext:"mp4",tid:5},
+  21:{n:21,fr:"\u00c0 quelle heure est-ce que tu travailles / \u00e9tudies / regardes la t\u00e9l\u00e9 / etc.\u00a0?",ext:"mp4",tid:5},
+  22:{n:22,fr:"Quels cours est-ce que tu as ce semestre\u00a0?",ext:"webm",tid:5},
+  23:{n:23,fr:"Quels cours est-ce que tu vas choisir pour le semestre prochain\u00a0?",ext:"mp4",tid:5},
+  24:{n:24,fr:"Est-ce que tu aimes faire des activit\u00e9s culturelles\u00a0? Lesquelles\u00a0?",ext:"mp4",tid:5},
+  25:{n:25,fr:"Quand tu vas finir l\u2019universit\u00e9, quel job est-ce que tu voudrais faire\u00a0?",ext:"mp4",tid:5},
+  26:{n:26,fr:"Travailles-tu\u00a0? O\u00f9\u00a0? Quelles sont les t\u00e2ches ou les responsabilit\u00e9s de ton travail\u00a0?",ext:"mp4",tid:5},
+  27:{n:27,fr:"Qu\u2019est-ce que tu as fait hier soir\u00a0?",ext:"webm",tid:6},
+  28:{n:28,fr:"Est-ce que tu es sorti(e) ce week-end\u00a0? Qu\u2019est-ce que tu as fait\u00a0?",ext:"mp4",tid:6},
+  29:{n:29,fr:"Qu\u2019est-ce que tu vas faire cet \u00e9t\u00e9 / le week-end prochain / apr\u00e8s les examens\u2026\u00a0?",ext:"mp4",tid:6},
+  30:{n:30,fr:"Qu\u2019est-ce que tu vas faire pendant les vacances d\u2019\u00e9t\u00e9\u00a0? Tu vas voyager\u00a0? O\u00f9\u00a0? Tu vas rester ici\u00a0?",ext:"mp4",tid:6},
+  31:{n:31,fr:"Imagine que tu vas \u00e0 Paris\u00a0? Comment est-ce que tu vas pr\u00e9parer le voyage\u00a0?",ext:"mp4",tid:6},
+  32:{n:32,fr:"Quels moyens de transports sont disponibles dans ta ville\u00a0?",ext:"webm",tid:6},
+  33:{n:33,fr:"Quelles activit\u00e9s est-ce que tu peux faire dans ta ville\u00a0?",ext:"webm",tid:6},
+  34:{n:34,fr:"Est-ce que tu peux parler une autre langue que l\u2019anglais ou le fran\u00e7ais\u00a0?",ext:"mp4",tid:7},
+  35:{n:35,fr:"Quel temps fait-il aujourd\u2019hui\u00a0?",ext:"webm",tid:8},
+  36:{n:36,fr:"Quel temps va-t-il faire demain\u00a0?",ext:"webm",tid:8},
+  37:{n:37,fr:"Quel temps est-ce qu\u2019il a fait hier\u00a0?",ext:"webm",tid:8},
+  38:{n:38,fr:"Quel temps fait-il en G\u00e9orgie au printemps\u00a0? En \u00e9t\u00e9\u00a0? En automne\u00a0? En hiver\u00a0?",ext:"mp4",tid:8},
+  39:{n:39,fr:"Quels mois constituent le printemps\u00a0? L\u2019\u00e9t\u00e9\u00a0? L\u2019automne\u00a0? L\u2019hiver\u00a0?",ext:"mp4",tid:8},
+  40:{n:40,fr:"Quelle saison pr\u00e9f\u00e8res-tu\u00a0? Pourquoi\u00a0? Quelles activit\u00e9s aimes-tu faire en cette saison\u00a0?",ext:"mp4",tid:8},
+  41:{n:41,fr:"Qu\u2019est-ce que tu as mang\u00e9 pour le d\u00eener\u00a0? Le d\u00e9jeuner\u00a0? Le petit-d\u00e9jeuner\u00a0?",ext:"mp4",tid:9},
+  42:{n:42,fr:"Qu\u2019est-ce que tu aimes manger\u00a0? Boire\u00a0?",ext:"webm",tid:9},
+  43:{n:43,fr:"Est-ce que tu aimes cuisiner\u00a0?",ext:"webm",tid:9},
+  44:{n:44,fr:"Est-ce que tu as un plat sp\u00e9cial que tu cuisines souvent\u00a0?",ext:"webm",tid:9},
+  45:{n:45,fr:"Quelle est ta recette favorite\u00a0? Quels sont les ingr\u00e9dients\u00a0? Comment est-ce que tu pr\u00e9pares la recette\u00a0?",ext:"mp4",tid:9},
+  46:{n:46,fr:"Est-ce que tu aimes la pizza\u00a0? Quels ingr\u00e9dients aimes-tu sur une pizza\u00a0?",ext:"mp4",tid:9},
+  47:{n:47,fr:"Quelle est ta cuisine favorite\u00a0?",ext:"webm",tid:9}
+};
 
-  <div class="card">
-    <div class="card-inner clearfix">
-      <div style="margin-bottom:6px;"><span style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);">Révision — Labs 1–5</span></div>
-      <h2 style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;font-style:italic;letter-spacing:-0.5px;color:var(--ink);">Révision Complète</h2>
-      <div style="margin-top:22px;" class="clearfix">
-        <div class="float-right img-wrap" role="button" tabindex="0" aria-label="Enlarge image — click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-6-image-1.jpg')">
-          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-6-image-1.jpg" alt="Young man sitting on a brick sidewalk reading a book" loading="lazy">
-          <div class="img-cap"><span>Click to enlarge</span><a href="https://unsplash.com/photos/a-man-sitting-on-a-brick-sidewalk-reading-a-book-Qc7BB9E0lMc" target="_blank" rel="noopener" class="img-credit-link">Photo: Brice Cooper · Unsplash</a></div>
-        </div>
-        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">📝</span>Summary &amp; Context</div>
-        <p class="bt">This is your comprehensive review lab. Watch all four review videos in D2L, then create your final video summarizing what you've learned throughout the course.</p>
-        <p class="bt" style="margin-top:10px;">Create a 2-minute video covering topics from the course. Answer at least 5 review questions and ask 2 questions to your professor. End with a warm farewell.</p>
-      </div>
-    </div>
-  </div>
+const TOPICS = {
+  1:{id:1,fr:"Bonjour\u00a0! \u00c7a va\u00a0?",icon:"👋",color:"#1a4f7a",bg:"#d6eaf8"},
+  2:{id:2,fr:"Ma famille",icon:"👨\u200d👩\u200d👧",color:"#5b2d8e",bg:"#ede7f6"},
+  3:{id:3,fr:"Ma maison",icon:"🏠",color:"#0f766e",bg:"#ccfbf1"},
+  4:{id:4,fr:"Le m\u00e9nage",icon:"🧹",color:"#b45309",bg:"#fef3c7"},
+  5:{id:5,fr:"Mes cours",icon:"🎓",color:"#1a4f7a",bg:"#dbeafe"},
+  6:{id:6,fr:"Les loisirs et le travail",icon:"⚽",color:"#166534",bg:"#dcfce7"},
+  7:{id:7,fr:"Les directions",icon:"🗺️",color:"#7c3aed",bg:"#ede9fe"},
+  8:{id:8,fr:"Le temps",icon:"🌤️",color:"#0369a1",bg:"#e0f2fe"},
+  9:{id:9,fr:"\u00c0 table\u00a0!",icon:"🍽️",color:"#be185d",bg:"#fce7f3"}
+};
 
-  <div class="two-col">
-    <div class="card">
-      <div class="card-inner">
-        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">🚦</span>Process</div>
-        <ol class="steps" aria-label="Recording steps">
-          <li><span class="sn" aria-hidden="true">1</span>Study the vocabulary table and grammar below.</li>
-          <li><span class="sn" aria-hidden="true">2</span>Practice speaking out loud — many times!</li>
-          <li><span class="sn" aria-hidden="true">3</span>Record via Zoom or phone (MP4 or MOV).</li>
-          <li><span class="sn" aria-hidden="true">4</span>Upload to your D2L Assignment Folder.</li>
-        </ol>
-        <p class="submit-note">📂 To submit, click <strong>Lab #5</strong> above these instructions, or find it in your <strong>D2L Assignment Folder</strong>.</p>
-        <div class="slabel"><span aria-hidden="true">📦</span>What You Will Need</div>
-        <ul class="chips" aria-label="Materials needed">
-          <li class="chip">🎥 Zoom or phone/computer</li>
-          <li class="chip">🎞️ MP4 or MOV format</li>
-        </ul>
-        <div style="margin-top:22px;" class="img-wrap" role="button" tabindex="0" aria-label="Enlarge image — click to view full size" onclick="openLb('https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-6-image-2.jpg')">
-          <img src="https://junnynoh-tech.github.io/fren1001/images/fren1001-lab-6-image-2.jpg" alt="Students talking and laughing together in a university lecture hall" loading="lazy">
-          <div class="img-cap"><span>Click to enlarge</span><a href="https://unsplash.com/photos/students-talking-in-a-lecture-hall-during-class-9faEJgSvmjc" target="_blank" rel="noopener" class="img-credit-link">Photo: Vitaly Gariev · Unsplash</a></div>
-        </div>
-        <div class="slabel"><span aria-hidden="true">🎬</span>Review Videos — D2L</div><p class="bt" style="font-size:13px;">Log into <strong>D2L</strong> and watch all four review videos before recording your final video.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-inner">
-        <div class="slabel" style="margin-top:0;"><span aria-hidden="true">✅</span>Requirements</div>
-        <div class="req-acc" role="list"><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">🎬</span>Watch the review videos<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region">Log into D2L and watch <strong>all four review videos</strong> before recording.</div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📏</span>Video basics<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region"><ul><li><strong>2 minutes</strong> long</li><li>Face visible</li></ul></div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">📋</span>Content<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region"><ul><li>Cover topics from the course: greetings, family, home, classes, leisure, future plans, weather</li><li>Answer at least <strong>5 review questions</strong></li></ul></div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">❓</span>Ask 2 questions<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region">Ask <strong>two questions</strong> to your French professor in French.</div></div><div class="req-item" role="listitem"><button class="req-toggle" aria-expanded="false" onclick="tog(this)"><span aria-hidden="true">🎉</span>Closing<span class="arr" aria-hidden="true">▼</span></button><div class="req-body" role="region">End with a warm farewell: <em>Merci ! À bientôt !</em></div></div></div>
-        <div class="warn" role="alert">🚫 No online translator or AI allowed</div>
-      </div>
-    </div>
-  </div>
+var currentQ = null;
+var revealedQs = {};
+var revealedTopics = {};
+var selectedQs = {};
 
-  <div class="card">
-    <div class="card-inner">
-      <div class="slabel" style="margin-top:0;"><span aria-hidden="true">📋</span>Vocabulary — click any row to reveal · 🔊 to hear the French</div>
-      <p class="bt" style="margin-bottom:20px;">Pronunciation is always shown. <strong>Click a row</strong> to reveal its English translation — or use <em>Show all translations</em> when you want the full reference.</p>
-      <div class="vocab-section">
-  <div class="vocab-section-title">Comprehensive Review — Key Phrases</div>
-  <div class="vocab-controls">
-    <p>Click any row to reveal its English translation.</p>
-    <button class="toggle-btn" onclick="toggleAll(this,'vt61')" aria-pressed="false">👁 Show all translations</button>
-  </div>
-  <p class="vocab-note">💡 This is your reference sheet. Choose the topics that suit your final video — you don't need everything.</p><div style="overflow-x:auto;"><table class="vocab-table" id="vt61" role="grid" aria-label="Comprehensive Review — Key Phrases vocabulary">
-    <thead><tr>
-      <th scope="col">French</th>
-      <th scope="col">Pronunciation</th>
-      <th scope="col" class="th-audio">🔊</th>
-      <th scope="col" class="th-en">English</th>
-    </tr></thead>
-    <tbody><tr><td class="fr-cell">Bonjour / Salut</td><td class="pron-cell">[bon-zhoor / sah-loo]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Bonjour / Salut')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">Hello / Hi (formal / informal)</span></td></tr><tr><td class="fr-cell">Je m'appelle…</td><td class="pron-cell">[zhuh mah-pell]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Je m&#39;appelle…')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">My name is…</span></td></tr><tr><td class="fr-cell">J'ai __ ans.</td><td class="pron-cell">[zhay __ ahn]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'J&#39;ai __ ans.')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">I am __ years old.</span></td></tr><tr><td class="fr-cell">Voici ma famille.</td><td class="pron-cell">[vwah-see mah fah-mee]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Voici ma famille.')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">Here is my family.</span></td></tr><tr><td class="fr-cell">Il / Elle est…</td><td class="pron-cell">[eel / el ay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Il / Elle est…')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">He / She is…</span></td></tr><tr><td class="fr-cell">Il / Elle aime…</td><td class="pron-cell">[eel / el em]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Il / Elle aime…')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">He / She likes…</span></td></tr><tr><td class="fr-cell">Ma maison est…</td><td class="pron-cell">[mah may-zon ay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Ma maison est…')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">My house is…</span></td></tr><tr><td class="fr-cell">J'ai un cours de…</td><td class="pron-cell">[zhay un koor duh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'J&#39;ai un cours de…')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">I have a class in…</span></td></tr><tr><td class="fr-cell">Je vais + infinitif</td><td class="pron-cell">[zhuh vay]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Je vais + infinitif')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">I am going to… (futur proche)</span><span class="en-ex">Je vais étudier ce soir.</span></td></tr><tr><td class="fr-cell">Quel temps fait-il ?</td><td class="pron-cell">[kel tahn fay-teel]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Quel temps fait-il')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">What's the weather like?</span></td></tr><tr><td class="fr-cell">Il fait beau / chaud / froid</td><td class="pron-cell"></td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'Il fait beau')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">nice / hot / cold weather</span></td></tr><tr><td class="fr-cell">faire le ménage</td><td class="pron-cell">[fair luh may-nahzh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'faire le ménage')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to do the housework</span></td></tr><tr><td class="fr-cell">faire la vaisselle</td><td class="pron-cell">[fair lah veh-sell]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'faire la vaisselle')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">to do the dishes</span></td></tr><tr><td class="fr-cell">j'aime / je n'aime pas…</td><td class="pron-cell">[zhem / zhuh nem pah]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'j&#39;aime')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">I like / I don't like…</span></td></tr><tr><td class="fr-cell">À bientôt !</td><td class="pron-cell">[ah byan-toh]</td><td class="audio-cell"><button class="audio-btn" onclick="speak(event,'À bientôt')" aria-label="Hear pronunciation">🔊</button></td><td class="en-cell hidden" onclick="revealRow(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();revealRow(this);}" aria-label="Click to reveal translation"><span class="reveal-hint" aria-hidden="true">👆 Reveal</span><span class="en-text">See you soon!</span></td></tr></tbody>
-  </table></div>
-</div>
-    </div>
-  </div>
+function getEl(id) { return document.getElementById(id); }
 
-</main>
-<footer><a href="fren1001-full-index.html" style="color:var(--sky);">← Back to Lab Home</a> &nbsp;·&nbsp; FREN 1001 — Lab 5: Révision Complète</footer>
+function selectQ(n) {
+  currentQ = n;
+  var q = QDB[n];
+  var topic = TOPICS[q.tid];
 
-<div id="lb" role="dialog" aria-modal="true" aria-label="Image lightbox" onclick="closeLb()">
-  <button id="lb-close" onclick="closeLb()" aria-label="Close image">✕</button>
-  <img id="lb-img" src="" alt="">
-</div>
-<script>
-function tog(btn){const b=btn.nextElementSibling;const o=b.classList.contains('open');btn.setAttribute('aria-expanded',!o);b.classList.toggle('open',!o);}
-function speak(e,t){e.stopPropagation();if(!('speechSynthesis' in window))return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='fr-FR';u.rate=0.82;u.pitch=1.05;window.speechSynthesis.speak(u);}
-function revealRow(cell){if(!cell.classList.contains('hidden'))return;cell.classList.remove('hidden');}
-function toggleAll(btn,tid){const tbl=document.getElementById(tid);const show=tbl.classList.toggle('translations-shown');btn.textContent=show?'🙈 Hide translations':'👁 Show all translations';btn.setAttribute('aria-pressed',show);if(show){tbl.querySelectorAll('.en-cell').forEach(c=>c.classList.remove('hidden'));}else{tbl.querySelectorAll('.en-cell').forEach(c=>c.classList.add('hidden'));}}
-function openG(id){const m=document.getElementById('gm-'+id);m.removeAttribute('aria-hidden');m.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>m.querySelector('.gm-close').focus(),50);}
-function closeG(id){const m=document.getElementById('gm-'+id);m.setAttribute('aria-hidden','true');m.classList.remove('open');document.body.style.overflow='';}
-function openLb(src){document.getElementById('lb-img').src=src;document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';document.getElementById('lb-close').focus();}
-function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.gm.open').forEach(m=>closeG(m.id.replace('gm-','')));closeLb();}});
-document.querySelectorAll('.img-wrap[tabindex]').forEach(el=>{el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});});
+  // Sidebar: clear active, set new
+  var allItems = document.querySelectorAll('.q-item');
+  for (var i = 0; i < allItems.length; i++) {
+    allItems[i].classList.remove('active');
+  }
+  var activeItem = document.querySelector('.q-item[data-qn="' + n + '"]');
+  if (activeItem) {
+    activeItem.classList.add('active');
+    // Open parent topic if closed
+    var tqs = getEl('tqs-' + q.tid);
+    var thdr = document.querySelector('.topic-header[data-tid="' + q.tid + '"]');
+    if (tqs && !tqs.classList.contains('open')) {
+      tqs.classList.add('open');
+      if (thdr) { thdr.classList.add('open'); thdr.setAttribute('aria-expanded','true'); }
+    }
+    activeItem.scrollIntoView({block:'nearest', behavior:'smooth'});
+  }
+
+  // Video
+  var video = getEl('main-video');
+  var src = VBASE + '/q' + n + '.' + q.ext;
+  video.src = src;
+  video.load();
+
+  // Map toggle (Q34 only)
+  var mapToggle = getEl('map-toggle');
+  var mapPanel = getEl('map-panel');
+  if (mapToggle) mapToggle.style.display = (n === 34) ? 'flex' : 'none';
+  if (mapPanel) mapPanel.classList.remove('visible');
+  video.style.display = 'block';
+
+  // Question display
+  var numEl = getEl('qd-num');
+  numEl.textContent = n;
+  numEl.style.background = topic.color;
+
+  var topicLabel = getEl('qd-topic-label');
+  topicLabel.style.color = topic.color;
+  if (revealedTopics[q.tid]) {
+    topicLabel.textContent = topic.icon + ' ' + topic.fr;
+  } else {
+    topicLabel.textContent = topic.icon + ' Topic ' + q.tid;
+  }
+
+  // French question box
+  var frBox = getEl('qd-fr-box');
+  var placeholder = getEl('qd-placeholder');
+  var revBtn = getEl('reveal-btn');
+  if (revealedQs[n]) {
+    frBox.textContent = q.fr;
+    frBox.classList.add('visible');
+    if (placeholder) placeholder.style.display = 'none';
+    revBtn.textContent = 'Hide Question';
+    revBtn.classList.add('revealed');
+  } else {
+    frBox.classList.remove('visible');
+    frBox.textContent = '';
+    if (placeholder) placeholder.style.display = 'block';
+    revBtn.textContent = 'Reveal Question';
+    revBtn.classList.remove('revealed');
+  }
+
+  // Map note
+  var mapNote = getEl('qd-map-note');
+  if (mapNote) mapNote.style.display = (n === 34) ? 'block' : 'none';
+
+  // Select button
+  var selBtn = getEl('select-btn');
+  if (selectedQs[n]) {
+    selBtn.textContent = '✓ Selected';
+    selBtn.classList.add('selected');
+  } else {
+    selBtn.textContent = '+ Add to My List';
+    selBtn.classList.remove('selected');
+  }
+
+  // Nav buttons
+  getEl('btn-prev').disabled = (n <= 1);
+  getEl('btn-next').disabled = (n >= 47);
+  getEl('q-progress').textContent = 'Q' + n + ' / 47';
+
+  // Scroll content to top
+  var ca = document.querySelector('.content-area');
+  if (ca) ca.scrollTop = 0;
+}
+
+function toggleReveal() {
+  if (currentQ === null) return;
+  var q = QDB[currentQ];
+  var topic = TOPICS[q.tid];
+  var frBox = getEl('qd-fr-box');
+  var placeholder = getEl('qd-placeholder');
+  var revBtn = getEl('reveal-btn');
+  var topicLabel = getEl('qd-topic-label');
+  var sidebarLabel = document.querySelector('.topic-group[data-tid="' + q.tid + '"] .th-label');
+
+  if (revealedQs[currentQ]) {
+    delete revealedQs[currentQ];
+    frBox.classList.remove('visible');
+    frBox.textContent = '';
+    if (placeholder) placeholder.style.display = 'block';
+    revBtn.textContent = 'Reveal Question';
+    revBtn.classList.remove('revealed');
+  } else {
+    revealedQs[currentQ] = true;
+    frBox.textContent = q.fr;
+    frBox.classList.add('visible');
+    if (placeholder) placeholder.style.display = 'none';
+    revBtn.textContent = 'Hide Question';
+    revBtn.classList.add('revealed');
+    // Reveal topic title
+    if (!revealedTopics[q.tid]) {
+      revealedTopics[q.tid] = true;
+      topicLabel.textContent = topic.icon + ' ' + topic.fr;
+      if (sidebarLabel) sidebarLabel.classList.add('revealed');
+    }
+  }
+}
+
+function toggleSelect() {
+  if (currentQ === null) return;
+  var selBtn = getEl('select-btn');
+  var sidebarItem = document.querySelector('.q-item[data-qn="' + currentQ + '"]');
+  var checkEl = sidebarItem ? sidebarItem.querySelector('.q-check') : null;
+
+  if (selectedQs[currentQ]) {
+    delete selectedQs[currentQ];
+    selBtn.textContent = '+ Add to My List';
+    selBtn.classList.remove('selected');
+    if (sidebarItem) sidebarItem.classList.remove('checked');
+    if (checkEl) checkEl.textContent = '';
+  } else {
+    selectedQs[currentQ] = true;
+    selBtn.textContent = '✓ Selected';
+    selBtn.classList.add('selected');
+    if (sidebarItem) { sidebarItem.classList.add('checked'); }
+    if (checkEl) checkEl.textContent = '✓';
+  }
+  updateSubCard();
+}
+
+function updateSubCard() {
+  var keys = Object.keys(selectedQs).map(Number).sort(function(a,b){return a-b;});
+  var n = keys.length;
+  var counter = getEl('sub-counter');
+  var list = getEl('selected-list');
+  var genBtn = getEl('gen-btn');
+
+  counter.textContent = n + ' selected (5 minimum)';
+  counter.style.color = (n >= 5) ? '#166534' : 'var(--muted)';
+
+  if (n === 0) {
+    list.textContent = 'No questions selected yet. Click "+ Add to My List" as you practice.';
+    list.style.fontStyle = 'italic';
+    list.style.color = 'var(--muted)';
+  } else {
+    list.textContent = 'Selected: Q' + keys.join(', Q');
+    list.style.fontStyle = 'normal';
+    list.style.color = 'var(--soft)';
+  }
+  if (genBtn) genBtn.disabled = (n < 5);
+}
+
+function generateScript() {
+  var keys = Object.keys(selectedQs).map(Number).sort(function(a,b){return a-b;});
+  if (keys.length < 5) return;
+
+  // Build natural French number list
+  var nums = keys.map(function(k){ return numberToFrench(k); });
+  var numText;
+  if (nums.length === 1) {
+    numText = nums[0];
+  } else {
+    numText = nums.slice(0,-1).join(', ') + ' et ' + nums[nums.length-1];
+  }
+  var numDigits = keys.join(', ');
+
+  var introFr = 'Bonjour\u00a0! Dans cette vid\u00e9o, je vais r\u00e9pondre aux questions num\u00e9ro ' + numDigits + '.';
+  var script = getEl('sub-script');
+  script.innerHTML =
+    '<strong>Read this at the start of your Bongo video:</strong><br><br>' +
+    '<span style="font-size:16px;font-style:italic;color:#1a4f7a;">' + introFr + '</span>' +
+    '<br><br>' +
+    '<button onclick="speakIntro()" style="background:#1a4f7a;color:white;border:none;border-radius:7px;padding:6px 14px;cursor:pointer;font-family:\'DM Sans\',sans-serif;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:6px;margin-bottom:8px;">🔊 Hear it in French</button>' +
+    '<br><strong>Then answer each question in order.</strong>' +
+    '<br><span style="font-size:11px;color:var(--muted);margin-top:4px;display:block;">The grader will know exactly which questions to assess.</span>';
+  script.dataset.introText = introFr;
+  script.classList.add('visible');
+}
+
+function speakIntro() {
+  var script = getEl('sub-script');
+  var text = script.dataset.introText;
+  if (!text || !window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'fr-FR';
+  u.rate = 0.82;
+  u.pitch = 1.05;
+  // Try to find a French voice
+  var voices = window.speechSynthesis.getVoices();
+  var frVoice = voices.find(function(v){ return v.lang.startsWith('fr'); });
+  if (frVoice) u.voice = frVoice;
+  window.speechSynthesis.speak(u);
+}
+
+// Ensure voices are loaded before speakIntro
+if (window.speechSynthesis) {
+  window.speechSynthesis.onvoiceschanged = function() {
+    window.speechSynthesis.getVoices(); // prime the cache
+  };
+}
+
+function numberToFrench(n) {
+  var ones = ['','un','deux','trois','quatre','cinq','six','sept','huit','neuf',
+    'dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf'];
+  if (n < 20) return ones[n];
+  if (n < 30) return (n===20)?'vingt':'vingt-'+ones[n-20];
+  if (n < 40) return (n===30)?'trente':'trente-'+ones[n-30];
+  if (n < 50) return (n===40)?'quarante':'quarante-'+ones[n-40];
+  return n.toString();
+}
+
+function toggleMap() {
+  var mapPanel = getEl('map-panel');
+  var btn = getEl('map-toggle');
+  var video = getEl('main-video');
+  var visible = mapPanel.classList.toggle('visible');
+  btn.textContent = visible ? '📹 Show Video' : '🗺️ Show Paris Map';
+  video.style.display = visible ? 'none' : 'block';
+}
+
+function toggleTopic(tid) {
+  var tqs = getEl('tqs-' + tid);
+  var hdr = document.querySelector('.topic-header[data-tid="' + tid + '"]');
+  if (!tqs) return;
+  var isOpen = tqs.classList.contains('open');
+  tqs.classList.toggle('open', !isOpen);
+  if (hdr) {
+    hdr.classList.toggle('open', !isOpen);
+    hdr.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+  }
+}
+
+function openModal(id) {
+  var m = getEl(id);
+  if (!m) return;
+  m.classList.add('open');
+  m.removeAttribute('aria-hidden');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function() {
+    var cl = m.querySelector('.modal-close');
+    if (cl) cl.focus();
+  }, 60);
+}
+
+function closeModal(id) {
+  var m = getEl(id);
+  if (!m) return;
+  m.classList.remove('open');
+  m.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    var openModals = document.querySelectorAll('.modal.open');
+    for (var i = 0; i < openModals.length; i++) closeModal(openModals[i].id);
+  }
+  if (e.key === 'ArrowRight' && currentQ !== null && currentQ < 47 && document.activeElement.tagName !== 'BUTTON') {
+    e.preventDefault(); selectQ(currentQ + 1);
+  }
+  if (e.key === 'ArrowLeft' && currentQ !== null && currentQ > 1 && document.activeElement.tagName !== 'BUTTON') {
+    e.preventDefault(); selectQ(currentQ - 1);
+  }
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+  toggleTopic(1);
+  selectQ(1);
+  updateSubCard();
+});
 </script>
-</body>
-</html>
+</body></html>
