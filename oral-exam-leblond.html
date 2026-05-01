@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen Oral Final — FREN 1001 (Bongo)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:       #0c1e3d;
+    --navy-mid:   #1a3460;
+    --navy-light: #2d5080;
+    --gold:       #c4a462;
+    --gold-light: #e8d8a0;
+    --gold-pale:  #fffdf5;
+    --cream:      #faf9f6;
+    --white:      #ffffff;
+    --text:       #1a1a2e;
+    --text-mid:   #3a3a5a;
+    --text-soft:  #6a6a8a;
+    --green-dark: #1a4a28;
+    --green-bg:   #f0faf2;
+    --green-bdr:  #6dbb88;
+    --red-dark:   #7f1010;
+    --red-bg:     #fff2f2;
+    --red-bdr:    #e88080;
+    --blue-bg:    #eef4fb;
+    --blue-bdr:   #90b8d8;
+    --slate-bg:   #f2f4f8;
+    --slate-bdr:  #c0c8d8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f0e8d8;
+    background-image:
+      radial-gradient(at 12% 8%,  #f8eecc 0%, transparent 45%),
+      radial-gradient(at 88% 92%, #e8dcc0 0%, transparent 50%),
+      linear-gradient(160deg, #f5ecd6 0%, #ede2c8 100%);
+    min-height: 100vh;
+    padding: 48px 16px 64px;
+    color: var(--text);
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    border-radius: 28px;
+    padding: 6px;
+    background: linear-gradient(160deg, #d4b870 0%, #c4a462 50%, #a88a48 100%);
+    box-shadow:
+      0 0 40px rgba(196,164,98,0.55),
+      0 0 80px rgba(196,164,98,0.35),
+      0 30px 80px rgba(80,60,20,0.18),
+      0 0 0 1px rgba(196,164,98,0.5);
+    animation: frameGlow 4s ease-in-out infinite;
+  }
+
+  @keyframes frameGlow {
+    0%, 100% {
+      box-shadow:
+        0 0 40px rgba(196,164,98,0.55),
+        0 0 80px rgba(196,164,98,0.35),
+        0 30px 80px rgba(80,60,20,0.18),
+        0 0 0 1px rgba(196,164,98,0.5);
+    }
+    50% {
+      box-shadow:
+        0 0 60px rgba(212,184,112,0.75),
+        0 0 120px rgba(212,184,112,0.5),
+        0 30px 80px rgba(80,60,20,0.22),
+        0 0 0 1px rgba(212,184,112,0.65);
+    }
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #0c1e3d 0%, #1e3a6e 60%, #0f2a55 100%);
+    border-radius: 22px 22px 0 0;
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,164,98,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45,80,128,0.5) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 20px;
+    opacity: .92;
+  }
+
+  .hero-ornament {
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: .3em;
+    margin-bottom: 16px;
+    opacity: .85;
+  }
+
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.0;
+    letter-spacing: -.01em;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+
+  .hero-subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: #ffffff;
+    opacity: .88;
+    margin-bottom: 32px;
+    letter-spacing: .02em;
+  }
+
+  .hero-pills {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 100px;
+    padding: 7px 18px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: .04em;
+    backdrop-filter: blur(4px);
+  }
+
+  .body {
+    background: var(--white);
+    border-radius: 0 0 22px 22px;
+    padding: 40px 48px 48px;
+  }
+
+  .intro-banner {
+    background: #f5f9fd;
+    border: 1.5px solid var(--blue-bdr);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: #1a2a40;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    margin-top: 36px;
+  }
+
+  .section-header-label {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+
+  .section-header-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+  }
+
+  .steps {
+    background: var(--gold-pale);
+    border: 1.5px solid var(--gold-light);
+    border-radius: 18px;
+    padding: 24px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .step:not(:last-child) { padding-bottom: 20px; }
+
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 30px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold-light), transparent);
+  }
+
+  .step-num {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(12,30,61,0.25);
+  }
+
+  .step-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #2a2a2a;
+    padding-top: 3px;
+  }
+
+  .step-text strong { color: var(--navy); }
+
+  .bongo-alert {
+    background: linear-gradient(135deg, #fff8e8 0%, #fffcf0 100%);
+    border: 1.5px solid #e0c060;
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: #5a4000;
+  }
+
+  .do-avoid-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .do-card, .avoid-card {
+    border-radius: 16px;
+    padding: 20px 20px 18px;
+  }
+
+  .do-card   { background: var(--green-bg); border: 1.5px solid var(--green-bdr); }
+  .avoid-card { background: var(--red-bg);  border: 1.5px solid var(--red-bdr); }
+
+  .card-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .do-card   .card-label { color: var(--green-dark); }
+  .avoid-card .card-label { color: var(--red-dark); }
+
+  .card-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .card-list li {
+    font-size: 13px;
+    line-height: 1.65;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .card-list li::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 10px;
+    font-weight: 900;
+  }
+
+  .do-card   .card-list li { color: #1e3a28; }
+  .do-card   .card-list li::before { content: '✓'; color: var(--green-dark); }
+  .avoid-card .card-list li { color: #4a1010; }
+  .avoid-card .card-list li::before { content: '✗'; color: var(--red-dark); }
+
+  .zero-badge {
+    display: inline-block;
+    background: var(--red-dark);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    padding: 1px 7px;
+    border-radius: 100px;
+    vertical-align: middle;
+    margin-left: 2px;
+    text-transform: uppercase;
+  }
+
+  .example-box {
+    background: var(--blue-bg);
+    border: 1.5px solid var(--blue-bdr);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin-top: 14px;
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: #1a2a40;
+  }
+
+  .example-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--navy-light);
+    margin-bottom: 10px;
+  }
+
+  .example-q {
+    font-style: italic;
+    color: var(--navy);
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .example-row {
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .example-row:last-child { margin-bottom: 0; }
+  .example-bad  { background: rgba(220,80,80,0.07);  border-left: 3px solid #e08080; color: #5a1010; }
+  .example-good { background: rgba(60,160,90,0.07); border-left: 3px solid #70b888; color: #1a3a20; }
+
+  .timing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .timing-card {
+    border-radius: 16px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  .timing-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+
+  .timing-card.min { background: var(--gold-pale); border: 1.5px solid var(--gold-light); }
+  .timing-card.tgt { background: var(--blue-bg);   border: 1.5px solid var(--blue-bdr); }
+  .timing-card.max { background: var(--green-bg);  border: 1.5px solid var(--green-bdr); }
+
+  .timing-num {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .timing-badge {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .timing-card.min .timing-badge { color: #7a5e00; }
+  .timing-card.tgt .timing-badge { color: #1a4060; }
+  .timing-card.max .timing-badge { color: var(--green-dark); }
+
+  .timing-desc { font-size: 12px; line-height: 1.55; color: var(--text-mid); }
+
+  .rules-card {
+    background: var(--gold-pale);
+    border: 1.5px solid var(--gold-light);
+    border-radius: 18px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .rule-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(196,164,98,0.25);
+  }
+
+  .rule-row:first-child { padding-top: 0; }
+  .rule-row:last-child  { border-bottom: none; padding-bottom: 0; }
+  .rule-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  .trouble-card {
+    background: var(--slate-bg);
+    border: 1.5px solid var(--slate-bdr);
+    border-radius: 18px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .trouble-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #2a2a2a;
+  }
+
+  .trouble-row.divider {
+    border-top: 1px solid #c8cdd8;
+    padding-top: 10px;
+    margin-top: 2px;
+  }
+
+  .deadline-card {
+    background: linear-gradient(135deg, #0c1e3d 0%, #1a3460 100%);
+    border-radius: 18px;
+    padding: 24px 28px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    box-shadow: 0 8px 30px rgba(12,30,61,0.2);
+  }
+
+  .deadline-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+
+  .deadline-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #ffffff;
+    opacity: .95;
+  }
+
+  .deadline-text strong { color: #f0d890; }
+
+  /* ── COLLAPSIBLE SECTIONS ── */
+  details.section {
+    margin-top: 18px;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1.5px solid #e2e6ec;
+    overflow: hidden;
+    transition: border-color .25s ease, box-shadow .25s ease;
+  }
+
+  details.section[open] {
+    border-color: var(--gold-light);
+    box-shadow: 0 4px 18px rgba(196,164,98,0.12);
+  }
+
+  details.section > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--navy);
+    user-select: none;
+    transition: background .2s ease;
+  }
+
+  details.section > summary::-webkit-details-marker { display: none; }
+
+  details.section > summary:hover {
+    background: var(--gold-pale);
+  }
+
+  details.section > summary:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: -2px;
+  }
+
+  .summary-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .summary-text {
+    flex: 1;
+  }
+
+  .summary-chevron {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--gold-pale);
+    border: 1.5px solid var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--navy);
+    flex-shrink: 0;
+    transition: transform .3s ease, background .2s ease;
+    letter-spacing: 0;
+  }
+
+  details.section[open] > summary .summary-chevron {
+    transform: rotate(180deg);
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #ffffff;
+  }
+
+  .section-body {
+    padding: 4px 22px 22px;
+    animation: revealBody .35s ease;
+  }
+
+  @keyframes revealBody {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  details.section .section-body > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeUp .6s ease both; }
+  .body { animation: fadeUp .6s .1s ease both; }
+
+  @media (max-width: 600px) {
+    body { padding: 0 0 40px; }
+    .page { padding: 0; border-radius: 0; box-shadow: none; background: none; }
+    .hero { border-radius: 0; padding: 40px 24px 36px; }
+    .body { border-radius: 0; padding: 28px 20px 36px; }
+    .hero-title { font-size: 38px; }
+    .do-avoid-grid { grid-template-columns: 1fr; }
+    .timing-grid { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .hero { border-radius: 0; }
+    .body { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-label">FREN 1001 — Summer Online Asynchronous</div>
+    <div class="hero-ornament">❖ &nbsp; ❖ &nbsp; ❖</div>
+    <div class="hero-title">Examen Oral Final</div>
+    <div class="hero-subtitle">Via Bongo — Individual Video Assignment</div>
+    <div class="hero-pills">
+      <div class="pill">📹 20 questions</div>
+      <div class="pill">⏱ 15 – 90 sec per response</div>
+      <div class="pill">📚 Chapitres 1 – 6</div>
+      <div class="pill">🗓 July 22 – 23</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="intro-banner">
+      Welcome to your final oral exam for FREN 1001. Below you will find <strong>20 question videos</strong> recorded by your professor. For each question, your professor will read it <strong>twice</strong> — listen carefully all the way through, because <strong>recording begins automatically as soon as the video ends</strong>. Respond in complete French sentences. No notes, no translators, no AI tools.
+    </div>
+
+    <div class="section-header" style="margin-top:0;">
+      <div class="section-header-label">🚦 How It Works</div>
+      <div class="section-header-line"></div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">Watch your professor's question video. The question is read <strong>twice</strong>. <strong>Listen all the way through without interruption</strong> — focus entirely on understanding the question and mentally preparing your answer.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text"><strong>Recording starts automatically</strong> the moment the question video ends — there is no pause. You have between <strong>15 and 90 seconds</strong>. Speak clearly and in full French sentences from the very first second.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">Repeat for all 20 questions. <strong>Submit your assignment</strong> once all responses are complete.</div>
+      </div>
+    </div>
+
+    <div class="bongo-alert">
+      <div style="font-size:20px; flex-shrink:0; margin-top:1px;">⚠️</div>
+      <div><strong>Important:</strong> Because recording begins the moment the question video ends, there is no buffer between listening and speaking. While listening, <strong>use that time to mentally plan your answer</strong> — do not wait until the video is over to start thinking.</div>
+    </div>
+
+    <details class="section" open>
+      <summary>
+        <span class="summary-icon">✅</span>
+        <span class="summary-text">What Makes a Great Answer</span>
+        <span class="summary-chevron">▼</span>
+      </summary>
+      <div class="section-body">
+        <div class="do-avoid-grid">
+          <div class="do-card">
+            <div class="card-label">✔ Do this</div>
+            <ul class="card-list">
+              <li>Answer in <strong>complete French sentences</strong> — never with a simple oui or non alone.</li>
+              <li><strong>Expand on your answer.</strong> Add a detail, an example, or a follow-up thought.</li>
+              <li>Speak <strong>naturally and at a steady pace</strong> — imagine a conversation with your professor.</li>
+              <li>Draw on vocabulary and grammar from <strong>Chapitres 1–6</strong> studied throughout the semester.</li>
+            </ul>
+          </div>
+          <div class="avoid-card">
+            <div class="card-label">✘ Avoid this</div>
+            <ul class="card-list">
+              <li>Answering with just <strong>oui</strong> or <strong>non</strong> — it will not earn full credit.</li>
+              <li><strong>Reading from a script, notes, or any written material.</strong> Strictly prohibited — your screen is shared and any suspicion results in a <span class="zero-badge">zero</span>.</li>
+              <li>Using <strong>online translators or AI tools</strong> to prepare answers.</li>
+              <li>Stopping after the bare minimum when more is clearly expected.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="example-box">
+          <div class="example-label">💡 Example — Topic : Le ménage</div>
+          <div class="example-q">Question : Est-ce que tu fais le ménage chez toi ?</div>
+          <div class="example-row example-bad">
+            <strong>✗ Insufficient —</strong> <em>Oui, je fais le ménage chez moi.</em><br>
+            Grammatically fine, but far too short for full credit.
+          </div>
+          <div class="example-row example-good">
+            <strong>✓ Full credit —</strong> <em>Oui, je fais le ménage chez moi. Je fais la lessive et je lave le sol. Mon frère fait la vaisselle et il enlève la poussière.</em><br>
+            This is exactly the kind of answer that earns full credit.
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="section">
+      <summary>
+        <span class="summary-icon">⏱</span>
+        <span class="summary-text">Timing Guidelines</span>
+        <span class="summary-chevron">▼</span>
+      </summary>
+      <div class="section-body">
+        <div class="timing-grid">
+          <div class="timing-card min">
+            <div class="timing-num">15s</div>
+            <div class="timing-badge">Minimum</div>
+            <div class="timing-desc">Required for every question, even the shortest answers</div>
+          </div>
+          <div class="timing-card tgt">
+            <div class="timing-num">30–60s</div>
+            <div class="timing-badge">Target Range</div>
+            <div class="timing-desc">Aim for this on most questions — enough to show real depth</div>
+          </div>
+          <div class="timing-card max">
+            <div class="timing-num">90s</div>
+            <div class="timing-badge">Maximum</div>
+            <div class="timing-desc">Some richer topics may warrant a longer, more developed response</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="section">
+      <summary>
+        <span class="summary-icon">📋</span>
+        <span class="summary-text">Exam Rules</span>
+        <span class="summary-chevron">▼</span>
+      </summary>
+      <div class="section-body">
+        <div class="rules-card">
+          <div class="rule-row">
+            <div class="rule-icon">🚫</div>
+            <div><strong>No outside resources of any kind</strong> — no notes, no textbook, no vocabulary lists, no dictionaries, no websites. Nothing.</div>
+          </div>
+          <div class="rule-row">
+            <div class="rule-icon">🚫</div>
+            <div><strong>No online translators or AI tools</strong> at any stage of the exam.</div>
+          </div>
+          <div class="rule-row">
+            <div class="rule-icon">🖥️</div>
+            <div><strong>Screen sharing is active</strong> — your screen is recorded alongside your video for the entire duration of the exam.</div>
+          </div>
+          <div class="rule-row">
+            <div class="rule-icon">📹</div>
+            <div><strong>Face must be fully visible</strong> throughout all recordings.</div>
+          </div>
+          <div class="rule-row">
+            <div class="rule-icon">🔇</div>
+            <div><strong>Choose a quiet location</strong> with good lighting and minimal background noise.</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="section">
+      <summary>
+        <span class="summary-icon">🔧</span>
+        <span class="summary-text">Bongo Troubleshooting</span>
+        <span class="summary-chevron">▼</span>
+      </summary>
+      <div class="section-body">
+        <div class="trouble-card">
+          <div class="trouble-row">
+            <div style="font-size:14px; flex-shrink:0;">💻</div>
+            <div>Use <strong>Google Chrome</strong> on a laptop or desktop. Tablets and phones are not fully supported.</div>
+          </div>
+          <div class="trouble-row">
+            <div style="font-size:14px; flex-shrink:0;">🔓</div>
+            <div>Allow <strong>camera and microphone permissions</strong> in your browser settings before starting.</div>
+          </div>
+          <div class="trouble-row">
+            <div style="font-size:14px; flex-shrink:0;">🗑️</div>
+            <div><strong>Clear cache and cookies</strong>, then refresh if something is not loading correctly.</div>
+          </div>
+          <div class="trouble-row">
+            <div style="font-size:14px; flex-shrink:0;">🕶️</div>
+            <div>Try a <strong>Chrome Incognito window</strong> if other steps do not resolve the issue.</div>
+          </div>
+          <div class="trouble-row divider">
+            <div style="font-size:14px; flex-shrink:0;">📬</div>
+            <div>Still having trouble? Contact your professor <strong>well before the July 23 deadline</strong> — do not wait until the last hour.</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="section-header">
+      <div class="section-header-label">📊 Exam Window &amp; Deadline</div>
+      <div class="section-header-line"></div>
+    </div>
+
+    <div class="deadline-card">
+      <div class="deadline-icon">📊</div>
+      <div class="deadline-text">
+        <strong>Exam window: July 22 – 23.</strong> You must complete and submit all 20 responses within this 48-hour window.<br>
+        The exam closes at <strong>11:55 PM on July 23</strong>. <strong>No late submissions will be accepted under any circumstances.</strong> Do not wait until the last minute — technical issues are not an excuse for missing the deadline.
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
